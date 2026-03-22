@@ -12,7 +12,7 @@ See: .planning/PROJECT.md (updated 2026-03-22)
 Phase: 1 of 4 (内容事实契约与注册表)
 Plan: 0 of 3 in current phase
 Status: Ready to plan
-Last activity: 2026-03-22 — 已创建 roadmap 并完成 16 个 v1 需求 phase 映射
+Last activity: 2026-03-22 — Completed quick task 260322-uyb: 微信聊天入口 OpenClaw / ClawBot 知识视频
 
 Progress: [░░░░░░░░░░] 0%
 
@@ -53,6 +53,12 @@ None yet.
 
 - 仓库当前缺少测试 runner，Phase 1/2 规划时需要先确定最小测试基础设施。
 - 现有 composition、脚本和 API 入口可能存在隐式注册漂移，Phase 1 需先做 inventory。
+
+### Quick Tasks Completed
+
+| # | Description | Date | Commit | Directory |
+|---|-------------|------|--------|-----------|
+| 260322-uyb | 微信聊天入口 OpenClaw / ClawBot 知识视频 | 2026-03-22 | d3c5a7e | [260322-uyb-twitter-openclaw-clawbot](./quick/260322-uyb-twitter-openclaw-clawbot/) |
 
 ## Session Continuity
 
