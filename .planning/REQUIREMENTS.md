@@ -67,28 +67,28 @@
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| BRIEF-01 | TBC | Pending |
-| BRIEF-02 | TBC | Pending |
-| BRIEF-03 | TBC | Pending |
-| REG-01 | TBC | Pending |
-| REG-02 | TBC | Pending |
-| REG-03 | TBC | Pending |
-| MEDIA-01 | TBC | Pending |
-| MEDIA-02 | TBC | Pending |
-| MEDIA-03 | TBC | Pending |
-| TEMP-01 | TBC | Pending |
-| TEMP-02 | TBC | Pending |
-| TEMP-03 | TBC | Pending |
-| TEMP-04 | TBC | Pending |
-| PACK-01 | TBC | Pending |
-| PACK-02 | TBC | Pending |
-| PACK-03 | TBC | Pending |
+| BRIEF-01 | Phase 1 | Pending |
+| BRIEF-02 | Phase 1 | Pending |
+| BRIEF-03 | Phase 1 | Pending |
+| REG-01 | Phase 1 | Pending |
+| REG-02 | Phase 1 | Pending |
+| REG-03 | Phase 4 | Pending |
+| MEDIA-01 | Phase 2 | Pending |
+| MEDIA-02 | Phase 2 | Pending |
+| MEDIA-03 | Phase 2 | Pending |
+| TEMP-01 | Phase 3 | Pending |
+| TEMP-02 | Phase 3 | Pending |
+| TEMP-03 | Phase 3 | Pending |
+| TEMP-04 | Phase 3 | Pending |
+| PACK-01 | Phase 4 | Pending |
+| PACK-02 | Phase 4 | Pending |
+| PACK-03 | Phase 4 | Pending |
 
 **Coverage:**
 - v1 requirements: 16 total
-- Mapped to phases: 0
-- Unmapped: 16 ⚠️
+- Mapped to phases: 16
+- Unmapped: 0 ✓
 
 ---
 *Requirements defined: 2026-03-22*
-*Last updated: 2026-03-22 after initial definition*
+*Last updated: 2026-03-22 after roadmap creation*
