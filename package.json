@@ -28,6 +28,13 @@
     "generate:voiceover:puaskill": "tsx scripts/generate-voiceover-puaskill.ts",
     "sync:subtitle:puaskill": "tsx scripts/sync-subtitle-puaskill.ts",
     "render:puaskill": "remotion render src/index.ts PuaSkill --output=out/PuaSkill.mp4",
+    "generate:voiceover:agencyagents": "tsx scripts/generate-voiceover-agencyagents.ts",
+    "sync:subtitle:agencyagents": "tsx scripts/sync-subtitle-agencyagents.ts",
+    "render:agencyagents": "remotion render src/index.ts AgencyAgents --output=out/AgencyAgents.mp4",
+    "generate:voiceover:autoresearch": "tsx scripts/generate-voiceover-autoresearch.ts",
+    "sync:subtitle:autoresearch": "tsx scripts/sync-subtitle-autoresearch.ts",
+    "render:autoresearch": "remotion render src/index.ts AutoResearch --output=out/AutoResearch.mp4",
+    "render:autoresearch:cover": "remotion still src/index.ts AutoResearchCover --output=out/AutoResearch-cover.png",
     "typecheck": "tsc --noEmit"
   },
   "repository": {

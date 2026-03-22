@@ -1,5 +1,5 @@
 import React from "react";
-import { Composition } from "remotion";
+import { Composition, Still } from "remotion";
 import {
   HelloWorld,
   HelloWorldSchema,
@@ -13,6 +13,11 @@ import {
   SuperPowersSchema,
   PuaSkill,
   PuaSkillSchema,
+  AgencyAgents,
+  AgencyAgentsSchema,
+  AutoResearch,
+  AutoResearchCover,
+  AutoResearchSchema,
 } from "./compositions";
 import { DEFAULT_VIDEO_CONFIG } from "./shared/types";
 import nitrogenSubtitles from "./data/nitrogen-subtitles.json";
@@ -20,6 +25,8 @@ import openclawSubtitles from "./data/openclaw-subtitles.json";
 import clawskillsSubtitles from "./data/clawskills-subtitles.json";
 import superpowersSubtitles from "./data/superpowers-subtitles.json";
 import puaskillSubtitles from "./data/puaskill-subtitles.json";
+import agencyagentsSubtitles from "./data/agencyagents-subtitles.json";
+import autoresearchSubtitles from "./data/autoresearch-subtitles.json";
 
 export const RemotionRoot: React.FC = () => {
   return (
@@ -698,6 +705,329 @@ export const RemotionRoot: React.FC = () => {
 
           precomputedSubtitles: puaskillSubtitles,
           sceneDurations: [400, 500, 542, 596, 529, 613, 597],
+        }}
+      />
+      {/* 竖屏短视频：Agency Agents 147个Markdown Agent零成本AI团队 */}
+      <Composition
+        id="AgencyAgents"
+        component={AgencyAgents}
+        durationInFrames={4164}
+        fps={30}
+        width={1080}
+        height={1920}
+        schema={AgencyAgentsSchema}
+        defaultProps={{
+          hookLine1: "你还在一个人跟AI单打独斗吗？",
+          hookLine2: "147个AI专家团队，零成本组建",
+          hookStyle: "glitch",
+          githubStars: 46800,
+          agentCount: 147,
+          departmentCount: 12,
+
+          painTitle: "你的AI用法，效率低得可怕",
+          painPoints: [
+            "每次都要从零调教",
+            "没有专业视角和领域知识",
+            "没有标准工作流程",
+            "没有交付物模板",
+            "没有质量评估标准",
+          ],
+          painQuote: "一个AI当万能工具人，结果什么都不精",
+
+          coreTitle: "组织架构代码化",
+          coreSubtitle: "147个Agent · 12个部门",
+          departments: [
+            { name: "工程", icon: "⚙️", color: "#3b82f6" },
+            { name: "产品", icon: "📋", color: "#8b5cf6" },
+            { name: "设计", icon: "🎨", color: "#ec4899" },
+            { name: "增长", icon: "📈", color: "#22c55e" },
+            { name: "数据", icon: "📊", color: "#06b6d4" },
+            { name: "安全", icon: "🔒", color: "#ef4444" },
+            { name: "运维", icon: "🛠️", color: "#f97316" },
+            { name: "QA", icon: "✅", color: "#10b981" },
+            { name: "内容", icon: "✏️", color: "#a855f7" },
+            { name: "HR", icon: "👥", color: "#f59e0b" },
+            { name: "财务", icon: "💰", color: "#fbbf24" },
+            { name: "法务", icon: "⚖️", color: "#6366f1" },
+          ],
+
+          agentRoles: [
+            { role: "产品经理", desc: "完整PRD与需求分析", icon: "📋", color: "#8b5cf6" },
+            { role: "后端架构师", desc: "技术方案与架构图", icon: "🏗️", color: "#3b82f6" },
+            { role: "前端工程师", desc: "完整业务代码生成", icon: "💻", color: "#06b6d4" },
+            { role: "增长专家", desc: "推广策略与营销文案", icon: "🚀", color: "#22c55e" },
+          ],
+          localPlatforms: [
+            { name: "小红书", icon: "📕", color: "#fe2c55" },
+            { name: "抖音", icon: "🎵", color: "#25f4ee" },
+            { name: "B站", icon: "📺", color: "#00a1d6" },
+          ],
+          agentShowcaseQuote: "昨天刚更新，社区极其活跃",
+
+          collaborationTitle: "多Agent协作",
+          collaborationSubtitle: "轻量级组织架构 · 链式调用",
+          collaborationFeatures: [
+            "手动链式调用多角色",
+            "内置 Agents Orchestrator",
+            "角色间上下文无缝传递",
+            "自定义协作工作流",
+          ],
+          supportedTools: [
+            { name: "Claude Code", icon: "🟠", color: "#f97316" },
+            { name: "Cursor", icon: "⚡", color: "#8b5cf6" },
+            { name: "Aider", icon: "🔧", color: "#22c55e" },
+            { name: "Gemini CLI", icon: "🔵", color: "#3b82f6" },
+            { name: "Windsurf", icon: "🏄", color: "#06b6d4" },
+            { name: "OpenClaw", icon: "🦀", color: "#ef4444" },
+          ],
+
+          mvpTitle: "从零到MVP完整闭环",
+          mvpSubtitle: "成本 ≈ ¥0",
+          mvpSteps: [
+            { name: "产品经理 Agent", output: "需求分析 → PRD", icon: "📋", color: "#8b5cf6" },
+            { name: "架构师 Agent", output: "技术方案 → 架构图", icon: "🏗️", color: "#3b82f6" },
+            { name: "前端工程师 Agent", output: "完整业务代码", icon: "💻", color: "#06b6d4" },
+            { name: "增长专家 Agent", output: "推广策略 → 文案", icon: "🚀", color: "#22c55e" },
+          ],
+
+          ctaLine1: "147个岗位的AI专业团队",
+          ctaLine2: "等你一键组建",
+          ctaContent: "评论区告诉我，你准备先抓哪个Agent给你打黑工？",
+          ctaSlogan: "关注不迷路 · 我们下期见",
+
+          backgroundColor: "#080c12",
+          textColor: "#ffffff",
+          accentColor: "#22c55e",
+          highlightColor: "#8b5cf6",
+          secondaryColor: "#3b82f6",
+          warningColor: "#f97316",
+
+          subtitle: {
+            enabled: true,
+            fontSize: 44,
+            position: "bottom",
+            highlightColor: "#22c55e",
+            textColor: "#ffffff",
+            backgroundColor: "rgba(8, 12, 18, 0.85)",
+          },
+
+          audio: {
+            backgroundMusic: "music/background.mp3",
+            backgroundMusicVolume: 0.2,
+            voiceoverEnabled: true,
+            voiceoverVolume: 1.0,
+            voiceId: "zh-CN-YunxiNeural",
+            voiceRate: 1.05,
+            voiceoverAudioFiles: [
+              "audio/agencyagents-scene1.mp3",
+              "audio/agencyagents-scene2.mp3",
+              "audio/agencyagents-scene3.mp3",
+              "audio/agencyagents-scene4.mp3",
+              "audio/agencyagents-scene5.mp3",
+              "audio/agencyagents-scene6.mp3",
+              "audio/agencyagents-scene7.mp3",
+            ],
+          },
+
+          voiceoverScripts: [
+            "你还在一个人跟AI单打独斗吗？人家已经用Markdown文件，搞出了一支147人的AI专业团队！GitHub狂揽46800颗Star，还在暴涨！",
+            "大多数人用AI是什么状态？写代码问GPT，写文案问GPT，做方案还是问GPT。一个AI当万能工具人，结果呢？每次都要从零调教，没有专业视角，没有标准流程，效率低得可怕！",
+            "有个叫agency-agents的开源项目，做了一件狠事！它把公司组织架构直接代码化！147个专业Agent，覆盖工程、产品、设计、增长等12个部门！每个Agent就是一个高质量Markdown文件，定义了角色个性、工作流程、交付物模板和评估标准！",
+            "这147个Agent有多专业？产品经理会输出完整PRD，后端架构师能生成技术方案和架构图，前端工程师直接写业务代码，增长专家制定推广策略。甚至还有针对小红书、抖音、B站的本地化营销Agent！昨天刚更新，社区极其活跃！",
+            "它最炸裂的能力是多Agent协作！你可以把它看作一个轻量级的组织架构，通过链式调用，或者内置的Agents Orchestrator，让多个角色完成复杂任务！支持Claude Code、Cursor、Gemini CLI全平台无缝接入！",
+            "举个实战例子，从零到MVP的完整闭环！产品经理Agent梳理需求输出PRD，架构师Agent承接PRD输出技术方案，前端工程师Agent生成完整代码，增长专家Agent制定推广策略和文案。一套流水线下来，成本几乎为零！独立开发者和小团队的终极提效神器！",
+            "AI时代最大的红利，不是知道有这些工具，而是真正用起来！147个岗位的AI专业团队，等你一键组建！评论区告诉我，你准备先抓哪个Agent给你打黑工？关注不迷路，我们下期见！",
+          ],
+
+          precomputedSubtitles: agencyagentsSubtitles,
+          sceneDurations: [412, 582, 658, 681, 548, 751, 532],
+        }}
+      />
+      {/* 竖屏短视频：AutoResearch Karpathy让AI自己搞科研 */}
+      <Composition
+        id="AutoResearch"
+        component={AutoResearch}
+        durationInFrames={4006}
+        fps={30}
+        width={1080}
+        height={1920}
+        schema={AutoResearchSchema}
+        defaultProps={{
+          hookLine1: "卡帕西又出手了",
+          hookLine2: "AI自己搞科研的时代来了",
+          hookStyle: "glitch",
+          githubStars: 44000,
+          codeLines: 630,
+          fileCount: 3,
+
+          painTitle: "你还在手动调参？",
+          painPoints: [
+            "手动改一行代码跑一次实验",
+            "熬夜盯Loss曲线",
+            "反复微调超参数",
+            "实验记录散落各处",
+            "跑完一轮要等半天",
+          ],
+          painQuote: "人肉科研，效率低得可怕",
+
+          coreTitle: "AI自我进化实验室",
+          coreSubtitle: "无人值守 · 闭环进化",
+          loopSteps: [
+            { name: "写代码", icon: "💻", color: "#22d65e", desc: "AI修改train.py" },
+            { name: "跑训练", icon: "🔥", color: "#f59e0b", desc: "固定5分钟训练" },
+            { name: "看结果", icon: "📊", color: "#10b4e8", desc: "检查val_bpb指标" },
+            { name: "改代码", icon: "🔄", color: "#a855f7", desc: "保留最优/丢弃差的" },
+          ],
+
+          minimalTitle: "极简即暴力",
+          minimalSubtitle: "630行代码 · 单张GPU",
+          projectFiles: [
+            { name: "prepare.py", desc: "数据准备和评估工具", icon: "📦", color: "#10b4e8", editable: false },
+            { name: "train.py", desc: "模型+训练循环 (AI修改)", icon: "🔥", color: "#ef4444", editable: true },
+            { name: "program.md", desc: "AI的指令文件 (人类编写)", icon: "📝", color: "#22d65e", editable: true },
+          ],
+
+          smartTitle: "智商碾压",
+          experimentLoop: [
+            { step: "修改架构/超参", icon: "✏️", color: "#a855f7" },
+            { step: "训练5分钟", icon: "⏱️", color: "#f59e0b" },
+            { step: "对比val_bpb", icon: "📉", color: "#10b4e8" },
+            { step: "保留/丢弃", icon: "✅", color: "#22d65e" },
+          ],
+          benchmark: {
+            smallModel: "0.8B",
+            largeModel: "1.6B",
+            result: "AI跑出的小模型反超人类微调大模型",
+          },
+
+          paradigmTitle: "科研范式地震",
+          paradigmQuote: "我去蒸了个桑拿，回来AI已经跑完实验了",
+          paradigmBefore: "人类研究AI",
+          paradigmAfter: "AI研究AI",
+          programMdPreview: [
+            "# AutoResearch Program",
+            "",
+            "## Goal",
+            "  Minimize val_bpb on FineWeb-Edu",
+            "",
+            "## Rules",
+            "  1. Only modify train.py",
+            "  2. Each run = 5 min wall clock",
+            "  3. Keep or discard based on metric",
+          ],
+
+          ctaLine1: "今天的程序员在写代码",
+          ctaLine2: "明天的程序员在指挥AI写代码",
+          ctaContent: "评论区告诉我，你觉得AI自主科研的时代还有多远？",
+          ctaSlogan: "关注不迷路 · 我们下期见",
+
+          backgroundColor: "#050a10",
+          textColor: "#ffffff",
+          accentColor: "#22d65e",
+          highlightColor: "#10b4e8",
+          secondaryColor: "#f59e0b",
+          warningColor: "#ef4444",
+
+          subtitle: {
+            enabled: true,
+            fontSize: 44,
+            position: "bottom",
+            highlightColor: "#22d65e",
+            textColor: "#ffffff",
+            backgroundColor: "rgba(5, 10, 16, 0.85)",
+          },
+
+          audio: {
+            backgroundMusic: "music/background.mp3",
+            backgroundMusicVolume: 0.2,
+            voiceoverEnabled: true,
+            voiceoverVolume: 1.0,
+            voiceId: "zh-CN-YunxiNeural",
+            voiceRate: 1.05,
+            voiceoverAudioFiles: [
+              "audio/autoresearch-scene1.mp3",
+              "audio/autoresearch-scene2.mp3",
+              "audio/autoresearch-scene3.mp3",
+              "audio/autoresearch-scene4.mp3",
+              "audio/autoresearch-scene5.mp3",
+              "audio/autoresearch-scene6.mp3",
+              "audio/autoresearch-scene7.mp3",
+            ],
+          },
+
+          voiceoverScripts: [
+            "卡帕西又开源了！这次他想让AI卷死所有AI研究员！autoresearch，不到一周GitHub狂揽4万4千星！全网都在疯传这个只有630行的Python脚本！",
+            "当大家还在手动调参，熬夜盯Loss曲线，改一行代码跑一次实验时，卡帕西已经写了个分身去干活了。你只需要告诉它，帮我把模型跑得更稳一点，然后你就可以去睡觉，去健身，去蒸桑拿。等你回来，AI已经帮你跑了几百轮实验！",
+            "这个项目最狠的地方在于，它把AI关进了一个闭环里。AI自己写PyTorch，自己跑实验，自己看结果，自己再改代码。这就是传说中的无人值守科研。一句话总结，这不是一个简单的工具，这是AI的自我进化实验室！",
+            "为什么这个项目能让全网高潮？第一，极简即暴力！630行代码，单张GPU就能跑。真正的核弹不需要成千上万行的垃圾代码。整个项目只有三个文件，prepare.py负责数据准备，train.py是AI修改的核心文件，program.md就是给AI的指令！",
+            "第二，智商碾压！AI不是在瞎撞，而是像个老练的工程师在做逻辑推演。AI修改代码，训练5分钟，检查结果，保留最好的，丢弃差的，然后循环。有人用它一夜之间跑出的0.8B小模型，效果直接反超人类精心微调的1.6B！",
+            "第三，科研范式地震！以前是人类研究AI，现在是AI研究AI。卡帕西说，我写完代码去蒸了个桑拿，回来AI已经把实验跑完了。你只需要写好program.md这个指令文件，然后让AI自动运行一整夜！",
+            "今天的程序员在写代码，明天的程序员在指挥AI写代码。如果你还在手动调参，那你可能真的要被卡帕西的这个小脚本给卷没了！评论区告诉我，你觉得AI自主科研的时代还有多远？关注不迷路，我们下期见！",
+          ],
+
+          precomputedSubtitles: autoresearchSubtitles,
+          sceneDurations: [499, 522, 518, 676, 629, 603, 559],
+        }}
+      />
+      {/* AutoResearch 封面图 (微信视频号 3:4) */}
+      <Still
+        id="AutoResearchCover"
+        component={AutoResearchCover}
+        width={1080}
+        height={1440}
+        schema={AutoResearchSchema}
+        defaultProps={{
+          hookLine1: "卡帕西又出手了",
+          hookLine2: "AI自己搞科研的时代来了",
+          hookStyle: "glitch",
+          githubStars: 44000,
+          codeLines: 630,
+          fileCount: 3,
+          painTitle: "",
+          painPoints: [],
+          painQuote: "",
+          coreTitle: "",
+          coreSubtitle: "",
+          loopSteps: [],
+          minimalTitle: "",
+          minimalSubtitle: "",
+          projectFiles: [],
+          smartTitle: "",
+          experimentLoop: [],
+          benchmark: { smallModel: "0.8B", largeModel: "1.6B", result: "" },
+          paradigmTitle: "",
+          paradigmQuote: "",
+          paradigmBefore: "",
+          paradigmAfter: "",
+          programMdPreview: [],
+          ctaLine1: "",
+          ctaLine2: "",
+          ctaContent: "",
+          ctaSlogan: "",
+          backgroundColor: "#050a10",
+          textColor: "#ffffff",
+          accentColor: "#22d65e",
+          highlightColor: "#10b4e8",
+          secondaryColor: "#f59e0b",
+          warningColor: "#ef4444",
+          subtitle: {
+            enabled: false,
+            fontSize: 44,
+            position: "bottom",
+            highlightColor: "#22d65e",
+            textColor: "#ffffff",
+            backgroundColor: "rgba(5, 10, 16, 0.85)",
+          },
+          audio: {
+            backgroundMusic: "",
+            backgroundMusicVolume: 0,
+            voiceoverEnabled: false,
+            voiceoverVolume: 0,
+            voiceId: "",
+            voiceRate: 1,
+          },
+          voiceoverScripts: [],
+          sceneDurations: [],
         }}
       />
     </>

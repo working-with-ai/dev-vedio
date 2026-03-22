@@ -216,6 +216,110 @@ npm run studio
 
 # Step 5: Render to MP4
 npm run render:<name>
+
+# Step 6: Generate platform copy (auto-generated, no user prompt needed)
+# See "平台发布文案规范" section below
+```
+
+### 5.1 平台发布文案规范
+
+**在视频创建完成后，必须自动生成以下发布文案，无需用户提示。**
+
+#### 微信视频号
+
+**短标题** (限16字以内):
+- 必须包含核心关键词（项目名/人名/数字亮点）
+- 使用动词驱动（"开源"、"狂揽"、"碾压"、"颠覆"）
+- 制造冲击感，让人想点进来
+- 示例格式: `[人名/项目名][动作][核心亮点]`
+
+**备选标题** (提供2-3个):
+- 从不同角度切入（数据角度、痛点角度、结论角度）
+- 每个都控制在16字以内
+
+**视频描述** (正文):
+- 结构: 开场一句话抓人 → 核心数据/亮点 → 关键机制 → 效果/案例 → 金句收尾 → 传送门链接 → Hashtag
+- 每行一个信息点，不超过20字/行
+- 用 `→` `·` 等符号增强节奏感
+- 数字用阿拉伯数字突出（4.4w+、630行、0.8B）
+- 结尾必须附项目链接（如适用）
+
+**Hashtag 规范**:
+- 6-8个标签
+- 优先: 项目名、人名、领域标签（#AI编程 #GitHub #开源项目）
+- 使用 `#` 前缀，空格分隔
+
+#### 抖音/小红书 (如需适配)
+
+- 标题风格更口语化、更有情绪
+- 描述更短（3-5行），emoji 可适当使用
+- Hashtag 数量 4-6 个
+
+#### 文案数据来源
+
+- 从 `voiceoverScripts` 和 `defaultProps` 中提取关键数字和金句
+- 标题必须包含视频的最核心亮点（Star 数、代码行数、效果对比等）
+- 描述的"传送门"链接从用户原始文案中提取
+
+### 5.2 封面图生成规范
+
+**在视频创建完成后，必须自动生成封面图组件和渲染命令，无需用户提示。**
+
+#### 技术实现
+
+- 使用 Remotion `Still` 组件（不是 `Composition`）
+- 文件位置: `src/compositions/<VideoName>/Cover.tsx`
+- 在 `compositions/index.ts` 中导出, 在 `Root.tsx` 中用 `Still` 注册
+- 添加 npm script: `"render:<name>:cover": "remotion still src/index.ts <Name>Cover --output=out/<Name>-cover.png"`
+
+#### 尺寸规范
+
+| 平台 | 尺寸 | 比例 | 说明 |
+|------|------|------|------|
+| 微信视频号 | 1080 x 1440 | 3:4 | Feed 中竖屏视频封面标准比例 |
+| 抖音 | 1080 x 1920 | 9:16 | 与视频同尺寸 |
+| 小红书 | 1080 x 1440 | 3:4 | Feed 封面标准比例 |
+| B站 | 1920 x 1080 | 16:9 | 横版封面 |
+
+**默认使用微信视频号尺寸 (1080 x 1440)**，如需其他平台可注册多个 Still。
+
+#### 封面设计黄金公式
+
+```
+[核心数字大字] + [2-3个关键词] + [深色高对比背景]
+```
+
+**必须包含的元素（按视觉层次排列）:**
+
+1. **英文标签** (顶部): 项目名大写，letterSpacing: 16, fontSize: 22
+2. **核心 emoji**: 代表项目主题, fontSize: 100
+3. **核心数字** (2-3组): 最具冲击力的数据, fontSize: 80, fontFamily: monospace
+   - 如 Star 数、代码行数、用户数等
+   - 使用金色(#fbbf24)或主题色突出
+4. **大字标题** (1-2行): 核心价值主张, fontSize: 64, fontWeight: 900
+5. **副标题**: 补充说明/金句, fontSize: 42, 用 highlightColor
+6. **信息条**: 作者/平台/关键特性, 用 `|` 分隔, 包在圆角边框内
+7. **对比数据** (可选): VS 对比增强冲击力
+
+**背景层:**
+- radial-gradient 光晕 (主题色 30% 透明度)
+- 第二光晕 (高亮色 15% 透明度)
+- 扫描线 repeating-linear-gradient
+- 四角 HUD 边框装饰
+
+**颜色沿用视频主色调**, 不单独设计。
+
+#### 封面与视频第一帧的区别
+
+- **封面 (Still)**: 为 Feed 展示优化, 信息密度高, 无动画, 3:4 比例
+- **视频第一帧 (HookScene frame 0)**: 为视频播放优化, 9:16 比例, 需要考虑动画初始状态
+
+#### 渲染命令
+
+```bash
+# 渲染封面图
+npm run render:<name>:cover
+# 输出: out/<Name>-cover.png
 ```
 
 ### 6. Lessons learned
@@ -318,7 +422,7 @@ interface SubtitleLine { words: SubtitleWord[]; startFrame: number; endFrame: nu
 - **不显示标点符号**: 标点字符从渲染中过滤掉，不出现在画面上
 - **文字无间距**: `gap: 0`，中文字符紧密排列，不留空格
 - **单行切换动画**: 句子切换时有 `spring` 驱动的 fade-in + 上移 8px 动画
-- **卡拉OK高亮**: 当前播放的词逐字填充高亮（`clipPath` 从左到右），播放中的词有 `scale(1.1)` 缩放和发光 `textShadow`
+- **无卡拉OK高亮**: 所有文字以统一的 `textColor` 静态显示，不做逐字填充、缩放或发光效果
 
 **配置参数** (`SubtitleConfigSchema`):
 | 参数 | 默认值 | 说明 |
@@ -326,7 +430,7 @@ interface SubtitleLine { words: SubtitleWord[]; startFrame: number; endFrame: nu
 | `enabled` | `true` | 是否显示字幕 |
 | `fontSize` | `44` | 字幕字号 |
 | `position` | `"bottom"` | 位置（top/center/bottom） |
-| `highlightColor` | `"#8b5cf6"` | 高亮颜色 |
+| `highlightColor` | `"#8b5cf6"` | 保留参数，当前未使用（已移除卡拉OK高亮） |
 | `textColor` | `"#ffffff"` | 普通文字颜色 |
 | `backgroundColor` | `"rgba(7, 8, 16, 0.85)"` | 背景遮罩颜色 |
 
@@ -358,6 +462,9 @@ interface SubtitleLine { words: SubtitleWord[]; startFrame: number; endFrame: nu
 | OpenClawAI | 9:16 | ~95s | AI工具短视频 (7-scene vertical short video) |
 | ClawSkills | 9:16 | ~106s | ClawHub TOP 20 神级Skill (7-scene vertical short video) |
 | SuperPowers | 9:16 | ~104s | SuperPowers AI编程范式转移 (7-scene vertical short video) |
+| PuaSkill | 9:16 | ~126s | PUA Skill 防AI摆烂神器 (7-scene vertical short video) |
+| AgencyAgents | 9:16 | ~139s | Agency Agents 147个Markdown Agent零成本AI团队 (7-scene vertical short video) |
+| AutoResearch | 9:16 | ~134s | AutoResearch Karpathy让AI自己搞科研 (7-scene vertical short video) |
 
 ## Notes for agents
 

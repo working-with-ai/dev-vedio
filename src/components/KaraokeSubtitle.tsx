@@ -49,91 +49,24 @@ function groupWordsIntoVisualLines(
   return visualLines;
 }
 
-// 单个词的组件，用于计算独立的 spring 动画
 const KaraokeWord: React.FC<{
   word: SubtitleWord;
   fontSize: number;
   textColor: string;
   highlightColor: string;
-}> = ({ word, fontSize, textColor, highlightColor }) => {
-  const frame = useCurrentFrame();
-  const { fps } = useVideoConfig();
-
-  // 计算当前词的高亮进度
-  const progress = interpolate(
-    frame,
-    [word.startFrame, word.endFrame],
-    [0, 1],
-    {
-      extrapolateLeft: "clamp",
-      extrapolateRight: "clamp",
-    }
-  );
-
-  // 是否已经播放过
-  const isPlayed = frame >= word.endFrame;
-  // 是否正在播放
-  const isPlaying = frame >= word.startFrame && frame < word.endFrame;
-
-  // 基于帧的 spring 缩放动画 (替代 CSS transition)
-  // 使用 snappy 配置：快速响应，最小弹跳
-  const scaleIn = spring({
-    frame: frame - word.startFrame,
-    fps,
-    config: { damping: 20, stiffness: 200 }, // snappy 配置
-  });
-
-  const scaleOut = spring({
-    frame: frame - word.endFrame,
-    fps,
-    config: { damping: 200 }, // smooth 配置，无弹跳
-  });
-
-  // 计算最终缩放值：进入时放大到 1.1，结束后回到 1.0
-  const scale = isPlaying
-    ? interpolate(scaleIn, [0, 1], [1, 1.1])
-    : isPlayed
-      ? interpolate(scaleOut, [0, 1], [1.1, 1], { extrapolateRight: "clamp" })
-      : 1;
-
+}> = ({ word, fontSize, textColor }) => {
   return (
     <span
       style={{
         fontSize,
         fontWeight: "bold",
         fontFamily: "system-ui, -apple-system, sans-serif",
-        position: "relative",
         display: "inline-block",
-        color: isPlayed || isPlaying ? highlightColor : textColor,
-        textShadow: isPlaying
-          ? `0 0 20px ${highlightColor}`
-          : "0 2px 4px rgba(0,0,0,0.5)",
-        // 使用基于帧的 spring 动画
-        transform: `scale(${scale})`,
+        color: textColor,
+        textShadow: "0 2px 4px rgba(0,0,0,0.5)",
       }}
     >
-      {/* 背景文字 */}
-      <span style={{ opacity: isPlaying ? 0.3 : isPlayed ? 0 : 1 }}>
-        {word.text}
-      </span>
-
-      {/* 高亮层 - 逐字填充效果 */}
-      {(isPlaying || isPlayed) && (
-        <span
-          style={{
-            position: "absolute",
-            left: 0,
-            top: 0,
-            color: highlightColor,
-            clipPath: isPlaying
-              ? `inset(0 ${(1 - progress) * 100}% 0 0)`
-              : "none",
-            textShadow: `0 0 10px ${highlightColor}`,
-          }}
-        >
-          {word.text}
-        </span>
-      )}
+      {word.text}
     </span>
   );
 };

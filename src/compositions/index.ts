@@ -10,3 +10,8 @@ export { SuperPowers } from "./SuperPowers";
 export { SuperPowersSchema, type SuperPowersProps } from "./SuperPowers/schema";
 export { PuaSkill } from "./PuaSkill";
 export { PuaSkillSchema, type PuaSkillProps } from "./PuaSkill/schema";
+export { AgencyAgents } from "./AgencyAgents";
+export { AgencyAgentsSchema, type AgencyAgentsProps } from "./AgencyAgents/schema";
+export { AutoResearch } from "./AutoResearch";
+export { AutoResearchCover } from "./AutoResearch/Cover";
+export { AutoResearchSchema, type AutoResearchProps } from "./AutoResearch/schema";

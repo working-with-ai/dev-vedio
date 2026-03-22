@@ -9,6 +9,8 @@ build/
 out/*.mp4
 out/*.webm
 out/*.mov
+out/*.png
+
 
 # Environment
 .env
