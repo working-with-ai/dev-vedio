@@ -16,6 +16,8 @@ Keep changes small, follow existing patterns, and prefer explicit scripts.
 - `src/compositions/`: Video templates.
 - `src/server/`: Express API.
 - `src/shared/types.ts`: Shared types and Zod schemas.
+- `src/shared/animations.ts`: Shared animation utilities (base library).
+- `src/shared/animations-vertical.ts`: Vertical video animation extensions (re-exports base + adds vertical-specific).
 - `public/music/`, `public/audio/`: Assets and generated audio.
 - `out/`: Rendered videos (generated).
 
@@ -175,7 +177,7 @@ When creating a new video composition from scratch, follow this proven pipeline:
 
 - Each scene is a standalone React component receiving the full props type.
 - Use `useCurrentFrame()` and `useVideoConfig()` for all timing.
-- Create shared animation utilities in `animations.ts` (fadeInUp, fadeIn, glitchOffset, typewriter, progressBar, etc.).
+- Import animation helpers from `src/shared/animations-vertical.ts` (vertical shorts) or `src/shared/animations.ts` (base); each composition’s `animations.ts` re-exports shared utilities, with composition-specific overrides kept local.
 - Use `spring()` for natural motion, `interpolate()` for linear mappings.
 - **Never use CSS transitions/animations** — they won't render correctly in Remotion.
 - For staggered items, use a `staggerDelay(index, baseDelay)` helper.
@@ -185,7 +187,7 @@ When creating a new video composition from scratch, follow this proven pipeline:
 Script naming: `scripts/generate-voiceover-<name>.ts`
 
 - Use `edge-tts` (must be installed: `pip install edge-tts`).
-- Recommended voice: `zh-CN-YunxiNeural` (calm male, good for tech content).
+- Recommended voice: `zh-CN-YunyangNeural` (professional male, natural and reliable, best for tech explainer content).
 - Use `...` in script text for natural pauses (converted to `，` before TTS).
 - Output files: `public/audio/<name>-scene<N>.mp3`.
 - Audio file paths in Root.tsx: `audio/<name>-scene<N>.mp3` (relative to `public/`).
@@ -329,6 +331,13 @@ npm run render:<name>:cover
 - **Precomputed subtitles are essential**: Dynamic subtitle generation without audio timing data produces inaccurate karaoke highlights. Always use `precomputedSubtitles` from the sync script.
 - **Zero external asset dependency is achievable**: All UI elements (terminals, browsers, dashboards, chat bubbles, progress bars) can be built with React + inline styles + emoji. No screenshots or external images needed.
 - **Keep animations simple but layered**: Combine fadeInUp + glitch + scanlines + HUD borders for "tech feel" without complex dependencies.
+- **Shared animation library eliminates per-composition duplication**: New videos import from `src/shared/animations-vertical.ts` instead of copying animations.
+- **Visual components** (`ParticleBackground`, `GlowOrb`, `HudFrame`, `SceneBackground`) replace inline CSS backgrounds for a consistent, upgraded look.
+- **Subagent-driven development works well for video compositions**: Breaking implementation into Task-per-batch (schema → scenes → composition → scripts → sync → render) with fresh subagents per task keeps each agent focused and avoids context pollution. TypeScript typecheck between tasks catches integration issues early.
+- **GIT_TRACE=1 /usr/local/bin/git commit workaround**: In some environments the default `git commit` alias breaks with `--trailer` errors (git 2.31.0). Use the full path with `GIT_TRACE=1` to bypass.
+- **CSS-only icons replace emoji for visual impact**: clip-path polygons (stars), stacked offset rectangles (documents), side-by-side bars (context comparison) are more visually striking than emoji and render consistently across environments.
+- **Brainstorming before implementation saves iteration**: Structured Q&A (audience → format → narrative → visual style) + 2-3 approach proposals + section-by-section design approval prevents mid-implementation pivots.
+- **Actual TTS duration varies significantly from estimates**: Design spec estimated ~110-130s but actual TTS generated 165s. Always treat the sync script output as the single source of truth for timing.
 
 ### 7. 竖屏短视频 (9:16) 设计规范
 
@@ -393,16 +402,35 @@ npm run render:<name>:cover
 - **进度条**: 右侧竖条 (width: 3, height: 100) 显示当前场景进度
 
 #### 动画规范
-- 标题入场: `fadeInUp(frame, fps, delay, distance=60)` + spring
-- 列表/卡片: `staggerDelay(index, 8-12)` 错峰入场
-- 数字: `numberCountUp(frame, fps, target, durationSec)` 递增
-- 强调: `pulseGlow(frame, fps, speed)` 脉冲发光
-- 科技感: `glitchOffset(frame, intensity)` + `scanLineOpacity`
-- 卡片: `cardSlideIn(frame, fps, delay)` 滑入 + 缩放
-- 管线: `pipelineNodeReveal` + `lineGrow` 节点依次展开
+
+- **Source of truth**: Base utilities live in `src/shared/animations.ts`; vertical (9:16) extras live in `src/shared/animations-vertical.ts` (re-exports base + vertical-specific). Each composition’s `animations.ts` should re-export from shared; keep only overrides or one-off helpers in the composition folder.
+- **Universal helpers** (`animations.ts`): `fadeInUp`, `fadeIn`, `fadeOut`, `scaleIn`, `slideFromLeft`, `slideFromRight`, `cardSlideIn`, `glitchOffset`, `scanLineOpacity`, `typewriterLength`, `numberCountUp`, `pulseGlow`, `progressBar`, `staggerDelay`, `shimmer`.
+- **Vertical extensions** (`animations-vertical.ts`): `pipelineNodeReveal`, `lineGrow`, `chatBubbleIn`, `nodeReveal`, `pressureReveal`, `shakeEffect`, `pipelineGrow`, `loopRotate`.
+- **Exception**: PuaSkill defines a **local** `progressBar` override (returns `0..1`, parameter order differs from shared).
+- **Usage patterns**: 标题入场 `fadeInUp(frame, fps, delay, distance=60)` + spring; 列表/卡片 `staggerDelay(index, 8-12)`; 数字 `numberCountUp`; 强调 `pulseGlow`; 科技感 `glitchOffset` + `scanLineOpacity`; 卡片 `cardSlideIn`; 管线 `pipelineNodeReveal` + `lineGrow`.
+
+#### 视觉组件
+
+- `src/components/ParticleBackground.tsx`: Floating particle system (SVG-based, Remotion-compatible).
+- `src/components/GlowOrb.tsx`: Animated radial glow orbs with spring-driven breathing.
+- `src/components/HudFrame.tsx`: Componentized HUD corner brackets; modes `static` | `pulse` | `scan`.
+- `src/components/SceneBackground.tsx`: One-stop background layer combining particles, optional glow orbs, HUD, scanlines, and base fill.
+
+**SceneBackground example** (wrap scene content; tune theme colors to the composition):
+
+```tsx
+<SceneBackground
+  backgroundColor="#070810"
+  accentColor="#8b5cf6"
+  particles={{ count: 40, color: "#8b5cf6" }}
+  hud={{ color: "#8b5cf6", animation: "pulse" }}
+>
+  {/* scene content */}
+</SceneBackground>
+```
 
 #### 配音规范
-- 语音: `zh-CN-YunxiNeural`, rate: `+5%`
+- 语音: `zh-CN-YunyangNeural`, rate: `+3%`
 - 停顿: 用 `...` 表示，生成前替换为 `，`
 - 每段文案: 10-16 秒为宜
 - 语速: 中等偏快，适合短视频节奏
@@ -465,6 +493,7 @@ interface SubtitleLine { words: SubtitleWord[]; startFrame: number; endFrame: nu
 | PuaSkill | 9:16 | ~126s | PUA Skill 防AI摆烂神器 (7-scene vertical short video) |
 | AgencyAgents | 9:16 | ~139s | Agency Agents 147个Markdown Agent零成本AI团队 (7-scene vertical short video) |
 | AutoResearch | 9:16 | ~134s | AutoResearch Karpathy让AI自己搞科研 (7-scene vertical short video) |
+| GSDIntro | 9:16 | ~165s | GSD Get Shit Done 38000Star AI编程Context Rot解决方案 (7-scene vertical short video) |
 
 ## Notes for agents
 
