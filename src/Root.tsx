@@ -24,6 +24,9 @@ import {
   WeChatClawBot,
   WeChatClawBotCover,
   WeChatClawBotSchema,
+  PencilDev,
+  PencilDevCover,
+  PencilDevSchema,
 } from "./compositions";
 import { DEFAULT_VIDEO_CONFIG } from "./shared/types";
 import nitrogenSubtitles from "./data/nitrogen-subtitles.json";
@@ -35,6 +38,7 @@ import agencyagentsSubtitles from "./data/agencyagents-subtitles.json";
 import autoresearchSubtitles from "./data/autoresearch-subtitles.json";
 import gsdSubtitles from "./data/gsd-subtitles.json";
 import wechatclawbotSubtitles from "./data/wechatclawbot-subtitles.json";
+import pencildevSubtitles from "./data/pencildev-subtitles.json";
 
 const gsdIntroDefaultProps = GSDIntroSchema.parse({
   audio: {
@@ -64,6 +68,36 @@ const gsdIntroDefaultProps = GSDIntroSchema.parse({
   },
   sceneDurations: [627, 736, 639, 874, 731, 796, 549],
   precomputedSubtitles: gsdSubtitles,
+});
+
+const pencilDevDefaultProps = PencilDevSchema.parse({
+  audio: {
+    backgroundMusic: "music/background.mp3",
+    backgroundMusicVolume: 0.2,
+    voiceoverEnabled: true,
+    voiceoverVolume: 1.0,
+    voiceId: "zh-CN-YunyangNeural",
+    voiceRate: 1.03,
+    voiceoverAudioFiles: [
+      "audio/pencildev-scene1.mp3",
+      "audio/pencildev-scene2.mp3",
+      "audio/pencildev-scene3.mp3",
+      "audio/pencildev-scene4.mp3",
+      "audio/pencildev-scene5.mp3",
+      "audio/pencildev-scene6.mp3",
+      "audio/pencildev-scene7.mp3",
+    ],
+  },
+  subtitle: {
+    enabled: true,
+    fontSize: 44,
+    position: "bottom",
+    highlightColor: "#22d3ee",
+    textColor: "#ffffff",
+    backgroundColor: "rgba(5, 8, 22, 0.85)",
+  },
+  sceneDurations: [414, 499, 479, 429, 485, 599, 471],
+  precomputedSubtitles: pencildevSubtitles,
 });
 
 const weChatClawBotDefaultProps = WeChatClawBotSchema.parse({
@@ -1059,6 +1093,17 @@ export const RemotionRoot: React.FC = () => {
         schema={WeChatClawBotSchema}
         defaultProps={weChatClawBotDefaultProps}
       />
+      {/* 竖屏短视频：Pencil.dev */}
+      <Composition
+        id="PencilDev"
+        component={PencilDev}
+        durationInFrames={3376}
+        fps={30}
+        width={1080}
+        height={1920}
+        schema={PencilDevSchema}
+        defaultProps={pencilDevDefaultProps}
+      />
       {/* GSDIntro 封面图 (微信视频号 3:4) */}
       <Still
         id="GSDIntroCover"
@@ -1085,6 +1130,21 @@ export const RemotionRoot: React.FC = () => {
           ...weChatClawBotDefaultProps,
           subtitle: {
             ...weChatClawBotDefaultProps.subtitle,
+            enabled: false,
+          },
+        }}
+      />
+      {/* PencilDev 封面图 (微信视频号 3:4) */}
+      <Still
+        id="PencilDevCover"
+        component={PencilDevCover}
+        width={1080}
+        height={1440}
+        schema={PencilDevSchema}
+        defaultProps={{
+          ...pencilDevDefaultProps,
+          subtitle: {
+            ...pencilDevDefaultProps.subtitle,
             enabled: false,
           },
         }}

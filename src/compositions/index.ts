@@ -24,3 +24,6 @@ export {
   WeChatClawBotSchema,
   type WeChatClawBotProps,
 } from "./WeChatClawBot/schema";
+export { PencilDev } from "./PencilDev";
+export { PencilDevCover } from "./PencilDev/Cover";
+export { PencilDevSchema, type PencilDevProps } from "./PencilDev/schema";

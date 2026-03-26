@@ -61,6 +61,8 @@ npm run render
 npm run render:presentation
 npm run render:nitrogen
 npm run render:openclaw
+npm run render:pencildev
+npm run render:pencildev:cover
 ```
 
 Custom render example:
@@ -494,6 +496,7 @@ interface SubtitleLine { words: SubtitleWord[]; startFrame: number; endFrame: nu
 | AgencyAgents | 9:16 | ~139s | Agency Agents 147个Markdown Agent零成本AI团队 (7-scene vertical short video) |
 | AutoResearch | 9:16 | ~134s | AutoResearch Karpathy让AI自己搞科研 (7-scene vertical short video) |
 | GSDIntro | 9:16 | ~165s | GSD Get Shit Done 38000Star AI编程Context Rot解决方案 (7-scene vertical short video) |
+| PencilDev | 9:16 | ~113s | Pencil.dev 主力设计软件与 Agent 共创工作流 (7-scene vertical short video) |
 
 ## Notes for agents
 

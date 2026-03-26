@@ -1,10 +1,44 @@
 import { bundle } from "@remotion/bundler";
-import { renderMedia, selectComposition } from "@remotion/renderer";
+import {
+  getCompositions,
+  renderMedia,
+  selectComposition,
+} from "@remotion/renderer";
 import path from "path";
 import { RenderRequest, RenderResponse } from "../../shared/types";
 
 // 缓存 bundled 结果
 let bundleLocation: string | null = null;
+
+const OUT_DIR = path.join(process.cwd(), "out");
+
+/**
+ * Resolve a user-provided output name to an absolute path under `out/`.
+ * Rejects traversal (../, nested paths) via basename + resolved-prefix check.
+ */
+function resolveSafeOutputPath(
+  outputFileName: string | undefined,
+  defaultBaseName: string,
+): string {
+  const outResolved = path.resolve(OUT_DIR);
+  const raw =
+    typeof outputFileName === "string" && outputFileName.trim() !== ""
+      ? outputFileName.trim().replace(/\\/g, "/")
+      : "";
+  let base = raw ? path.basename(raw) : defaultBaseName;
+  if (!base || base === "." || base === "..") {
+    base = defaultBaseName;
+  }
+  if (base.includes("\0")) {
+    base = defaultBaseName;
+  }
+  const resolved = path.resolve(outResolved, base);
+  const guardPrefix = outResolved + path.sep;
+  if (resolved !== outResolved && !resolved.startsWith(guardPrefix)) {
+    throw new Error("Invalid outputFileName: must stay inside the out directory");
+  }
+  return resolved;
+}
 
 async function getBundleLocation(): Promise<string> {
   if (bundleLocation) {
@@ -42,10 +76,11 @@ export async function renderVideo(
       inputProps: request.inputProps,
     });
 
-    // 生成输出文件名
-    const outputFileName =
-      request.outputFileName || `${request.compositionId}-${Date.now()}.mp4`;
-    const outputPath = path.join(process.cwd(), "out", outputFileName);
+    const defaultBaseName = `${request.compositionId}-${Date.now()}.mp4`;
+    const outputPath = resolveSafeOutputPath(
+      request.outputFileName,
+      defaultBaseName,
+    );
 
     console.log(`🎬 Rendering "${request.compositionId}" to ${outputPath}...`);
 
@@ -85,10 +120,14 @@ export async function renderVideo(
   }
 }
 
-// 获取可用的 composition 列表
+// 获取可用的 composition 列表（与 Root 注册同步，来自 bundle 内静态 compositions）
 export async function getAvailableCompositions(): Promise<string[]> {
-  // 这里可以通过 bundle 动态获取，但简单起见直接返回硬编码列表
-  return ["HelloWorld", "TextPresentation"];
+  const serveUrl = await getBundleLocation();
+  const compositions = await getCompositions(serveUrl, {
+    inputProps: {},
+    logLevel: "error",
+  });
+  return compositions.map((c) => c.id);
 }
 
 // 清除 bundle 缓存（用于开发时热重载）

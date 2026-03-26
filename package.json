@@ -43,6 +43,10 @@
     "sync:subtitle:wechatclawbot": "rm -rf /tmp/wechatclawbot-run && mkdir -p /tmp/wechatclawbot-run && ./node_modules/.bin/tsc scripts/sync-subtitle-wechatclawbot.ts --outDir /tmp/wechatclawbot-run --module commonjs --target ES2020 --esModuleInterop --skipLibCheck && NODE_PATH=$(pwd)/node_modules node /tmp/wechatclawbot-run/scripts/sync-subtitle-wechatclawbot.js",
     "render:wechatclawbot": "remotion render src/index.ts WeChatClawBot --timeout=180000 --output=out/WeChatClawBot.mp4",
     "render:wechatclawbot:cover": "remotion still src/index.ts WeChatClawBotCover --output=out/WeChatClawBot-cover.png",
+    "generate:voiceover:pencildev": "npx tsx scripts/generate-voiceover-pencildev.ts",
+    "sync:subtitle:pencildev": "npx tsx scripts/sync-subtitle-pencildev.ts",
+    "render:pencildev": "remotion render src/index.ts PencilDev --output=out/PencilDev.mp4",
+    "render:pencildev:cover": "remotion still src/index.ts PencilDevCover --output=out/PencilDev-cover.png",
     "typecheck": "tsc --noEmit"
   },
   "repository": {
