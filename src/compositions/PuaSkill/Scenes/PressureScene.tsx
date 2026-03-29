@@ -1,6 +1,5 @@
 import React from "react";
 import {
-  AbsoluteFill,
   interpolate,
   spring,
   useCurrentFrame,
@@ -8,6 +7,7 @@ import {
 } from "remotion";
 import { PuaSkillProps } from "../schema";
 import { fadeInUp, fadeIn, pulseGlow, shakeEffect } from "../animations";
+import { SceneBackground } from "../../../components/SceneBackground";
 
 export const PressureScene: React.FC<PuaSkillProps> = ({
   backgroundColor,
@@ -40,18 +40,24 @@ export const PressureScene: React.FC<PuaSkillProps> = ({
   const shake = currentLevelIndex >= 2 ? shakeEffect(frame, currentLevelIndex * 0.3) : { x: 0, y: 0 };
 
   return (
-    <AbsoluteFill
-      style={{
-        backgroundColor,
-        fontFamily: "system-ui, -apple-system, sans-serif",
-        overflow: "hidden",
+    <SceneBackground
+      backgroundColor={backgroundColor}
+      accentColor={accentColor}
+      particles={{ count: 25, speed: 0.3, opacity: 0.35 }}
+      glow={{
+        orbs: [
+          { x: "50%", y: "40%", color: accentColor, radius: 500, opacity: 0.12, pulseSpeed: 0.6 },
+        ],
       }}
+      scanlines
+      hud={{ color: accentColor, animation: "pulse" }}
     >
       <div
         style={{
           position: "absolute",
           inset: 0,
           background: `radial-gradient(ellipse at 50% 50%, ${accentColor}${Math.round(dangerIntensity * 255).toString(16).padStart(2, "0")} 0%, transparent 60%)`,
+          pointerEvents: "none",
         }}
       />
 
@@ -67,6 +73,7 @@ export const PressureScene: React.FC<PuaSkillProps> = ({
           justifyContent: "center",
           padding: "0 40px",
           transform: `translate(${shake.x}px, ${shake.y}px)`,
+          fontFamily: "system-ui, -apple-system, sans-serif",
         }}
       >
         <div
@@ -209,6 +216,6 @@ export const PressureScene: React.FC<PuaSkillProps> = ({
           </div>
         </div>
       </div>
-    </AbsoluteFill>
+    </SceneBackground>
   );
 };

@@ -1,5 +1,6 @@
 /**
  * 字幕同步脚本 (ClawSkills - 20个神级Skill)
+ * 使用 edge-tts 生成的 VTT 文件获取精确句级时间戳
  * 使用方法: npx tsx scripts/sync-subtitle-clawskills.ts
  */
 
@@ -8,6 +9,7 @@ import * as path from "path";
 import { parseFile } from "music-metadata";
 
 const SCENE_COUNT = 7;
+const COMPOSITION_PREFIX = "clawskills";
 
 const defaultScripts = [
   "你的AI还在帮你查天气、写周报？别人的AI已经能自动备份数据、扫描后门、24小时替你值班了！",
@@ -25,6 +27,12 @@ interface AudioInfo {
   durationFrames: number;
 }
 
+interface VttCue {
+  startMs: number;
+  endMs: number;
+  text: string;
+}
+
 interface SubtitleWord {
   text: string;
   startFrame: number;
@@ -37,6 +45,33 @@ interface SubtitleLine {
   endFrame: number;
 }
 
+function parseVtt(content: string): VttCue[] {
+  const cues: VttCue[] = [];
+  const blocks = content.split(/\n\n+/);
+
+  for (const block of blocks) {
+    const lines = block.trim().split("\n");
+    for (let j = 0; j < lines.length; j++) {
+      const match = lines[j].match(
+        /(\d{2}):(\d{2}):(\d{2}),(\d{3})\s*-->\s*(\d{2}):(\d{2}):(\d{2}),(\d{3})/
+      );
+      if (match) {
+        const startMs =
+          +match[1] * 3600000 + +match[2] * 60000 + +match[3] * 1000 + +match[4];
+        const endMs =
+          +match[5] * 3600000 + +match[6] * 60000 + +match[7] * 1000 + +match[8];
+        const text = lines
+          .slice(j + 1)
+          .join(" ")
+          .trim();
+        if (text) cues.push({ startMs, endMs, text });
+        break;
+      }
+    }
+  }
+  return cues;
+}
+
 async function getAudioDuration(filePath: string): Promise<number> {
   try {
     const metadata = await parseFile(filePath);
@@ -47,17 +82,18 @@ async function getAudioDuration(filePath: string): Promise<number> {
   }
 }
 
-function generateSubtitleLine(
+function generateWordsFromCue(
   text: string,
   startFrame: number,
-  durationFrames: number,
+  endFrame: number,
 ): SubtitleWord[] {
+  const durationFrames = endFrame - startFrame;
   const chars = text.split("");
   const totalChars = chars.length;
+  if (totalChars === 0) return [];
 
   let currentFrame = startFrame;
   const words: SubtitleWord[] = [];
-
   let currentWord = "";
   let wordStartFrame = currentFrame;
 
@@ -70,7 +106,7 @@ function generateSubtitleLine(
       words.push({
         text: currentWord,
         startFrame: wordStartFrame,
-        endFrame: wordStartFrame + wordDuration,
+        endFrame: Math.min(wordStartFrame + wordDuration, endFrame),
       });
       currentFrame = wordStartFrame + wordDuration;
       wordStartFrame = currentFrame;
@@ -85,7 +121,7 @@ function generateSubtitleLine(
         words.push({
           text: char,
           startFrame: currentFrame,
-          endFrame: currentFrame + 2,
+          endFrame: Math.min(currentFrame + 2, endFrame),
         });
         currentFrame += 2;
         wordStartFrame = currentFrame;
@@ -97,13 +133,12 @@ function generateSubtitleLine(
       }
     }
   }
-
   flushWord();
   return words;
 }
 
 async function syncSubtitles() {
-  console.log("🔄 开始同步 ClawSkills 字幕和配音...\n");
+  console.log(`🔄 开始同步 ClawSkills 字幕和配音 (VTT精确模式)...\n`);
 
   const audioDir = path.join(process.cwd(), "public", "audio");
   const fps = 30;
@@ -112,19 +147,19 @@ async function syncSubtitles() {
   const audioInfos: AudioInfo[] = [];
 
   for (let i = 0; i < SCENE_COUNT; i++) {
-    const audioFile = path.join(audioDir, `clawskills-scene${i + 1}.mp3`);
+    const audioFile = path.join(audioDir, `${COMPOSITION_PREFIX}-scene${i + 1}.mp3`);
     if (fs.existsSync(audioFile)) {
       const duration = await getAudioDuration(audioFile);
       console.log(`📊 场景 ${i + 1}: ${duration.toFixed(2)}秒 (${Math.round(duration * fps)}帧)`);
       audioInfos.push({
-        file: `audio/clawskills-scene${i + 1}.mp3`,
+        file: `audio/${COMPOSITION_PREFIX}-scene${i + 1}.mp3`,
         duration,
         durationFrames: Math.round(duration * fps),
       });
     } else {
       console.log(`⚠️ 场景 ${i + 1}: 音频文件不存在，使用默认5秒`);
       audioInfos.push({
-        file: `audio/clawskills-scene${i + 1}.mp3`,
+        file: `audio/${COMPOSITION_PREFIX}-scene${i + 1}.mp3`,
         duration: 5,
         durationFrames: 150,
       });
@@ -139,51 +174,65 @@ async function syncSubtitles() {
   const sceneDurations: number[] = [];
 
   for (let i = 0; i < audioInfos.length; i++) {
-    const audio = audioInfos[i];
-    const script = defaultScripts[i];
+    const info = audioInfos[i];
+    const sceneDuration = Math.max(minSceneDuration, info.durationFrames + buffer);
+    const sceneStartFrame = currentFrame;
+    const audioStartFrame = sceneStartFrame + sceneDelay;
 
-    const sceneDuration = Math.max(
-      minSceneDuration,
-      audio.durationFrames + buffer
-    );
+    const vttFile = path.join(audioDir, `${COMPOSITION_PREFIX}-scene${i + 1}.vtt`);
+    let allWords: SubtitleWord[] = [];
+
+    if (fs.existsSync(vttFile)) {
+      const vttContent = fs.readFileSync(vttFile, "utf-8");
+      const cues = parseVtt(vttContent);
+      console.log(`   🎯 VTT: ${cues.length} 个精确时间段`);
+
+      for (const cue of cues) {
+        const cueStartFrame = audioStartFrame + Math.round((cue.startMs / 1000) * fps);
+        const cueEndFrame = audioStartFrame + Math.round((cue.endMs / 1000) * fps);
+        const words = generateWordsFromCue(cue.text, cueStartFrame, cueEndFrame);
+        allWords.push(...words);
+      }
+    } else {
+      console.log(`   ⚠️ VTT 不存在，使用字符等比分配`);
+      allWords = generateWordsFromCue(
+        defaultScripts[i]!,
+        audioStartFrame,
+        audioStartFrame + info.durationFrames
+      );
+    }
+
+    if (allWords.length > 0) {
+      subtitleLines.push({
+        words: allWords,
+        startFrame: allWords[0].startFrame,
+        endFrame: allWords[allWords.length - 1].endFrame,
+      });
+    }
+
     sceneDurations.push(sceneDuration);
-
-    const subtitleStart = currentFrame + sceneDelay;
-
-    const words = generateSubtitleLine(
-      script,
-      subtitleStart,
-      audio.durationFrames,
-    );
-
-    subtitleLines.push({
-      words,
-      startFrame: subtitleStart,
-      endFrame: subtitleStart + audio.durationFrames,
-    });
-
     currentFrame += sceneDuration;
   }
 
-  console.log("\n✨ 同步完成！\n");
-  console.log(`总视频时长: ${(currentFrame / fps).toFixed(2)}秒 (${currentFrame}帧)\n`);
+  const totalDuration = sceneDurations.reduce((a, b) => a + b, 0);
 
-  const subtitleData = subtitleLines.map((line) => ({
-    words: line.words,
-    startFrame: line.startFrame,
-    endFrame: line.endFrame,
-  }));
+  const outputPath = path.join(process.cwd(), "src", "data", `${COMPOSITION_PREFIX}-subtitles.json`);
+  const outputDir = path.dirname(outputPath);
+  if (!fs.existsSync(outputDir)) {
+    fs.mkdirSync(outputDir, { recursive: true });
+  }
 
-  const subtitleJsonPath = path.join(process.cwd(), "src", "data", "clawskills-subtitles.json");
-  fs.writeFileSync(subtitleJsonPath, JSON.stringify(subtitleData, null, 2));
-  console.log(`📄 字幕数据已保存到: src/data/clawskills-subtitles.json\n`);
+  fs.writeFileSync(outputPath, JSON.stringify(subtitleLines, null, 2));
+  console.log(`\n✅ 字幕数据已写入: ${outputPath}`);
 
-  console.log("📋 请更新 Root.tsx 中的 ClawSkills 配置:\n");
-  console.log(`durationInFrames={${currentFrame}}`);
-  console.log(`sceneDurations: ${JSON.stringify(sceneDurations)}`);
-  console.log(`\n导入字幕数据:`);
-  console.log(`import clawskillsSubtitles from "./data/clawskills-subtitles.json";`);
-  console.log(`precomputedSubtitles: clawskillsSubtitles,`);
+  console.log("\n📋 请更新 Root.tsx 中 ClawSkills 的配置:\n");
+  console.log(`  durationInFrames: ${totalDuration},`);
+  console.log(`  sceneDurations: [${sceneDurations.join(", ")}],`);
+  console.log(`\n  // 添加 import:`);
+  console.log(`  import clawskillsSubtitles from "./data/${COMPOSITION_PREFIX}-subtitles.json";`);
+  console.log(`  // 在 defaultProps 中添加:`);
+  console.log(`  precomputedSubtitles: clawskillsSubtitles,`);
+  console.log(`\n✨ ClawSkills 字幕同步完成！总时长: ${(totalDuration / fps).toFixed(1)}秒 (${totalDuration}帧)`);
 }
 
 syncSubtitles().catch(console.error);

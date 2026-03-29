@@ -1,13 +1,13 @@
 import React from "react";
 import {
-  AbsoluteFill,
   interpolate,
   spring,
   useCurrentFrame,
   useVideoConfig,
 } from "remotion";
 import { OpenClawAIProps } from "../schema";
-import { fadeInUp, fadeIn, staggerDelay, numberCountUp, pulseGlow } from "../animations";
+import { fadeInUp, fadeIn, staggerDelay, numberCountUp } from "../animations";
+import { SceneBackground } from "../../../components/SceneBackground";
 
 const RoleCard: React.FC<{
   role: string;
@@ -71,7 +71,6 @@ export const SatisfactionScene: React.FC<OpenClawAIProps> = ({
   const frame = useCurrentFrame();
   const { fps, durationInFrames } = useVideoConfig();
 
-  const glow = pulseGlow(frame, fps, 2);
   const titleAnim = fadeInUp(frame, fps, 0, 50);
   const subtitleAnim = fadeInUp(frame, fps, 10, 40);
 
@@ -92,27 +91,26 @@ export const SatisfactionScene: React.FC<OpenClawAIProps> = ({
   });
 
   return (
-    <AbsoluteFill
-      style={{
-        backgroundColor,
-        fontFamily: "system-ui, -apple-system, sans-serif",
-        overflow: "hidden",
+    <SceneBackground
+      backgroundColor={backgroundColor}
+      accentColor={accentColor}
+      particles={{ count: 25, speed: 0.3, opacity: 0.35 }}
+      glow={{
+        orbs: [
+          { x: "50%", y: "40%", color: accentColor, radius: 500, opacity: 0.12, pulseSpeed: 0.6 },
+        ],
       }}
+      scanlines
+      scanlineColor="#00f0ff"
+      hud={{ color: accentColor, animation: "pulse" }}
     >
-      {/* 背景光效 */}
       <div
         style={{
           position: "absolute",
-          top: "30%",
-          left: "50%",
-          width: 600,
-          height: 600,
-          borderRadius: "50%",
-          background: `radial-gradient(circle, ${accentColor}08 0%, transparent 70%)`,
-          transform: "translateX(-50%)",
+          inset: 0,
+          fontFamily: "system-ui, -apple-system, sans-serif",
         }}
-      />
-
+      >
       {/* 标题区 */}
       <div
         style={{
@@ -287,6 +285,7 @@ export const SatisfactionScene: React.FC<OpenClawAIProps> = ({
           ✨ {satisfactionQuote}
         </div>
       </div>
-    </AbsoluteFill>
+      </div>
+    </SceneBackground>
   );
 };

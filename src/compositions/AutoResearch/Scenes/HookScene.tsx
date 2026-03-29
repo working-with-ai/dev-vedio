@@ -1,6 +1,5 @@
 import React from "react";
 import {
-  AbsoluteFill,
   interpolate,
   spring,
   useCurrentFrame,
@@ -8,6 +7,7 @@ import {
 } from "remotion";
 import { AutoResearchProps } from "../schema";
 import { glitchOffset, fadeInUp, pulseGlow, numberCountUp } from "../animations";
+import { SceneBackground } from "../../../components/SceneBackground";
 
 export const HookScene: React.FC<AutoResearchProps> = ({
   hookLine1,
@@ -39,58 +39,20 @@ export const HookScene: React.FC<AutoResearchProps> = ({
   const lineCount = numberCountUp(frame, fps, codeLines, 1.8, statsStart + 8);
   const statsAnim = fadeInUp(frame, fps, statsStart, 40);
 
-  const borderPulse = spring({
-    frame,
-    fps,
-    config: { damping: 8, stiffness: 100 },
-  });
-
   return (
-    <AbsoluteFill
-      style={{
-        backgroundColor,
-        fontFamily: "system-ui, -apple-system, sans-serif",
-        overflow: "hidden",
+    <SceneBackground
+      backgroundColor={backgroundColor}
+      accentColor={accentColor}
+      particles={{ count: 30, speed: 0.4, opacity: 0.4 }}
+      glow={{
+        orbs: [
+          { x: "50%", y: "40%", color: accentColor, radius: 500, opacity: 0.12, pulseSpeed: 0.6 },
+          { x: "75%", y: "25%", color: highlightColor, radius: 300, opacity: 0.06, pulseSpeed: 0.4 },
+        ],
       }}
+      scanlines
+      hud={{ color: accentColor, animation: "scan", scanSpeed: 6 }}
     >
-      <div
-        style={{
-          position: "absolute",
-          inset: 0,
-          background: `radial-gradient(ellipse at 50% 40%, ${accentColor}22 0%, transparent 60%)`,
-        }}
-      />
-      <div
-        style={{
-          position: "absolute",
-          inset: 0,
-          background: `repeating-linear-gradient(0deg, transparent, transparent 2px, ${accentColor}04 2px, ${accentColor}04 4px)`,
-          pointerEvents: "none",
-        }}
-      />
-
-      {[
-        { top: 40, left: 40 },
-        { top: 40, right: 40 },
-        { bottom: 40, left: 40 },
-        { bottom: 40, right: 40 },
-      ].map((pos, i) => (
-        <div
-          key={i}
-          style={{
-            position: "absolute",
-            ...pos,
-            width: 60,
-            height: 60,
-            opacity: coverPhase ? 0.6 : interpolate(borderPulse, [0, 1], [0.3, 0.6]),
-            borderTop: i < 2 ? `2px solid ${accentColor}` : "none",
-            borderBottom: i >= 2 ? `2px solid ${accentColor}` : "none",
-            borderLeft: i % 2 === 0 ? `2px solid ${accentColor}` : "none",
-            borderRight: i % 2 === 1 ? `2px solid ${accentColor}` : "none",
-          }}
-        />
-      ))}
-
       <div
         style={{
           position: "absolute",
@@ -236,6 +198,6 @@ export const HookScene: React.FC<AutoResearchProps> = ({
           Karpathy · 不到一周 · 全网疯传
         </div>
       </div>
-    </AbsoluteFill>
+    </SceneBackground>
   );
 };

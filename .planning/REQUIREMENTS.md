@@ -7,14 +7,14 @@
 
 ### Content Brief
 
-- [ ] **BRIEF-01**: 创作者可以为每条视频定义结构化 brief，至少包含主题、核心结论、关键事实、来源链接、CTA 和视觉主题
-- [ ] **BRIEF-02**: 创作者提交 brief 时，系统会校验关键字段完整性，拒绝缺少核心事实或来源的输入
-- [ ] **BRIEF-03**: 同一份 brief 可以同时驱动视频脚本、封面文案、标题和描述生成，避免不同产物各写各的
+- [x] **BRIEF-01**: 创作者可以为每条视频定义结构化 brief，至少包含主题、核心结论、关键事实、来源链接、CTA 和视觉主题
+- [x] **BRIEF-02**: 创作者提交 brief 时，系统会校验关键字段完整性，拒绝缺少核心事实或来源的输入
+- [x] **BRIEF-03**: 同一份 brief 可以同时驱动视频脚本、封面文案、标题和描述生成，避免不同产物各写各的
 
 ### Registry & Render Contract
 
-- [ ] **REG-01**: 创作者可以从统一注册表查看所有可用视频模板、封面 still、输出路径和模板类型
-- [ ] **REG-02**: 所有已注册 composition 都能通过同一套注册表被 CLI 和 API 正确发现与渲染
+- [x] **REG-01**: 创作者可以从统一注册表查看所有可用视频模板、封面 still、输出路径和模板类型
+- [x] **REG-02**: 所有已注册 composition 都能通过同一套注册表被 CLI 和 API 正确发现与渲染
 - [ ] **REG-03**: 创作者可以基于“模板 + brief”触发一次完整视频 package 生成，而不是分别手动维护多个入口
 
 ### Media Sync & QA
@@ -67,11 +67,11 @@
 
 | Requirement | Phase | Status |
 |-------------|-------|--------|
-| BRIEF-01 | Phase 1 | Pending |
-| BRIEF-02 | Phase 1 | Pending |
-| BRIEF-03 | Phase 1 | Pending |
-| REG-01 | Phase 1 | Pending |
-| REG-02 | Phase 1 | Pending |
+| BRIEF-01 | Phase 1 | Complete |
+| BRIEF-02 | Phase 1 | Complete |
+| BRIEF-03 | Phase 1 | Complete |
+| REG-01 | Phase 1 | Complete |
+| REG-02 | Phase 1 | Complete |
 | REG-03 | Phase 4 | Pending |
 | MEDIA-01 | Phase 2 | Pending |
 | MEDIA-02 | Phase 2 | Pending |
@@ -91,4 +91,4 @@
 
 ---
 *Requirements defined: 2026-03-22*
-*Last updated: 2026-03-22 after roadmap creation*
+*Last updated: 2026-03-29 after Phase 1 completion*

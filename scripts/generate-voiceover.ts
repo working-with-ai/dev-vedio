@@ -32,9 +32,9 @@ const config = {
   // - zh-CN-YunyangNeural: 新闻播报风格男声（专业）
   // - zh-CN-XiaoxiaoNeural: 温暖女声（年轻活泼）
   // - zh-CN-XiaoyiNeural: 活泼女声
-  voice: "zh-CN-XiaoxiaoNeural", // 使用年轻活泼的女声
-  rate: "+5%", // 稍微加快语速，更有活力
-  pitch: "+5Hz", // 稍微提高音调，更年轻
+  voice: "zh-CN-YunyangNeural",
+  rate: "+3%",
+  pitch: "+0Hz",
   outputDir: path.join(process.cwd(), "public", "audio"),
 };
 

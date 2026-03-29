@@ -1,13 +1,13 @@
 import React from "react";
 import {
-  AbsoluteFill,
   interpolate,
   spring,
   useCurrentFrame,
   useVideoConfig,
 } from "remotion";
 import { AgencyAgentsProps } from "../schema";
-import { fadeInUp, fadeIn, pulseGlow, numberCountUp, cardSlideIn, staggerDelay } from "../animations";
+import { fadeInUp, fadeIn, numberCountUp, cardSlideIn, staggerDelay } from "../animations";
+import { SceneBackground } from "../../../components/SceneBackground";
 
 export const CTAScene: React.FC<AgencyAgentsProps> = ({
   backgroundColor,
@@ -23,8 +23,6 @@ export const CTAScene: React.FC<AgencyAgentsProps> = ({
 }) => {
   const frame = useCurrentFrame();
   const { fps, durationInFrames } = useVideoConfig();
-
-  const glow = pulseGlow(frame, fps, 2);
 
   const line1Anim = spring({
     frame,
@@ -55,37 +53,18 @@ export const CTAScene: React.FC<AgencyAgentsProps> = ({
   const pulseScale = 1 + Math.sin(frame / fps * Math.PI * 3) * 0.02;
 
   return (
-    <AbsoluteFill
-      style={{
-        backgroundColor,
-        fontFamily: "system-ui, -apple-system, sans-serif",
-        overflow: "hidden",
+    <SceneBackground
+      backgroundColor={backgroundColor}
+      accentColor={accentColor}
+      particles={{ count: 25, speed: 0.3, opacity: 0.35 }}
+      glow={{
+        orbs: [
+          { x: "50%", y: "40%", color: accentColor, radius: 500, opacity: 0.12, pulseSpeed: 0.6 },
+        ],
       }}
+      scanlines
+      hud={{ color: accentColor, animation: "pulse" }}
     >
-      <div style={{ position: "absolute", inset: 0, background: `radial-gradient(ellipse at center, ${accentColor}0c 0%, transparent 60%)` }} />
-
-      {[
-        { top: 30, left: 30 },
-        { top: 30, right: 30 },
-        { bottom: 30, left: 30 },
-        { bottom: 30, right: 30 },
-      ].map((pos, i) => (
-        <div
-          key={i}
-          style={{
-            position: "absolute",
-            ...pos,
-            width: 50,
-            height: 50,
-            opacity: 0.4 + glow * 0.3,
-            borderTop: i < 2 ? `2px solid ${accentColor}` : "none",
-            borderBottom: i >= 2 ? `2px solid ${accentColor}` : "none",
-            borderLeft: i % 2 === 0 ? `2px solid ${accentColor}` : "none",
-            borderRight: i % 2 === 1 ? `2px solid ${accentColor}` : "none",
-          }}
-        />
-      ))}
-
       <div
         style={{
           position: "absolute",
@@ -98,6 +77,7 @@ export const CTAScene: React.FC<AgencyAgentsProps> = ({
           alignItems: "center",
           justifyContent: "center",
           padding: "0 40px",
+          fontFamily: "system-ui, -apple-system, sans-serif",
         }}
       >
         <div style={{ textAlign: "center", marginBottom: 36 }}>
@@ -239,6 +219,6 @@ export const CTAScene: React.FC<AgencyAgentsProps> = ({
           #AgencyAgents #AI团队 #Markdown #零成本
         </div>
       </div>
-    </AbsoluteFill>
+    </SceneBackground>
   );
 };

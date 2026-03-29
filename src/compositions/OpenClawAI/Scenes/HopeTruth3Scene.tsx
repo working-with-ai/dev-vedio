@@ -1,6 +1,5 @@
 import React from "react";
 import {
-  AbsoluteFill,
   interpolate,
   spring,
   useCurrentFrame,
@@ -8,7 +7,8 @@ import {
   Easing,
 } from "remotion";
 import { OpenClawAIProps } from "../schema";
-import { fadeInUp, fadeIn, progressBar, staggerDelay, pulseGlow } from "../animations";
+import { fadeInUp, fadeIn, progressBar, staggerDelay } from "../animations";
+import { SceneBackground } from "../../../components/SceneBackground";
 
 export const HopeTruth3Scene: React.FC<OpenClawAIProps> = ({
   backgroundColor,
@@ -24,7 +24,6 @@ export const HopeTruth3Scene: React.FC<OpenClawAIProps> = ({
   const frame = useCurrentFrame();
   const { fps, durationInFrames } = useVideoConfig();
 
-  const glow = pulseGlow(frame, fps, 1.5);
   const numberAnim = fadeInUp(frame, fps, 0, 40);
   const titleAnim = fadeInUp(frame, fps, 8, 40);
 
@@ -62,13 +61,26 @@ export const HopeTruth3Scene: React.FC<OpenClawAIProps> = ({
   );
 
   return (
-    <AbsoluteFill
-      style={{
-        backgroundColor,
-        fontFamily: "system-ui, -apple-system, sans-serif",
-        overflow: "hidden",
+    <SceneBackground
+      backgroundColor={backgroundColor}
+      accentColor={accentColor}
+      particles={{ count: 25, speed: 0.3, opacity: 0.35 }}
+      glow={{
+        orbs: [
+          { x: "50%", y: "40%", color: accentColor, radius: 500, opacity: 0.12, pulseSpeed: 0.6 },
+        ],
       }}
+      scanlines
+      scanlineColor="#00f0ff"
+      hud={{ color: accentColor, animation: "pulse" }}
     >
+      <div
+        style={{
+          position: "absolute",
+          inset: 0,
+          fontFamily: "system-ui, -apple-system, sans-serif",
+        }}
+      >
       {/* 编号标签 */}
       <div
         style={{
@@ -349,6 +361,7 @@ export const HopeTruth3Scene: React.FC<OpenClawAIProps> = ({
           🎯 {hope3Highlight}
         </div>
       </div>
-    </AbsoluteFill>
+      </div>
+    </SceneBackground>
   );
 };

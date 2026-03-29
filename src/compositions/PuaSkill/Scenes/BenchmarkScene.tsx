@@ -1,13 +1,13 @@
 import React from "react";
 import {
-  AbsoluteFill,
   interpolate,
   spring,
   useCurrentFrame,
   useVideoConfig,
 } from "remotion";
 import { PuaSkillProps } from "../schema";
-import { fadeInUp, fadeIn, numberCountUp, pulseGlow, staggerDelay, progressBar } from "../animations";
+import { fadeInUp, fadeIn, numberCountUp, staggerDelay, progressBar } from "../animations";
+import { SceneBackground } from "../../../components/SceneBackground";
 
 export const BenchmarkScene: React.FC<PuaSkillProps> = ({
   backgroundColor,
@@ -20,7 +20,6 @@ export const BenchmarkScene: React.FC<PuaSkillProps> = ({
   const frame = useCurrentFrame();
   const { fps, durationInFrames } = useVideoConfig();
 
-  const glow = pulseGlow(frame, fps, 2);
   const titleAnim = fadeInUp(frame, fps, 0, 60);
   const subtitleAnim = fadeInUp(frame, fps, 10, 40);
 
@@ -44,15 +43,18 @@ export const BenchmarkScene: React.FC<PuaSkillProps> = ({
   });
 
   return (
-    <AbsoluteFill
-      style={{
-        backgroundColor,
-        fontFamily: "system-ui, -apple-system, sans-serif",
-        overflow: "hidden",
+    <SceneBackground
+      backgroundColor={backgroundColor}
+      accentColor={successColor}
+      particles={{ count: 25, speed: 0.3, opacity: 0.35 }}
+      glow={{
+        orbs: [
+          { x: "50%", y: "40%", color: successColor, radius: 500, opacity: 0.12, pulseSpeed: 0.6 },
+        ],
       }}
+      scanlines
+      hud={{ color: successColor, animation: "pulse" }}
     >
-      <div style={{ position: "absolute", inset: 0, background: `radial-gradient(ellipse at 50% 30%, ${successColor}0c 0%, transparent 50%)` }} />
-
       <div
         style={{
           position: "absolute",
@@ -64,6 +66,7 @@ export const BenchmarkScene: React.FC<PuaSkillProps> = ({
           flexDirection: "column",
           justifyContent: "center",
           padding: "0 40px",
+          fontFamily: "system-ui, -apple-system, sans-serif",
         }}
       >
         <div
@@ -224,6 +227,6 @@ export const BenchmarkScene: React.FC<PuaSkillProps> = ({
           </div>
         </div>
       </div>
-    </AbsoluteFill>
+    </SceneBackground>
   );
 };

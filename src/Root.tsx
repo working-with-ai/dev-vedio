@@ -27,7 +27,15 @@ import {
   PencilDev,
   PencilDevCover,
   PencilDevSchema,
+  AIHarnessEngineer,
+  AIHarnessEngineerCover,
+  AIHarnessEngineerSchema,
 } from "./compositions";
+import {
+  videoCompositionCatalog,
+  videoStillCatalog,
+} from "./compositions/catalog";
+import { assertRegistryCoverage } from "./shared/render-contract";
 import { DEFAULT_VIDEO_CONFIG } from "./shared/types";
 import nitrogenSubtitles from "./data/nitrogen-subtitles.json";
 import openclawSubtitles from "./data/openclaw-subtitles.json";
@@ -39,6 +47,9 @@ import autoresearchSubtitles from "./data/autoresearch-subtitles.json";
 import gsdSubtitles from "./data/gsd-subtitles.json";
 import wechatclawbotSubtitles from "./data/wechatclawbot-subtitles.json";
 import pencildevSubtitles from "./data/pencildev-subtitles.json";
+import aiHarnessEngineerSubtitles from "./data/aiharnessengineer-subtitles.json";
+
+assertRegistryCoverage(videoCompositionCatalog, videoStillCatalog);
 
 const gsdIntroDefaultProps = GSDIntroSchema.parse({
   audio: {
@@ -130,36 +141,74 @@ const weChatClawBotDefaultProps = WeChatClawBotSchema.parse({
   precomputedSubtitles: wechatclawbotSubtitles,
 });
 
+const aiHarnessEngineerDefaultProps = AIHarnessEngineerSchema.parse({
+  audio: {
+    backgroundMusic: "music/background.mp3",
+    backgroundMusicVolume: 0.14,
+    voiceoverEnabled: true,
+    voiceoverVolume: 1.0,
+    voiceId: "zh-CN-YunyangNeural",
+    voiceRate: 1.03,
+    voiceoverAudioFiles: [
+      "audio/aiharnessengineer-scene1.mp3",
+      "audio/aiharnessengineer-scene2.mp3",
+      "audio/aiharnessengineer-scene3.mp3",
+      "audio/aiharnessengineer-scene4.mp3",
+      "audio/aiharnessengineer-scene5.mp3",
+      "audio/aiharnessengineer-scene6.mp3",
+      "audio/aiharnessengineer-scene7.mp3",
+    ],
+  },
+  subtitle: {
+    enabled: true,
+    fontSize: 44,
+    position: "bottom",
+    highlightColor: "#00e5ff",
+    textColor: "#ffffff",
+    backgroundColor: "rgba(7, 10, 16, 0.85)",
+  },
+  sceneDurations: [391, 463, 462, 481, 599, 536, 423],
+  precomputedSubtitles: aiHarnessEngineerSubtitles,
+});
+
 export const RemotionRoot: React.FC = () => {
+  const compositionIds = new Set(
+    videoCompositionCatalog.map((entry) => entry.id),
+  );
+  const stillIds = new Set(videoStillCatalog.map((entry) => entry.id));
+
   return (
     <>
-      <Composition
-        id="HelloWorld"
-        component={HelloWorld}
-        durationInFrames={DEFAULT_VIDEO_CONFIG.durationInFrames}
-        fps={DEFAULT_VIDEO_CONFIG.fps}
-        width={DEFAULT_VIDEO_CONFIG.width}
-        height={DEFAULT_VIDEO_CONFIG.height}
-        schema={HelloWorldSchema}
-        defaultProps={{
-          title: "Hello, Remotion!",
-          subtitle: "视频生成演示",
-          backgroundColor: "#0f0f23",
-          textColor: "#ffffff",
-          accentColor: "#6366f1",
-        }}
-      />
+      {compositionIds.has("HelloWorld") && (
+        <Composition
+          id="HelloWorld"
+          component={HelloWorld}
+          durationInFrames={DEFAULT_VIDEO_CONFIG.durationInFrames}
+          fps={DEFAULT_VIDEO_CONFIG.fps}
+          width={DEFAULT_VIDEO_CONFIG.width}
+          height={DEFAULT_VIDEO_CONFIG.height}
+          schema={HelloWorldSchema}
+          defaultProps={{
+            title: "Hello, Remotion!",
+            subtitle: "视频生成演示",
+            backgroundColor: "#0f0f23",
+            textColor: "#ffffff",
+            accentColor: "#6366f1",
+          }}
+        />
+      )}
 
       {/* 原有视频：豆包日活破亿 */}
-      <Composition
-        id="TextPresentation"
-        component={TextPresentation}
-        durationInFrames={1556} // 根据配音时长同步 (npm run sync:subtitle)
-        fps={DEFAULT_VIDEO_CONFIG.fps}
-        width={DEFAULT_VIDEO_CONFIG.width}
-        height={DEFAULT_VIDEO_CONFIG.height}
-        schema={TextPresentationSchema}
-        defaultProps={{
+      {compositionIds.has("TextPresentation") && (
+        <Composition
+          id="TextPresentation"
+          component={TextPresentation}
+          durationInFrames={1556} // 根据配音时长同步 (npm run sync:subtitle)
+          fps={DEFAULT_VIDEO_CONFIG.fps}
+          width={DEFAULT_VIDEO_CONFIG.width}
+          height={DEFAULT_VIDEO_CONFIG.height}
+          schema={TextPresentationSchema}
+          defaultProps={TextPresentationSchema.parse({
           hookTitle: "豆包日活破亿",
           hookSubtitle: "你还在只会拿AI当聊天机器人吗？",
           mainPoint: "AI时代最大的危机不是AI变得太强，而是你还在死磕'做题'，别人已经开始'阅卷'了",
@@ -218,19 +267,21 @@ export const RemotionRoot: React.FC = () => {
             scale: 0.25,
             borderRadius: 20,
           },
-        }}
-      />
+          })}
+        />
+      )}
 
       {/* 新视频：英伟达Nitrogen AI */}
-      <Composition
-        id="NitrogenAI"
-        component={TextPresentation}
-        durationInFrames={2683}
-        fps={DEFAULT_VIDEO_CONFIG.fps}
-        width={DEFAULT_VIDEO_CONFIG.width}
-        height={DEFAULT_VIDEO_CONFIG.height}
-        schema={TextPresentationSchema}
-        defaultProps={{
+      {compositionIds.has("NitrogenAI") && (
+        <Composition
+          id="NitrogenAI"
+          component={TextPresentation}
+          durationInFrames={2683}
+          fps={DEFAULT_VIDEO_CONFIG.fps}
+          width={DEFAULT_VIDEO_CONFIG.width}
+          height={DEFAULT_VIDEO_CONFIG.height}
+          schema={TextPresentationSchema}
+          defaultProps={TextPresentationSchema.parse({
           // 开场配置
           hookTitle: "AI光看直播就通关千款游戏",
           hookSubtitle: "这不是科幻小说，而是英伟达刚刚发布的真事！",
@@ -328,18 +379,20 @@ export const RemotionRoot: React.FC = () => {
             scale: 0.25,
             borderRadius: 20,
           },
-        }}
-      />
+          })}
+        />
+      )}
       {/* 竖屏短视频：OpenClaw AI工具 */}
-      <Composition
-        id="OpenClawAI"
-        component={OpenClawAI}
-        durationInFrames={2759}
-        fps={30}
-        width={1080}
-        height={1920}
-        schema={OpenClawAISchema}
-        defaultProps={{
+      {compositionIds.has("OpenClawAI") && (
+        <Composition
+          id="OpenClawAI"
+          component={OpenClawAI}
+          durationInFrames={2759}
+          fps={30}
+          width={1080}
+          height={1920}
+          schema={OpenClawAISchema}
+          defaultProps={{
           hookLine1: "你还在手动复制粘贴？",
           hookLine2: "2026最火AI已经拿到电脑最高权限",
           hookStyle: "glitch",
@@ -438,18 +491,20 @@ export const RemotionRoot: React.FC = () => {
 
           precomputedSubtitles: openclawSubtitles,
           sceneDurations: [297, 466, 395, 430, 373, 443, 355],
-        }}
-      />
+          }}
+        />
+      )}
       {/* 竖屏短视频：ClawHub TOP 20 神级 Skill */}
-      <Composition
-        id="ClawSkills"
-        component={ClawSkills}
-        durationInFrames={3127}
-        fps={30}
-        width={1080}
-        height={1920}
-        schema={ClawSkillsSchema}
-        defaultProps={{
+      {compositionIds.has("ClawSkills") && (
+        <Composition
+          id="ClawSkills"
+          component={ClawSkills}
+          durationInFrames={3127}
+          fps={30}
+          width={1080}
+          height={1920}
+          schema={ClawSkillsSchema}
+          defaultProps={{
           hookLine1: "你的AI还在帮你查天气？",
           hookLine2: "别人的AI已经24小时替你值班了",
           hookStyle: "glitch",
@@ -566,18 +621,20 @@ export const RemotionRoot: React.FC = () => {
 
           precomputedSubtitles: clawskillsSubtitles,
           sceneDurations: [306, 431, 557, 494, 491, 502, 346],
-        }}
-      />
+          }}
+        />
+      )}
       {/* 竖屏短视频：SuperPowers AI编程范式转移 */}
-      <Composition
-        id="SuperPowers"
-        component={SuperPowers}
-        durationInFrames={2976}
-        fps={30}
-        width={1080}
-        height={1920}
-        schema={SuperPowersSchema}
-        defaultProps={{
+      {compositionIds.has("SuperPowers") && (
+        <Composition
+          id="SuperPowers"
+          component={SuperPowers}
+          durationInFrames={2976}
+          fps={30}
+          width={1080}
+          height={1920}
+          schema={SuperPowersSchema}
+          defaultProps={{
           hookLine1: "你的AI还在一句话写代码？",
           hookLine2: "别人的AI已经是完整工程团队了",
           hookStyle: "glitch",
@@ -685,18 +742,20 @@ export const RemotionRoot: React.FC = () => {
 
           precomputedSubtitles: superpowersSubtitles,
           sceneDurations: [493, 391, 389, 355, 504, 457, 387],
-        }}
-      />
+          }}
+        />
+      )}
       {/* 竖屏短视频：PUA Skill 防AI摆烂神器 */}
-      <Composition
-        id="PuaSkill"
-        component={PuaSkill}
-        durationInFrames={3660}
-        fps={30}
-        width={1080}
-        height={1920}
-        schema={PuaSkillSchema}
-        defaultProps={{
+      {compositionIds.has("PuaSkill") && (
+        <Composition
+          id="PuaSkill"
+          component={PuaSkill}
+          durationInFrames={3660}
+          fps={30}
+          width={1080}
+          height={1920}
+          schema={PuaSkillSchema}
+          defaultProps={{
           hookLine1: "你的AI还在中途放弃？",
           hookLine2: "这个Skill让AI不敢摆烂",
           hookStyle: "glitch",
@@ -807,18 +866,20 @@ export const RemotionRoot: React.FC = () => {
 
           precomputedSubtitles: puaskillSubtitles,
           sceneDurations: [369, 490, 538, 586, 526, 613, 538],
-        }}
-      />
+          }}
+        />
+      )}
       {/* 竖屏短视频：Agency Agents 147个Markdown Agent零成本AI团队 */}
-      <Composition
-        id="AgencyAgents"
-        component={AgencyAgents}
-        durationInFrames={4090}
-        fps={30}
-        width={1080}
-        height={1920}
-        schema={AgencyAgentsSchema}
-        defaultProps={{
+      {compositionIds.has("AgencyAgents") && (
+        <Composition
+          id="AgencyAgents"
+          component={AgencyAgents}
+          durationInFrames={4090}
+          fps={30}
+          width={1080}
+          height={1920}
+          schema={AgencyAgentsSchema}
+          defaultProps={{
           hookLine1: "你还在一个人跟AI单打独斗吗？",
           hookLine2: "147个AI专家团队，零成本组建",
           hookStyle: "glitch",
@@ -943,18 +1004,20 @@ export const RemotionRoot: React.FC = () => {
 
           precomputedSubtitles: agencyagentsSubtitles,
           sceneDurations: [409, 526, 672, 685, 534, 757, 507],
-        }}
-      />
+          }}
+        />
+      )}
       {/* 竖屏短视频：AutoResearch Karpathy让AI自己搞科研 */}
-      <Composition
-        id="AutoResearch"
-        component={AutoResearch}
-        durationInFrames={4004}
-        fps={30}
-        width={1080}
-        height={1920}
-        schema={AutoResearchSchema}
-        defaultProps={{
+      {compositionIds.has("AutoResearch") && (
+        <Composition
+          id="AutoResearch"
+          component={AutoResearch}
+          durationInFrames={4004}
+          fps={30}
+          width={1080}
+          height={1920}
+          schema={AutoResearchSchema}
+          defaultProps={{
           hookLine1: "卡帕西又出手了",
           hookLine2: "AI自己搞科研的时代来了",
           hookStyle: "glitch",
@@ -1069,94 +1132,138 @@ export const RemotionRoot: React.FC = () => {
 
           precomputedSubtitles: autoresearchSubtitles,
           sceneDurations: [468, 568, 540, 665, 623, 600, 540],
-        }}
-      />
+          }}
+        />
+      )}
       {/* 竖屏短视频：GSD Get Shit Done */}
-      <Composition
-        id="GSDIntro"
-        component={GSDIntro}
-        durationInFrames={4952}
-        fps={30}
-        width={1080}
-        height={1920}
-        schema={GSDIntroSchema}
-        defaultProps={gsdIntroDefaultProps}
-      />
+      {compositionIds.has("GSDIntro") && (
+        <Composition
+          id="GSDIntro"
+          component={GSDIntro}
+          durationInFrames={4952}
+          fps={30}
+          width={1080}
+          height={1920}
+          schema={GSDIntroSchema}
+          defaultProps={gsdIntroDefaultProps}
+        />
+      )}
       {/* 竖屏短视频：WeChat ClawBot */}
-      <Composition
-        id="WeChatClawBot"
-        component={WeChatClawBot}
-        durationInFrames={4406}
-        fps={30}
-        width={1080}
-        height={1920}
-        schema={WeChatClawBotSchema}
-        defaultProps={weChatClawBotDefaultProps}
-      />
+      {compositionIds.has("WeChatClawBot") && (
+        <Composition
+          id="WeChatClawBot"
+          component={WeChatClawBot}
+          durationInFrames={4406}
+          fps={30}
+          width={1080}
+          height={1920}
+          schema={WeChatClawBotSchema}
+          defaultProps={weChatClawBotDefaultProps}
+        />
+      )}
       {/* 竖屏短视频：Pencil.dev */}
-      <Composition
-        id="PencilDev"
-        component={PencilDev}
-        durationInFrames={3376}
-        fps={30}
-        width={1080}
-        height={1920}
-        schema={PencilDevSchema}
-        defaultProps={pencilDevDefaultProps}
-      />
+      {compositionIds.has("PencilDev") && (
+        <Composition
+          id="PencilDev"
+          component={PencilDev}
+          durationInFrames={3376}
+          fps={30}
+          width={1080}
+          height={1920}
+          schema={PencilDevSchema}
+          defaultProps={pencilDevDefaultProps}
+        />
+      )}
+      {/* 竖屏短视频：AI Harness Engineer */}
+      {compositionIds.has("AIHarnessEngineer") && (
+        <Composition
+          id="AIHarnessEngineer"
+          component={AIHarnessEngineer}
+          durationInFrames={3355}
+          fps={30}
+          width={1080}
+          height={1920}
+          schema={AIHarnessEngineerSchema}
+          defaultProps={aiHarnessEngineerDefaultProps}
+        />
+      )}
       {/* GSDIntro 封面图 (微信视频号 3:4) */}
-      <Still
-        id="GSDIntroCover"
-        component={GSDIntroCover}
-        width={1080}
-        height={1440}
-        schema={GSDIntroSchema}
-        defaultProps={{
-          ...gsdIntroDefaultProps,
-          subtitle: {
-            ...gsdIntroDefaultProps.subtitle,
-            enabled: false,
-          },
-        }}
-      />
+      {stillIds.has("GSDIntroCover") && (
+        <Still
+          id="GSDIntroCover"
+          component={GSDIntroCover}
+          width={1080}
+          height={1440}
+          schema={GSDIntroSchema}
+          defaultProps={{
+            ...gsdIntroDefaultProps,
+            subtitle: {
+              ...gsdIntroDefaultProps.subtitle,
+              enabled: false,
+            },
+          }}
+        />
+      )}
       {/* WeChatClawBot 封面图 (微信视频号 3:4) */}
-      <Still
-        id="WeChatClawBotCover"
-        component={WeChatClawBotCover}
-        width={1080}
-        height={1440}
-        schema={WeChatClawBotSchema}
-        defaultProps={{
-          ...weChatClawBotDefaultProps,
-          subtitle: {
-            ...weChatClawBotDefaultProps.subtitle,
-            enabled: false,
-          },
-        }}
-      />
+      {stillIds.has("WeChatClawBotCover") && (
+        <Still
+          id="WeChatClawBotCover"
+          component={WeChatClawBotCover}
+          width={1080}
+          height={1440}
+          schema={WeChatClawBotSchema}
+          defaultProps={{
+            ...weChatClawBotDefaultProps,
+            subtitle: {
+              ...weChatClawBotDefaultProps.subtitle,
+              enabled: false,
+            },
+          }}
+        />
+      )}
       {/* PencilDev 封面图 (微信视频号 3:4) */}
-      <Still
-        id="PencilDevCover"
-        component={PencilDevCover}
-        width={1080}
-        height={1440}
-        schema={PencilDevSchema}
-        defaultProps={{
-          ...pencilDevDefaultProps,
-          subtitle: {
-            ...pencilDevDefaultProps.subtitle,
-            enabled: false,
-          },
-        }}
-      />
+      {stillIds.has("PencilDevCover") && (
+        <Still
+          id="PencilDevCover"
+          component={PencilDevCover}
+          width={1080}
+          height={1440}
+          schema={PencilDevSchema}
+          defaultProps={{
+            ...pencilDevDefaultProps,
+            subtitle: {
+              ...pencilDevDefaultProps.subtitle,
+              enabled: false,
+            },
+          }}
+        />
+      )}
+      {/* AIHarnessEngineer 封面图 (微信视频号 3:4) */}
+      {stillIds.has("AIHarnessEngineerCover") && (
+        <Still
+          id="AIHarnessEngineerCover"
+          component={AIHarnessEngineerCover}
+          width={1080}
+          height={1440}
+          schema={AIHarnessEngineerSchema}
+          defaultProps={{
+            ...aiHarnessEngineerDefaultProps,
+            subtitle: {
+              ...aiHarnessEngineerDefaultProps.subtitle,
+              enabled: false,
+            },
+          }}
+        />
+      )}
       {/* AutoResearch 封面图 (微信视频号 3:4) */}
-      <Still
-        id="AutoResearchCover"
-        component={AutoResearchCover}
-        width={1080}
-        height={1440}
-        schema={AutoResearchSchema}
-        defaultProps={{
+      {stillIds.has("AutoResearchCover") && (
+        <Still
+          id="AutoResearchCover"
+          component={AutoResearchCover}
+          width={1080}
+          height={1440}
+          schema={AutoResearchSchema}
+          defaultProps={{
           hookLine1: "卡帕西又出手了",
           hookLine2: "AI自己搞科研的时代来了",
           hookStyle: "glitch",
@@ -1208,8 +1315,9 @@ export const RemotionRoot: React.FC = () => {
           },
           voiceoverScripts: [],
           sceneDurations: [],
-        }}
-      />
+          }}
+        />
+      )}
     </>
   );
 };

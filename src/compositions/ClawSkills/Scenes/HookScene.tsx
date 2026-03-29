@@ -1,6 +1,5 @@
 import React from "react";
 import {
-  AbsoluteFill,
   interpolate,
   spring,
   useCurrentFrame,
@@ -8,6 +7,7 @@ import {
 } from "remotion";
 import { ClawSkillsProps } from "../schema";
 import { glitchOffset, fadeInUp, pulseGlow } from "../animations";
+import { SceneBackground } from "../../../components/SceneBackground";
 
 export const HookScene: React.FC<ClawSkillsProps> = ({
   hookLine1,
@@ -33,13 +33,6 @@ export const HookScene: React.FC<ClawSkillsProps> = ({
     { extrapolateRight: "clamp" }
   );
 
-  const borderPulse = spring({
-    frame,
-    fps,
-    config: { damping: 8, stiffness: 100 },
-    delay: Math.round(fps * 0.5),
-  });
-
   const lobsterScale = spring({
     frame: frame - Math.round(fps * 0.3),
     fps,
@@ -47,14 +40,17 @@ export const HookScene: React.FC<ClawSkillsProps> = ({
   });
 
   return (
-    <AbsoluteFill
-      style={{
-        backgroundColor,
-        justifyContent: "center",
-        alignItems: "center",
-        fontFamily: "system-ui, -apple-system, sans-serif",
-        overflow: "hidden",
+    <SceneBackground
+      backgroundColor={backgroundColor}
+      accentColor={accentColor}
+      particles={{ count: 25, speed: 0.3, opacity: 0.35 }}
+      glow={{
+        orbs: [
+          { x: "50%", y: "40%", color: accentColor, radius: 500, opacity: 0.12, pulseSpeed: 0.6 },
+        ],
       }}
+      scanlines
+      hud={{ color: accentColor, animation: "pulse" }}
     >
       <div
         style={{
@@ -62,46 +58,25 @@ export const HookScene: React.FC<ClawSkillsProps> = ({
           inset: 0,
           backgroundColor: accentColor,
           opacity: bgFlash,
+          pointerEvents: "none",
         }}
       />
 
       <div
         style={{
           position: "absolute",
-          inset: 0,
-          background: `repeating-linear-gradient(
-            0deg,
-            transparent,
-            transparent 2px,
-            rgba(255, 107, 53, 0.03) 2px,
-            rgba(255, 107, 53, 0.03) 4px
-          )`,
-          pointerEvents: "none",
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 420,
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+          fontFamily: "system-ui, -apple-system, sans-serif",
+          padding: "0 40px",
         }}
-      />
-
-      {[
-        { top: 40, left: 40 },
-        { top: 40, right: 40 },
-        { bottom: 40, left: 40 },
-        { bottom: 40, right: 40 },
-      ].map((pos, i) => (
-        <div
-          key={i}
-          style={{
-            position: "absolute",
-            ...pos,
-            width: 60,
-            height: 60,
-            opacity: interpolate(borderPulse, [0, 1], [0, 0.6]),
-            borderTop: i < 2 ? `2px solid ${accentColor}` : "none",
-            borderBottom: i >= 2 ? `2px solid ${accentColor}` : "none",
-            borderLeft: i % 2 === 0 ? `2px solid ${accentColor}` : "none",
-            borderRight: i % 2 === 1 ? `2px solid ${accentColor}` : "none",
-          }}
-        />
-      ))}
-
+      >
       <div
         style={{
           fontSize: 120,
@@ -167,6 +142,7 @@ export const HookScene: React.FC<ClawSkillsProps> = ({
       >
         {hookLine2}
       </div>
+      </div>
 
       <div
         style={{
@@ -182,6 +158,6 @@ export const HookScene: React.FC<ClawSkillsProps> = ({
           }),
         }}
       />
-    </AbsoluteFill>
+    </SceneBackground>
   );
 };

@@ -1,13 +1,13 @@
 import React from "react";
 import {
-  AbsoluteFill,
   interpolate,
   spring,
   useCurrentFrame,
   useVideoConfig,
 } from "remotion";
+import { SceneBackground } from "../../../components/SceneBackground";
 import { AutoResearchProps } from "../schema";
-import { fadeInUp, fadeIn, pulseGlow, nodeReveal } from "../animations";
+import { fadeInUp, fadeIn, nodeReveal } from "../animations";
 
 export const SmartScene: React.FC<AutoResearchProps> = ({
   backgroundColor,
@@ -22,7 +22,6 @@ export const SmartScene: React.FC<AutoResearchProps> = ({
   const { fps, durationInFrames } = useVideoConfig();
 
   const titleAnim = fadeInUp(frame, fps, 0, 60);
-  const glow = pulseGlow(frame, fps, 2);
 
   const loopStart = Math.round(fps * 1.2);
 
@@ -44,15 +43,18 @@ export const SmartScene: React.FC<AutoResearchProps> = ({
   });
 
   return (
-    <AbsoluteFill
-      style={{
-        backgroundColor,
-        fontFamily: "system-ui, -apple-system, sans-serif",
-        overflow: "hidden",
+    <SceneBackground
+      backgroundColor={backgroundColor}
+      accentColor={accentColor}
+      particles={{ count: 25, speed: 0.3, opacity: 0.35 }}
+      glow={{
+        orbs: [
+          { x: "50%", y: "40%", color: accentColor, radius: 500, opacity: 0.12, pulseSpeed: 0.6 },
+        ],
       }}
+      scanlines
+      hud={{ color: accentColor, animation: "pulse" }}
     >
-      <div style={{ position: "absolute", inset: 0, background: `radial-gradient(ellipse at 60% 40%, ${highlightColor}0c 0%, transparent 50%)` }} />
-
       <div
         style={{
           position: "absolute",
@@ -64,6 +66,7 @@ export const SmartScene: React.FC<AutoResearchProps> = ({
           flexDirection: "column",
           justifyContent: "center",
           padding: "0 40px",
+          fontFamily: "system-ui, -apple-system, sans-serif",
         }}
       >
         <div
@@ -253,6 +256,6 @@ export const SmartScene: React.FC<AutoResearchProps> = ({
           </div>
         </div>
       </div>
-    </AbsoluteFill>
+    </SceneBackground>
   );
 };

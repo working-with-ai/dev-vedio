@@ -18,8 +18,8 @@ const defaultScripts = [
 ];
 
 const config = {
-  voice: "zh-CN-YunxiNeural",
-  rate: "+5%",
+  voice: "zh-CN-YunyangNeural",
+  rate: "+3%",
   pitch: "+0Hz",
   outputDir: path.join(process.cwd(), "public", "audio"),
 };
@@ -52,7 +52,8 @@ async function generateVoiceover() {
         .replace(/\.\.\./g, "，")
         .replace(/"/g, '\\"');
 
-      const command = `edge-tts --voice "${config.voice}" --rate="${config.rate}" --pitch="${config.pitch}" --text "${processedText}" --write-media "${outputFile}"`;
+      const vttFile = outputFile.replace(".mp3", ".vtt");
+      const command = `edge-tts --voice "${config.voice}" --rate="${config.rate}" --pitch="${config.pitch}" --text "${processedText}" --write-media "${outputFile}" --write-subtitles "${vttFile}"`;
 
       execSync(command, { stdio: "pipe" });
 

@@ -1,13 +1,13 @@
 import React from "react";
 import {
-  AbsoluteFill,
   interpolate,
   spring,
   useCurrentFrame,
   useVideoConfig,
 } from "remotion";
 import { ClawSkillsProps } from "../schema";
-import { fadeInUp, fadeIn, numberCountUp, pulseGlow, staggerDelay } from "../animations";
+import { fadeInUp, fadeIn, numberCountUp, staggerDelay } from "../animations";
+import { SceneBackground } from "../../../components/SceneBackground";
 
 export const OverviewScene: React.FC<ClawSkillsProps> = ({
   backgroundColor,
@@ -23,7 +23,6 @@ export const OverviewScene: React.FC<ClawSkillsProps> = ({
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
 
-  const glow = pulseGlow(frame, fps, 2);
   const titleAnim = fadeInUp(frame, fps, 0, 60);
   const subtitleAnim = fadeInUp(frame, fps, 12, 40);
 
@@ -34,20 +33,25 @@ export const OverviewScene: React.FC<ClawSkillsProps> = ({
   const scoreDisplay = numberCountUp(frame, fps, 34, 1.5, statsStart);
 
   return (
-    <AbsoluteFill
-      style={{
-        backgroundColor,
-        fontFamily: "system-ui, -apple-system, sans-serif",
-        overflow: "hidden",
+    <SceneBackground
+      backgroundColor={backgroundColor}
+      accentColor={accentColor}
+      particles={{ count: 25, speed: 0.3, opacity: 0.35 }}
+      glow={{
+        orbs: [
+          { x: "50%", y: "40%", color: accentColor, radius: 500, opacity: 0.12, pulseSpeed: 0.6 },
+        ],
       }}
+      scanlines
+      hud={{ color: accentColor, animation: "pulse" }}
     >
       <div
         style={{
           position: "absolute",
           inset: 0,
-          background: `radial-gradient(ellipse at 50% 30%, ${accentColor}12 0%, transparent 60%)`,
+          fontFamily: "system-ui, -apple-system, sans-serif",
         }}
-      />
+      >
 
       <div
         style={{
@@ -229,6 +233,7 @@ export const OverviewScene: React.FC<ClawSkillsProps> = ({
       >
         SCROLL FOR DETAILS ↓
       </div>
-    </AbsoluteFill>
+      </div>
+    </SceneBackground>
   );
 };

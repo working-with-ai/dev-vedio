@@ -1,6 +1,5 @@
 import React from "react";
 import {
-  AbsoluteFill,
   interpolate,
   spring,
   useCurrentFrame,
@@ -8,6 +7,7 @@ import {
 } from "remotion";
 import { PuaSkillProps } from "../schema";
 import { fadeInUp, fadeIn, pressureReveal, pulseGlow } from "../animations";
+import { SceneBackground } from "../../../components/SceneBackground";
 
 export const MethodScene: React.FC<PuaSkillProps> = ({
   backgroundColor,
@@ -33,15 +33,18 @@ export const MethodScene: React.FC<PuaSkillProps> = ({
   });
 
   return (
-    <AbsoluteFill
-      style={{
-        backgroundColor,
-        fontFamily: "system-ui, -apple-system, sans-serif",
-        overflow: "hidden",
+    <SceneBackground
+      backgroundColor={backgroundColor}
+      accentColor={methodColor}
+      particles={{ count: 25, speed: 0.3, opacity: 0.35 }}
+      glow={{
+        orbs: [
+          { x: "50%", y: "40%", color: methodColor, radius: 500, opacity: 0.12, pulseSpeed: 0.6 },
+        ],
       }}
+      scanlines
+      hud={{ color: methodColor, animation: "pulse" }}
     >
-      <div style={{ position: "absolute", inset: 0, background: `radial-gradient(ellipse at 60% 40%, ${methodColor}0c 0%, transparent 50%)` }} />
-
       <div
         style={{
           position: "absolute",
@@ -53,6 +56,7 @@ export const MethodScene: React.FC<PuaSkillProps> = ({
           flexDirection: "column",
           justifyContent: "center",
           padding: "0 40px",
+          fontFamily: "system-ui, -apple-system, sans-serif",
         }}
       >
         <div
@@ -190,6 +194,6 @@ export const MethodScene: React.FC<PuaSkillProps> = ({
           </div>
         </div>
       </div>
-    </AbsoluteFill>
+    </SceneBackground>
   );
 };

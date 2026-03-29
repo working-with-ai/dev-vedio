@@ -12,7 +12,7 @@
 
 Decimal phases appear between their surrounding integers in numeric order.
 
-- [ ] **Phase 1: 内容事实契约与注册表** - 把 brief、模板登记和渲染发现入口收敛为单一真相。
+- [x] **Phase 1: 内容事实契约与注册表** - 把 brief、模板登记和渲染发现入口收敛为单一真相。 (completed 2026-03-29)
 - [ ] **Phase 2: Media Manifest 与 QA 门禁** - 统一 voiceover、字幕、scene durations 与预渲染阻断检查。
 - [ ] **Phase 3: 模板运行时与 Hook 封面** - 抽出可复用的 7 场景竖屏模板、首屏 Hook、安全区和封面 still。
 - [ ] **Phase 4: 统一发布素材整包输出** - 从同一事实源一次生成成片、封面、标题、描述与 hashtags。
@@ -31,9 +31,9 @@ Decimal phases appear between their surrounding integers in numeric order.
 **Plans**: 3 plans
 
 Plans:
-- [ ] 01-01: 定义 VideoBrief schema、校验规则和事实源加载约定
-- [ ] 01-02: 收敛 composition、still、输出路径和模板类型的统一 registry
-- [ ] 01-03: 打通 Root/CLI/API 的统一发现合同并绑定 brief 输入
+- [x] 01-01: 定义 VideoBrief schema、校验规则和事实源加载约定
+- [x] 01-02: 收敛 composition、still、输出路径和模板类型的统一 registry
+- [x] 01-03: 打通 Root/CLI/API 的统一发现合同并绑定 brief 输入
 
 ### Phase 2: Media Manifest 与 QA 门禁
 **Goal**: 创作者可以一键生成媒体时序真相，并在正式渲染前自动发现和阻断音频、字幕与时长问题。
@@ -87,7 +87,7 @@ Phases execute in numeric order: 1 → 2 → 3 → 4
 
 | Phase | Plans Complete | Status | Completed |
 |-------|----------------|--------|-----------|
-| 1. 内容事实契约与注册表 | 0/3 | Not started | - |
+| 1. 内容事实契约与注册表 | 3/3 | Complete   | 2026-03-29 |
 | 2. Media Manifest 与 QA 门禁 | 0/2 | Not started | - |
 | 3. 模板运行时与 Hook 封面 | 0/3 | Not started | - |
 | 4. 统一发布素材整包输出 | 0/2 | Not started | - |

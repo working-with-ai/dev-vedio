@@ -1,6 +1,5 @@
 import React from "react";
 import {
-  AbsoluteFill,
   interpolate,
   spring,
   useCurrentFrame,
@@ -8,6 +7,7 @@ import {
 } from "remotion";
 import { Category, ClawSkillsProps } from "../schema";
 import { fadeInUp, fadeIn, cardSlideIn, staggerDelay, pulseGlow } from "../animations";
+import { SceneBackground } from "../../../components/SceneBackground";
 
 const SkillCard: React.FC<{
   name: string;
@@ -119,24 +119,25 @@ export const CategoryScene: React.FC<CategorySceneProps> = (props) => {
   );
 
   return (
-    <AbsoluteFill
-      style={{
-        backgroundColor,
-        fontFamily: "system-ui, -apple-system, sans-serif",
-        overflow: "hidden",
+    <SceneBackground
+      backgroundColor={backgroundColor}
+      accentColor={category.color}
+      particles={{ count: 25, speed: 0.3, opacity: 0.35 }}
+      glow={{
+        orbs: [
+          { x: "50%", y: "40%", color: category.color, radius: 500, opacity: 0.12, pulseSpeed: 0.6 },
+        ],
       }}
+      scanlines
+      hud={{ color: category.color, animation: "pulse" }}
     >
       <div
         style={{
           position: "absolute",
-          top: -100,
-          right: -100,
-          width: 500,
-          height: 500,
-          borderRadius: "50%",
-          background: `radial-gradient(circle, ${category.color}0c 0%, transparent 70%)`,
+          inset: 0,
+          fontFamily: "system-ui, -apple-system, sans-serif",
         }}
-      />
+      >
 
       <div
         style={{
@@ -280,6 +281,7 @@ export const CategoryScene: React.FC<CategorySceneProps> = (props) => {
       >
         {categoryIndex + 1} / 4
       </div>
-    </AbsoluteFill>
+      </div>
+    </SceneBackground>
   );
 };

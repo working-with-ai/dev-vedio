@@ -1,5 +1,8 @@
 import { Router, Request, Response } from "express";
-import { RenderRequestSchema } from "../../shared/types";
+import {
+  CompositionDiscoveryResponseSchema,
+  RenderRequestSchema,
+} from "../../shared/types";
 import {
   renderVideo,
   getAvailableCompositions,
@@ -27,11 +30,14 @@ router.post("/", async (req: Request, res: Response) => {
 
     // 检查 composition 是否存在
     const availableCompositions = await getAvailableCompositions();
-    if (!availableCompositions.includes(request.compositionId)) {
+    const availableCompositionIds = availableCompositions.map(
+      (composition) => composition.compositionId,
+    );
+    if (!availableCompositionIds.includes(request.compositionId)) {
       res.status(400).json({
         success: false,
         error: `Composition "${request.compositionId}" not found`,
-        availableCompositions,
+        availableCompositions: availableCompositionIds,
       });
       return;
     }
@@ -58,10 +64,12 @@ router.post("/", async (req: Request, res: Response) => {
 router.get("/compositions", async (_req: Request, res: Response) => {
   try {
     const compositions = await getAvailableCompositions();
-    res.json({
-      success: true,
-      compositions,
-    });
+    res.json(
+      CompositionDiscoveryResponseSchema.parse({
+        success: true,
+        compositions,
+      }),
+    );
   } catch (error) {
     const errorMessage =
       error instanceof Error ? error.message : "Unknown error";

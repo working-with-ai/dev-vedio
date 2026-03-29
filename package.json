@@ -47,6 +47,12 @@
     "sync:subtitle:pencildev": "npx tsx scripts/sync-subtitle-pencildev.ts",
     "render:pencildev": "remotion render src/index.ts PencilDev --output=out/PencilDev.mp4",
     "render:pencildev:cover": "remotion still src/index.ts PencilDevCover --output=out/PencilDev-cover.png",
+    "generate:voiceover:aiharnessengineer": "npx tsx scripts/generate-voiceover-aiharnessengineer.ts",
+    "sync:subtitle:aiharnessengineer": "npx tsx scripts/sync-subtitle-aiharnessengineer.ts",
+    "render:aiharnessengineer": "remotion render src/index.ts AIHarnessEngineer --timeout=180000 --output=out/AIHarnessEngineer.mp4",
+    "render:aiharnessengineer:cover": "remotion still src/index.ts AIHarnessEngineerCover --output=out/AIHarnessEngineer-cover.png",
+    "test": "vitest run",
+    "test:contracts": "vitest run src/shared/**/*.test.ts src/server/**/*.test.ts",
     "typecheck": "tsc --noEmit"
   },
   "repository": {
@@ -80,6 +86,7 @@
     "@types/react": "^19.2.10",
     "concurrently": "^9.2.1",
     "tsx": "^4.21.0",
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "vitest": "^3.2.4"
   }
 }

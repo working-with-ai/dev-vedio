@@ -1,13 +1,13 @@
 import React from "react";
 import {
-  AbsoluteFill,
   interpolate,
   spring,
   useCurrentFrame,
   useVideoConfig,
 } from "remotion";
 import { OpenClawAIProps } from "../schema";
-import { fadeInUp, fadeIn, pulseGlow } from "../animations";
+import { fadeInUp, fadeIn } from "../animations";
+import { SceneBackground } from "../../../components/SceneBackground";
 
 const ChatBubble: React.FC<{
   text: string;
@@ -104,7 +104,6 @@ export const HopeTruth1Scene: React.FC<OpenClawAIProps> = ({
   const frame = useCurrentFrame();
   const { fps, durationInFrames } = useVideoConfig();
 
-  const glow = pulseGlow(frame, fps, 2);
   const numberAnim = fadeInUp(frame, fps, 0, 40);
   const titleAnim = fadeInUp(frame, fps, 8, 40);
 
@@ -118,27 +117,26 @@ export const HopeTruth1Scene: React.FC<OpenClawAIProps> = ({
   });
 
   return (
-    <AbsoluteFill
-      style={{
-        backgroundColor,
-        fontFamily: "system-ui, -apple-system, sans-serif",
-        overflow: "hidden",
+    <SceneBackground
+      backgroundColor={backgroundColor}
+      accentColor={accentColor}
+      particles={{ count: 25, speed: 0.3, opacity: 0.35 }}
+      glow={{
+        orbs: [
+          { x: "50%", y: "40%", color: accentColor, radius: 500, opacity: 0.12, pulseSpeed: 0.6 },
+        ],
       }}
+      scanlines
+      scanlineColor="#00f0ff"
+      hud={{ color: accentColor, animation: "pulse" }}
     >
-      {/* 背景辐射 */}
       <div
         style={{
           position: "absolute",
-          top: -200,
-          left: "50%",
-          width: 800,
-          height: 800,
-          borderRadius: "50%",
-          background: `radial-gradient(circle, ${accentColor}0a 0%, transparent 70%)`,
-          transform: "translateX(-50%)",
+          inset: 0,
+          fontFamily: "system-ui, -apple-system, sans-serif",
         }}
-      />
-
+      >
       {/* 编号标签 */}
       <div
         style={{
@@ -301,6 +299,7 @@ export const HopeTruth1Scene: React.FC<OpenClawAIProps> = ({
           💡 {hope1Highlight}
         </div>
       </div>
-    </AbsoluteFill>
+      </div>
+    </SceneBackground>
   );
 };

@@ -19,8 +19,8 @@ const defaultScripts = [
 
 // 配置
 const config = {
-  voice: "zh-CN-YunxiNeural", // 活泼男声，适合科技/游戏话题
-  rate: "+0%", // 正常语速
+  voice: "zh-CN-YunyangNeural",
+  rate: "+3%",
   pitch: "+0Hz", // 正常音调
   outputDir: path.join(process.cwd(), "public", "audio"),
 };
@@ -59,7 +59,8 @@ async function generateVoiceover() {
         .replace(/"/g, '\\"'); // 转义引号
       
       // 使用 edge-tts 生成音频
-      const command = `edge-tts --voice "${config.voice}" --rate="${config.rate}" --pitch="${config.pitch}" --text "${processedText}" --write-media "${outputFile}"`;
+      const vttFile = outputFile.replace(".mp3", ".vtt");
+      const command = `edge-tts --voice "${config.voice}" --rate="${config.rate}" --pitch="${config.pitch}" --text "${processedText}" --write-media "${outputFile}" --write-subtitles "${vttFile}"`;
       
       execSync(command, { stdio: "pipe" });
       

@@ -27,3 +27,9 @@ export {
 export { PencilDev } from "./PencilDev";
 export { PencilDevCover } from "./PencilDev/Cover";
 export { PencilDevSchema, type PencilDevProps } from "./PencilDev/schema";
+export { AIHarnessEngineer } from "./AIHarnessEngineer";
+export { AIHarnessEngineerCover } from "./AIHarnessEngineer/Cover";
+export {
+  AIHarnessEngineerSchema,
+  type AIHarnessEngineerProps,
+} from "./AIHarnessEngineer/schema";

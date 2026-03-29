@@ -5,7 +5,15 @@ import {
   selectComposition,
 } from "@remotion/renderer";
 import path from "path";
-import { RenderRequest, RenderResponse } from "../../shared/types";
+import {
+  buildDiscoveryPayload,
+  resolveRenderInput,
+} from "../../shared/render-contract";
+import {
+  type DiscoverableComposition,
+  RenderRequest,
+  RenderResponse,
+} from "../../shared/types";
 
 // 缓存 bundled 结果
 let bundleLocation: string | null = null;
@@ -62,21 +70,24 @@ async function getBundleLocation(): Promise<string> {
 }
 
 export async function renderVideo(
-  request: RenderRequest
+  request: RenderRequest,
 ): Promise<RenderResponse> {
   const startTime = Date.now();
 
   try {
-    const bundleLocation = await getBundleLocation();
+    const serveUrl = await getBundleLocation();
+    const resolvedRequest = resolveRenderInput(request);
 
     // 选择 composition
     const composition = await selectComposition({
-      serveUrl: bundleLocation,
+      serveUrl,
       id: request.compositionId,
-      inputProps: request.inputProps,
+      inputProps: resolvedRequest.inputProps,
     });
 
-    const defaultBaseName = `${request.compositionId}-${Date.now()}.mp4`;
+    const defaultBaseName =
+      path.basename(resolvedRequest.registryEntry.output.video) ||
+      `${request.compositionId}-${Date.now()}.mp4`;
     const outputPath = resolveSafeOutputPath(
       request.outputFileName,
       defaultBaseName,
@@ -87,10 +98,10 @@ export async function renderVideo(
     // 渲染视频
     await renderMedia({
       composition,
-      serveUrl: bundleLocation,
+      serveUrl,
       codec: "h264",
       outputLocation: outputPath,
-      inputProps: request.inputProps,
+      inputProps: resolvedRequest.inputProps,
       onProgress: ({ progress }) => {
         const percent = Math.round(progress * 100);
         if (percent % 25 === 0) {
@@ -120,14 +131,16 @@ export async function renderVideo(
   }
 }
 
-// 获取可用的 composition 列表（与 Root 注册同步，来自 bundle 内静态 compositions）
-export async function getAvailableCompositions(): Promise<string[]> {
+// 获取可用的 composition 元数据（bundle 内存在且已在 catalog/registry 中登记）
+export async function getAvailableCompositions(): Promise<
+  DiscoverableComposition[]
+> {
   const serveUrl = await getBundleLocation();
   const compositions = await getCompositions(serveUrl, {
     inputProps: {},
     logLevel: "error",
   });
-  return compositions.map((c) => c.id);
+  return buildDiscoveryPayload(compositions.map((composition) => composition.id));
 }
 
 // 清除 bundle 缓存（用于开发时热重载）

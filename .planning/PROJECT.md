@@ -16,6 +16,9 @@
 - ✓ 现有系统可以通过脚本生成 TTS 配音，并输出到 `public/audio/` 供成片复用 — existing
 - ✓ 现有系统可以根据配音时长同步字幕并生成预计算字幕数据，支持字幕与旁白对齐 — existing
 - ✓ 现有系统已经具备面向 AI / 开源项目解读的多场景视频模板能力，能够产出带背景音乐、字幕和转场的技术内容短视频 — existing
+- ✓ 已建立结构化 `VideoBrief` 合同，能够统一表达 hook、proof、封面标题、短标题、短描述、CTA 与来源链接 — validated in Phase 1
+- ✓ 已建立统一模板 registry，集中暴露 composition、cover still、输出路径、safe area、subtitle mode 与视频号预算 — validated in Phase 1
+- ✓ Render API 与 Root discoverability 已接到共享合同，`/api/render/compositions` 能返回结构化模板元数据 — validated in Phase 1
 
 ### Active
 
@@ -23,7 +26,6 @@
 - [ ] 优先提升视频的前三秒吸引力，包括封面、16 字内标题、首屏钩子、视觉冲击和整体科技感
 - [ ] 为每条视频产出完整发布素材，包括成片、封面图、统一版视频标题和视频描述
 - [ ] 统一动画基础设施，收敛重复且不一致的 `animations.ts`，降低维护成本并提升视觉一致性
-- [ ] 修复渲染链路中的显性缺口，使所有已注册 composition 都能通过 API 正常暴露和渲染
 
 ### Out of Scope
 
@@ -50,6 +52,12 @@
 - **Success metric**: 本轮优先优化前三秒停留而非自动发布链路 — 要先把“点进来愿不愿意继续看”做到位
 - **Quality**: 成片需要保证字幕与旁白一致、背景音乐清晰、封面可用、标题不超过 16 字、类型检查为零错误 — 这是用户定义的完成标准
 
+## Current State
+
+- Phase 1 已完成：内容 brief、模板 registry 与 discoverability contract 已统一
+- 当前下一步是 Phase 2：把 voiceover、字幕、scene durations 和预渲染阻断检查收敛成 media manifest
+- 当前最明显的系统缺口已经从“入口漂移”转为“媒体时序没有单一真相源”
+
 ## Key Decisions
 
 | Decision | Rationale | Outcome |
@@ -61,4 +69,4 @@
 | 以模板化和共享动画收敛现有 composition 分叉 | 这是让后续高频出片可持续的基础能力 | — Pending |
 
 ---
-*Last updated: 2026-03-22 after initialization*
+*Last updated: 2026-03-29 after Phase 1 completion*

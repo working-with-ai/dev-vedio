@@ -1,6 +1,5 @@
 import React from "react";
 import {
-  AbsoluteFill,
   interpolate,
   spring,
   useCurrentFrame,
@@ -8,6 +7,7 @@ import {
 } from "remotion";
 import { OpenClawAIProps } from "../schema";
 import { fadeInUp, fadeIn, staggerDelay, numberCountUp, pulseGlow } from "../animations";
+import { SceneBackground } from "../../../components/SceneBackground";
 
 const PlatformCard: React.FC<{
   title: string;
@@ -99,13 +99,26 @@ export const HopeTruth2Scene: React.FC<OpenClawAIProps> = ({
   ];
 
   return (
-    <AbsoluteFill
-      style={{
-        backgroundColor,
-        fontFamily: "system-ui, -apple-system, sans-serif",
-        overflow: "hidden",
+    <SceneBackground
+      backgroundColor={backgroundColor}
+      accentColor={accentColor}
+      particles={{ count: 25, speed: 0.3, opacity: 0.35 }}
+      glow={{
+        orbs: [
+          { x: "50%", y: "40%", color: accentColor, radius: 500, opacity: 0.12, pulseSpeed: 0.6 },
+        ],
       }}
+      scanlines
+      scanlineColor="#00f0ff"
+      hud={{ color: accentColor, animation: "pulse" }}
     >
+      <div
+        style={{
+          position: "absolute",
+          inset: 0,
+          fontFamily: "system-ui, -apple-system, sans-serif",
+        }}
+      >
       {/* 编号标签 */}
       <div
         style={{
@@ -299,6 +312,7 @@ export const HopeTruth2Scene: React.FC<OpenClawAIProps> = ({
           🚀 {hope2Highlight}
         </div>
       </div>
-    </AbsoluteFill>
+      </div>
+    </SceneBackground>
   );
 };

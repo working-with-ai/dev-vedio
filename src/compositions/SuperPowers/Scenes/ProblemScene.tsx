@@ -1,16 +1,16 @@
 import React from "react";
 import {
-  AbsoluteFill,
-  interpolate,
   useCurrentFrame,
   useVideoConfig,
 } from "remotion";
 import { SuperPowersProps } from "../schema";
 import { fadeInUp, fadeIn, pulseGlow, staggerDelay } from "../animations";
+import { SceneBackground } from "../../../components/SceneBackground";
 
 export const ProblemScene: React.FC<SuperPowersProps> = ({
   backgroundColor,
   textColor,
+  accentColor,
   dangerColor,
   problemTitle,
   problemQuote,
@@ -51,15 +51,18 @@ export const ProblemScene: React.FC<SuperPowersProps> = ({
   const quoteAnim = fadeInUp(frame, fps, quoteStart, 50);
 
   return (
-    <AbsoluteFill
-      style={{
-        backgroundColor,
-        fontFamily: "system-ui, -apple-system, sans-serif",
-        overflow: "hidden",
+    <SceneBackground
+      backgroundColor={backgroundColor}
+      accentColor={accentColor}
+      particles={{ count: 25, speed: 0.3, opacity: 0.35 }}
+      glow={{
+        orbs: [
+          { x: "50%", y: "40%", color: accentColor, radius: 500, opacity: 0.12, pulseSpeed: 0.6 },
+        ],
       }}
+      scanlines
+      hud={{ color: accentColor, animation: "pulse" }}
     >
-      <div style={{ position: "absolute", inset: 0, background: `radial-gradient(ellipse at 50% 50%, ${dangerColor}0a 0%, transparent 50%)` }} />
-
       <div
         style={{
           position: "absolute",
@@ -71,6 +74,7 @@ export const ProblemScene: React.FC<SuperPowersProps> = ({
           flexDirection: "column",
           justifyContent: "center",
           padding: "0 40px",
+          fontFamily: "system-ui, -apple-system, sans-serif",
         }}
       >
         <div
@@ -184,6 +188,6 @@ export const ProblemScene: React.FC<SuperPowersProps> = ({
           </div>
         </div>
       </div>
-    </AbsoluteFill>
+    </SceneBackground>
   );
 };

@@ -1,5 +1,6 @@
 /**
  * 字幕同步脚本 (AutoResearch - Karpathy让AI自己搞科研)
+ * 使用 edge-tts 生成的 VTT 文件获取精确句级时间戳
  * 使用方法: npx tsx scripts/sync-subtitle-autoresearch.ts
  */
 
@@ -8,21 +9,18 @@ import * as path from "path";
 import { parseFile } from "music-metadata";
 
 const SCENE_COUNT = 7;
-
-const defaultScripts = [
-  "卡帕西又开源了！这次他想让AI，卷死所有AI研究员！autoresearch，不到一周GitHub狂揽4万4千星！全网都在疯传这个只有630行的Python脚本！",
-  "当大家还在手动调参，熬夜盯Loss曲线，改一行代码跑一次实验时，卡帕西已经写了个分身去干活了。你只需要告诉它，帮我把模型跑得更稳一点，然后你就可以去睡觉，去健身，去蒸桑拿。等你回来，AI已经帮你跑了几百轮实验！",
-  "这个项目最狠的地方在于，它把AI关进了一个闭环里。AI自己写PyTorch，自己跑实验，自己看结果，自己再改代码。这就是传说中的无人值守科研。一句话总结，这不是一个简单的工具，这是AI的自我进化实验室！",
-  "为什么这个项目能让全网高潮？第一，极简即暴力！630行代码，单张GPU就能跑。真正的核弹不需要成千上万行的垃圾代码。整个项目只有三个文件，prepare.py负责数据准备，train.py是AI修改的核心文件，program.md就是给AI的指令！",
-  "第二，智商碾压！AI不是在瞎撞，而是像个老练的工程师在做逻辑推演。AI修改代码，训练5分钟，检查结果，保留最好的，丢弃差的，然后循环。有人用它一夜之间跑出的0.8B小模型，效果直接反超人类精心微调的1.6B！",
-  "第三，科研范式地震！以前是人类研究AI，现在是AI研究AI。卡帕西说，我写完代码去蒸了个桑拿，回来AI已经把实验跑完了。你只需要写好program.md这个指令文件，然后让AI自动运行一整夜！",
-  "今天的程序员在写代码，明天的程序员在指挥AI写代码。如果你还在手动调参，那你可能真的要被卡帕西的这个小脚本给卷没了！评论区告诉我，你觉得AI自主科研的时代还有多远？关注不迷路，我们下期见！",
-];
+const COMPOSITION_PREFIX = "autoresearch";
 
 interface AudioInfo {
   file: string;
   duration: number;
   durationFrames: number;
+}
+
+interface VttCue {
+  startMs: number;
+  endMs: number;
+  text: string;
 }
 
 interface SubtitleWord {
@@ -37,6 +35,33 @@ interface SubtitleLine {
   endFrame: number;
 }
 
+function parseVtt(content: string): VttCue[] {
+  const cues: VttCue[] = [];
+  const blocks = content.split(/\n\n+/);
+
+  for (const block of blocks) {
+    const lines = block.trim().split("\n");
+    for (let j = 0; j < lines.length; j++) {
+      const match = lines[j].match(
+        /(\d{2}):(\d{2}):(\d{2}),(\d{3})\s*-->\s*(\d{2}):(\d{2}):(\d{2}),(\d{3})/
+      );
+      if (match) {
+        const startMs =
+          +match[1] * 3600000 + +match[2] * 60000 + +match[3] * 1000 + +match[4];
+        const endMs =
+          +match[5] * 3600000 + +match[6] * 60000 + +match[7] * 1000 + +match[8];
+        const text = lines
+          .slice(j + 1)
+          .join(" ")
+          .trim();
+        if (text) cues.push({ startMs, endMs, text });
+        break;
+      }
+    }
+  }
+  return cues;
+}
+
 async function getAudioDuration(filePath: string): Promise<number> {
   try {
     const metadata = await parseFile(filePath);
@@ -47,17 +72,18 @@ async function getAudioDuration(filePath: string): Promise<number> {
   }
 }
 
-function generateSubtitleLine(
+function generateWordsFromCue(
   text: string,
   startFrame: number,
-  durationFrames: number,
+  endFrame: number,
 ): SubtitleWord[] {
+  const durationFrames = endFrame - startFrame;
   const chars = text.split("");
   const totalChars = chars.length;
+  if (totalChars === 0) return [];
 
   let currentFrame = startFrame;
   const words: SubtitleWord[] = [];
-
   let currentWord = "";
   let wordStartFrame = currentFrame;
 
@@ -70,7 +96,7 @@ function generateSubtitleLine(
       words.push({
         text: currentWord,
         startFrame: wordStartFrame,
-        endFrame: wordStartFrame + wordDuration,
+        endFrame: Math.min(wordStartFrame + wordDuration, endFrame),
       });
       currentFrame = wordStartFrame + wordDuration;
       wordStartFrame = currentFrame;
@@ -85,7 +111,7 @@ function generateSubtitleLine(
         words.push({
           text: char,
           startFrame: currentFrame,
-          endFrame: currentFrame + 2,
+          endFrame: Math.min(currentFrame + 2, endFrame),
         });
         currentFrame += 2;
         wordStartFrame = currentFrame;
@@ -97,13 +123,12 @@ function generateSubtitleLine(
       }
     }
   }
-
   flushWord();
   return words;
 }
 
 async function syncSubtitles() {
-  console.log("🔄 开始同步 AutoResearch 字幕和配音...\n");
+  console.log(`🔄 开始同步 ${COMPOSITION_PREFIX} 字幕和配音 (VTT精确模式)...\n`);
 
   const audioDir = path.join(process.cwd(), "public", "audio");
   const fps = 30;
@@ -112,19 +137,19 @@ async function syncSubtitles() {
   const audioInfos: AudioInfo[] = [];
 
   for (let i = 0; i < SCENE_COUNT; i++) {
-    const audioFile = path.join(audioDir, `autoresearch-scene${i + 1}.mp3`);
+    const audioFile = path.join(audioDir, `${COMPOSITION_PREFIX}-scene${i + 1}.mp3`);
     if (fs.existsSync(audioFile)) {
       const duration = await getAudioDuration(audioFile);
       console.log(`📊 场景 ${i + 1}: ${duration.toFixed(2)}秒 (${Math.round(duration * fps)}帧)`);
       audioInfos.push({
-        file: `audio/autoresearch-scene${i + 1}.mp3`,
+        file: `audio/${COMPOSITION_PREFIX}-scene${i + 1}.mp3`,
         duration,
         durationFrames: Math.round(duration * fps),
       });
     } else {
       console.log(`⚠️ 场景 ${i + 1}: 音频文件不存在，使用默认10秒`);
       audioInfos.push({
-        file: `audio/autoresearch-scene${i + 1}.mp3`,
+        file: `audio/${COMPOSITION_PREFIX}-scene${i + 1}.mp3`,
         duration: 10,
         durationFrames: 300,
       });
@@ -141,20 +166,39 @@ async function syncSubtitles() {
   for (let i = 0; i < audioInfos.length; i++) {
     const info = audioInfos[i];
     const sceneDuration = Math.max(minSceneDuration, info.durationFrames + buffer);
+    const sceneStartFrame = currentFrame;
+    const audioStartFrame = sceneStartFrame + sceneDelay;
 
-    const subtitleStart = currentFrame + sceneDelay;
-    const subtitleDuration = info.durationFrames;
-    const words = generateSubtitleLine(
-      defaultScripts[i],
-      subtitleStart,
-      subtitleDuration
-    );
+    const vttFile = path.join(audioDir, `${COMPOSITION_PREFIX}-scene${i + 1}.vtt`);
+    let allWords: SubtitleWord[] = [];
 
-    subtitleLines.push({
-      words,
-      startFrame: subtitleStart,
-      endFrame: subtitleStart + subtitleDuration,
-    });
+    if (fs.existsSync(vttFile)) {
+      const vttContent = fs.readFileSync(vttFile, "utf-8");
+      const cues = parseVtt(vttContent);
+      console.log(`   🎯 VTT: ${cues.length} 个精确时间段`);
+
+      for (const cue of cues) {
+        const cueStartFrame = audioStartFrame + Math.round((cue.startMs / 1000) * fps);
+        const cueEndFrame = audioStartFrame + Math.round((cue.endMs / 1000) * fps);
+        const words = generateWordsFromCue(cue.text, cueStartFrame, cueEndFrame);
+        allWords.push(...words);
+      }
+    } else {
+      console.log(`   ⚠️ VTT 不存在，使用字符等比分配`);
+      allWords = generateWordsFromCue(
+        `场景${i + 1}`,
+        audioStartFrame,
+        audioStartFrame + info.durationFrames
+      );
+    }
+
+    if (allWords.length > 0) {
+      subtitleLines.push({
+        words: allWords,
+        startFrame: allWords[0].startFrame,
+        endFrame: allWords[allWords.length - 1].endFrame,
+      });
+    }
 
     sceneDurations.push(sceneDuration);
     currentFrame += sceneDuration;
@@ -162,7 +206,7 @@ async function syncSubtitles() {
 
   const totalDuration = sceneDurations.reduce((a, b) => a + b, 0);
 
-  const outputPath = path.join(process.cwd(), "src", "data", "autoresearch-subtitles.json");
+  const outputPath = path.join(process.cwd(), "src", "data", `${COMPOSITION_PREFIX}-subtitles.json`);
   const outputDir = path.dirname(outputPath);
   if (!fs.existsSync(outputDir)) {
     fs.mkdirSync(outputDir, { recursive: true });
@@ -171,14 +215,14 @@ async function syncSubtitles() {
   fs.writeFileSync(outputPath, JSON.stringify(subtitleLines, null, 2));
   console.log(`\n✅ 字幕数据已写入: ${outputPath}`);
 
-  console.log("\n📋 请更新 Root.tsx 中 AutoResearch 的配置:\n");
+  console.log(`\n📋 请更新 Root.tsx 中 AutoResearch 的配置:\n`);
   console.log(`  durationInFrames: ${totalDuration},`);
   console.log(`  sceneDurations: [${sceneDurations.join(", ")}],`);
   console.log(`\n  // 添加 import:`);
-  console.log(`  import autoresearchSubtitles from "./data/autoresearch-subtitles.json";`);
+  console.log(`  import autoresearchSubtitles from "./data/${COMPOSITION_PREFIX}-subtitles.json";`);
   console.log(`  // 在 defaultProps 中添加:`);
   console.log(`  precomputedSubtitles: autoresearchSubtitles,`);
-  console.log(`\n✨ AutoResearch 字幕同步完成！总时长: ${(totalDuration / fps).toFixed(1)}秒 (${totalDuration}帧)`);
+  console.log(`\n✨ ${COMPOSITION_PREFIX} 字幕同步完成！总时长: ${(totalDuration / fps).toFixed(1)}秒 (${totalDuration}帧)`);
 }
 
 syncSubtitles().catch(console.error);

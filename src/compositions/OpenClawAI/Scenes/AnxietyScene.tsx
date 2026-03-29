@@ -1,6 +1,5 @@
 import React from "react";
 import {
-  AbsoluteFill,
   interpolate,
   spring,
   useCurrentFrame,
@@ -15,6 +14,7 @@ import {
   progressBar,
   typewriterLength,
 } from "../animations";
+import { SceneBackground } from "../../../components/SceneBackground";
 
 const TerminalLine: React.FC<{
   text: string;
@@ -115,13 +115,26 @@ export const AnxietyScene: React.FC<OpenClawAIProps> = ({
   const progressValue = progressBar(frame, fps, durationInFrames / fps, 0);
 
   return (
-    <AbsoluteFill
-      style={{
-        backgroundColor,
-        fontFamily: "system-ui, -apple-system, sans-serif",
-        overflow: "hidden",
+    <SceneBackground
+      backgroundColor={backgroundColor}
+      accentColor={accentColor}
+      particles={{ count: 25, speed: 0.3, opacity: 0.35 }}
+      glow={{
+        orbs: [
+          { x: "50%", y: "40%", color: accentColor, radius: 500, opacity: 0.12, pulseSpeed: 0.6 },
+        ],
       }}
+      scanlines
+      scanlineColor="#00f0ff"
+      hud={{ color: accentColor, animation: "pulse" }}
     >
+      <div
+        style={{
+          position: "absolute",
+          inset: 0,
+          fontFamily: "system-ui, -apple-system, sans-serif",
+        }}
+      >
       {/* 背景网格 */}
       <div
         style={{
@@ -132,6 +145,7 @@ export const AnxietyScene: React.FC<OpenClawAIProps> = ({
             linear-gradient(90deg, ${accentColor}08 1px, transparent 1px)
           `,
           backgroundSize: "40px 40px",
+          pointerEvents: "none",
         }}
       />
 
@@ -300,6 +314,7 @@ export const AnxietyScene: React.FC<OpenClawAIProps> = ({
       >
         {anxietyInteraction}
       </div>
-    </AbsoluteFill>
+      </div>
+    </SceneBackground>
   );
 };

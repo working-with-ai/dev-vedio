@@ -31,3 +31,4 @@ npm-debug.log*
 # Remotion
 .remotion/
 .opencode/
+.worktrees/

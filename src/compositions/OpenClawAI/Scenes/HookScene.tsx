@@ -1,13 +1,12 @@
 import React from "react";
 import {
-  AbsoluteFill,
   interpolate,
-  spring,
   useCurrentFrame,
   useVideoConfig,
 } from "remotion";
 import { OpenClawAIProps } from "../schema";
 import { glitchOffset, fadeInUp, typewriterLength, pulseGlow } from "../animations";
+import { SceneBackground } from "../../../components/SceneBackground";
 
 export const HookScene: React.FC<OpenClawAIProps> = ({
   hookLine1,
@@ -42,72 +41,45 @@ export const HookScene: React.FC<OpenClawAIProps> = ({
     ? hookLine1.slice(0, revealLength)
     : hookLine1;
 
-  const borderPulse = spring({
-    frame,
-    fps,
-    config: { damping: 8, stiffness: 100 },
-    delay: Math.round(fps * 0.5),
-  });
-
   return (
-    <AbsoluteFill
-      style={{
-        backgroundColor,
-        justifyContent: "center",
-        alignItems: "center",
-        fontFamily: "system-ui, -apple-system, sans-serif",
-        overflow: "hidden",
+    <SceneBackground
+      backgroundColor={backgroundColor}
+      accentColor={accentColor}
+      particles={{ count: 25, speed: 0.3, opacity: 0.35 }}
+      glow={{
+        orbs: [
+          { x: "50%", y: "40%", color: accentColor, radius: 500, opacity: 0.12, pulseSpeed: 0.6 },
+        ],
       }}
+      scanlines
+      scanlineColor="#00f0ff"
+      hud={{ color: accentColor, animation: "pulse" }}
     >
-      {/* 背景闪烁 */}
       <div
         style={{
           position: "absolute",
           inset: 0,
           backgroundColor: warningColor,
           opacity: bgFlash,
-        }}
-      />
-
-      {/* 扫描线 */}
-      <div
-        style={{
-          position: "absolute",
-          inset: 0,
-          background: `repeating-linear-gradient(
-            0deg,
-            transparent,
-            transparent 2px,
-            rgba(0, 240, 255, 0.03) 2px,
-            rgba(0, 240, 255, 0.03) 4px
-          )`,
           pointerEvents: "none",
         }}
       />
 
-      {/* HUD 角框 */}
-      {[
-        { top: 40, left: 40 },
-        { top: 40, right: 40 },
-        { bottom: 40, left: 40 },
-        { bottom: 40, right: 40 },
-      ].map((pos, i) => (
-        <div
-          key={i}
-          style={{
-            position: "absolute",
-            ...pos,
-            width: 60,
-            height: 60,
-            opacity: interpolate(borderPulse, [0, 1], [0, 0.6]),
-            borderTop: i < 2 ? `2px solid ${accentColor}` : "none",
-            borderBottom: i >= 2 ? `2px solid ${accentColor}` : "none",
-            borderLeft: i % 2 === 0 ? `2px solid ${accentColor}` : "none",
-            borderRight: i % 2 === 1 ? `2px solid ${accentColor}` : "none",
-          }}
-        />
-      ))}
-
+      <div
+        style={{
+          position: "absolute",
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 420,
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+          fontFamily: "system-ui, -apple-system, sans-serif",
+          padding: "0 40px",
+        }}
+      >
       {/* 主标题行1 - 带故障效果 */}
       <div
         style={{
@@ -175,6 +147,7 @@ export const HookScene: React.FC<OpenClawAIProps> = ({
       >
         {hookLine2}
       </div>
+      </div>
 
       {/* 底部警示条 */}
       <div
@@ -191,6 +164,6 @@ export const HookScene: React.FC<OpenClawAIProps> = ({
           }),
         }}
       />
-    </AbsoluteFill>
+    </SceneBackground>
   );
 };

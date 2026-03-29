@@ -1,13 +1,14 @@
-import React from "react";
+import React, { useMemo } from "react";
 import {
-  AbsoluteFill,
   interpolate,
   spring,
   useCurrentFrame,
   useVideoConfig,
 } from "remotion";
+import { SceneBackground } from "../../../components/SceneBackground";
+import { HandDrawnDiagram, DiagramNode, DiagramEdge } from "../../../components/HandDrawnDiagram";
 import { AutoResearchProps } from "../schema";
-import { fadeInUp, fadeIn, pulseGlow, nodeReveal } from "../animations";
+import { fadeInUp } from "../animations";
 
 export const CoreScene: React.FC<AutoResearchProps> = ({
   backgroundColor,
@@ -23,12 +24,8 @@ export const CoreScene: React.FC<AutoResearchProps> = ({
 
   const titleAnim = fadeInUp(frame, fps, 0, 60);
   const subtitleAnim = fadeInUp(frame, fps, 10, 40);
-  const glow = pulseGlow(frame, fps, 2);
 
-  const loopStart = Math.round(fps * 1.5);
-
-  const arrowStart = Math.round(fps * 4);
-  const arrowAnim = fadeInUp(frame, fps, arrowStart, 30);
+  const diagramStart = Math.round(fps * 1.2);
 
   const sloganStart = Math.round(durationInFrames * 0.78);
   const sloganAnim = spring({
@@ -37,18 +34,44 @@ export const CoreScene: React.FC<AutoResearchProps> = ({
     config: { damping: 10, stiffness: 100 },
   });
 
-  const activeStep = Math.floor(((frame - loopStart) / fps) * 0.8) % loopSteps.length;
+  const diagramNodes = useMemo<DiagramNode[]>(() => {
+    if (!loopSteps || loopSteps.length < 4) return [];
+    return [
+      { id: "step1", label: loopSteps[0].name, emoji: loopSteps[0].icon, x: 40, y: 20, width: 400, height: 120, color: loopSteps[0].color, order: 0 },
+      { id: "step2", label: loopSteps[1].name, emoji: loopSteps[1].icon, x: 540, y: 20, width: 400, height: 120, color: loopSteps[1].color, order: 1 },
+      { id: "step3", label: loopSteps[2].name, emoji: loopSteps[2].icon, x: 540, y: 220, width: 400, height: 120, color: loopSteps[2].color, order: 2 },
+      { id: "step4", label: loopSteps[3].name, emoji: loopSteps[3].icon, x: 40, y: 220, width: 400, height: 120, color: loopSteps[3].color, order: 3 },
+    ];
+  }, [loopSteps]);
+
+  const diagramEdges = useMemo<DiagramEdge[]>(() => {
+    if (!loopSteps || loopSteps.length < 4) return [];
+    return [
+      { from: "step1", to: "step2", color: loopSteps[0].color, order: 0 },
+      { from: "step2", to: "step3", color: loopSteps[1].color, order: 1 },
+      { from: "step3", to: "step4", color: loopSteps[2].color, order: 2 },
+      { from: "step4", to: "step1", label: "循环", color: loopSteps[3].color, order: 3 },
+    ];
+  }, [loopSteps]);
+
+  const diagramOpacity = interpolate(frame - diagramStart, [0, 10], [0, 1], {
+    extrapolateLeft: "clamp",
+    extrapolateRight: "clamp",
+  });
 
   return (
-    <AbsoluteFill
-      style={{
-        backgroundColor,
-        fontFamily: "system-ui, -apple-system, sans-serif",
-        overflow: "hidden",
+    <SceneBackground
+      backgroundColor={backgroundColor}
+      accentColor={accentColor}
+      particles={{ count: 25, speed: 0.3, opacity: 0.35 }}
+      glow={{
+        orbs: [
+          { x: "50%", y: "40%", color: accentColor, radius: 500, opacity: 0.12, pulseSpeed: 0.6 },
+        ],
       }}
+      scanlines
+      hud={{ color: accentColor, animation: "pulse" }}
     >
-      <div style={{ position: "absolute", inset: 0, background: `radial-gradient(ellipse at 40% 40%, ${accentColor}0c 0%, transparent 50%)` }} />
-
       <div
         style={{
           position: "absolute",
@@ -60,6 +83,7 @@ export const CoreScene: React.FC<AutoResearchProps> = ({
           flexDirection: "column",
           justifyContent: "center",
           padding: "0 40px",
+          fontFamily: "system-ui, -apple-system, sans-serif",
         }}
       >
         <div
@@ -83,7 +107,7 @@ export const CoreScene: React.FC<AutoResearchProps> = ({
             textAlign: "center",
             opacity: subtitleAnim.opacity,
             transform: `translateY(${subtitleAnim.y}px)`,
-            marginBottom: 40,
+            marginBottom: 30,
           }}
         >
           <div
@@ -101,104 +125,19 @@ export const CoreScene: React.FC<AutoResearchProps> = ({
           </div>
         </div>
 
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            gap: 16,
-            marginBottom: 30,
-            position: "relative",
-          }}
-        >
-          {loopSteps.map((step, i) => {
-            const anim = nodeReveal(frame, fps, i, loopStart);
-            const isActive = frame > loopStart + 30 && activeStep === i;
-
-            return (
-              <div
-                key={i}
-                style={{
-                  display: "flex",
-                  alignItems: "center",
-                  gap: 20,
-                  padding: "22px 24px",
-                  borderRadius: 18,
-                  background: isActive
-                    ? `linear-gradient(135deg, ${step.color}18, ${step.color}08)`
-                    : `${step.color}06`,
-                  border: `2px solid ${isActive ? `${step.color}66` : `${step.color}22`}`,
-                  opacity: anim.opacity,
-                  transform: `translateY(${anim.y}px) scale(${anim.scale})`,
-                  boxShadow: isActive ? `0 0 40px ${step.color}22` : "none",
-                }}
-              >
-                <div
-                  style={{
-                    width: 64,
-                    height: 64,
-                    borderRadius: 16,
-                    background: isActive
-                      ? `linear-gradient(135deg, ${step.color}44, ${step.color}22)`
-                      : `${step.color}11`,
-                    border: `2px solid ${step.color}${isActive ? "88" : "33"}`,
-                    display: "flex",
-                    alignItems: "center",
-                    justifyContent: "center",
-                    fontSize: 32,
-                    flexShrink: 0,
-                    boxShadow: isActive ? `0 0 20px ${step.color}33` : "none",
-                  }}
-                >
-                  {step.icon}
-                </div>
-                <div style={{ flex: 1 }}>
-                  <div style={{ fontSize: 34, fontWeight: 900, color: textColor }}>
-                    {step.name}
-                  </div>
-                  <div style={{ fontSize: 22, color: "#999", marginTop: 4 }}>
-                    {step.desc}
-                  </div>
-                </div>
-                <div
-                  style={{
-                    fontSize: 18,
-                    fontWeight: 900,
-                    color: step.color,
-                    fontFamily: "monospace",
-                    opacity: isActive ? 1 : 0.4,
-                  }}
-                >
-                  {isActive ? "▶" : String(i + 1).padStart(2, "0")}
-                </div>
-              </div>
-            );
-          })}
-        </div>
-
-        <div
-          style={{
-            textAlign: "center",
-            opacity: arrowAnim.opacity,
-            transform: `translateY(${arrowAnim.y}px)`,
-            marginBottom: 20,
-          }}
-        >
-          <div
-            style={{
-              display: "inline-block",
-              fontSize: 24,
-              color: highlightColor,
-              padding: "10px 30px",
-              borderRadius: 16,
-              border: `1px solid ${highlightColor}33`,
-              background: `${highlightColor}08`,
-              fontFamily: "monospace",
-              letterSpacing: 2,
-            }}
-          >
-            写代码 → 跑训练 → 看结果 → 改代码 → 循环
+        {diagramNodes.length > 0 && (
+          <div style={{ opacity: diagramOpacity, marginBottom: 30 }}>
+            <HandDrawnDiagram
+              nodes={diagramNodes}
+              edges={diagramEdges}
+              accentColor={accentColor}
+              textColor={textColor}
+              strokeWidth={3}
+              drawFramesPerElement={18}
+              staggerFrames={15}
+            />
           </div>
-        </div>
+        )}
 
         <div style={{ textAlign: "center" }}>
           <div
@@ -217,6 +156,6 @@ export const CoreScene: React.FC<AutoResearchProps> = ({
           </div>
         </div>
       </div>
-    </AbsoluteFill>
+    </SceneBackground>
   );
 };
