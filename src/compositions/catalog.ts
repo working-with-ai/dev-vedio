@@ -89,6 +89,7 @@ export const videoCompositionCatalog = [
   createCompositionCatalogEntry("AIHedgeFund", 1080, 1920, 30, 3212),
   createCompositionCatalogEntry("AgentSkills", 1080, 1920, 30, 3796),
   createCompositionCatalogEntry("HermesAgent", 1080, 1920, 30, 5199),
+  createCompositionCatalogEntry("TradingAgents", 1080, 1920, 30, 5713),
 ] as const;
 
 export const videoStillCatalog = [
@@ -107,6 +108,7 @@ export const videoStillCatalog = [
   createStillCatalogEntry("AIHedgeFundCover", "AIHedgeFund", 1080, 1440),
   createStillCatalogEntry("AgentSkillsCover", "AgentSkills", 1080, 1440),
   createStillCatalogEntry("HermesAgentCover", "HermesAgent", 1080, 1440),
+  createStillCatalogEntry("TradingAgentsCover", "TradingAgents", 1080, 1440),
 ] as const;
 
 export const getCompositionCatalogEntry = (

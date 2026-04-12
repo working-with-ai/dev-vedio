@@ -452,6 +452,26 @@ export const videoTemplateRegistry = [
       videoChannel: videoChannelProfile,
     },
   }),
+  createEntry({
+    compositionId: "TradingAgents",
+    stillId: "TradingAgentsCover",
+    templateType: "vertical-7-scene",
+    aspectRatio: "9:16",
+    safeAreaProfile: shortVideoSafeArea,
+    subtitleMode: "single-line-bottom",
+    supports: {
+      hookSlot: true,
+      coverSlot: true,
+      proofSlot: true,
+    },
+    output: {
+      video: "out/TradingAgents.mp4",
+      cover: "out/TradingAgents-cover.png",
+    },
+    platformProfiles: {
+      videoChannel: videoChannelProfile,
+    },
+  }),
 ] as const satisfies readonly VideoTemplateRegistryEntry[];
 
 export const listVideoTemplates = (): VideoTemplateRegistryEntry[] =>

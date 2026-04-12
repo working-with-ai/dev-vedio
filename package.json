@@ -79,6 +79,10 @@
     "sync:subtitle:hermesagent": "npx tsx scripts/sync-subtitle-hermesagent.ts",
     "render:hermesagent": "remotion render src/index.ts HermesAgent --timeout=180000 --output=out/HermesAgent.mp4",
     "render:hermesagent:cover": "remotion still src/index.ts HermesAgentCover --output=out/HermesAgent-cover.png",
+    "generate:voiceover:tradingagents": "npx tsx scripts/generate-voiceover-tradingagents.ts",
+    "sync:subtitle:tradingagents": "npx tsx scripts/sync-subtitle-tradingagents.ts",
+    "render:tradingagents": "remotion render src/index.ts TradingAgents --timeout=180000 --output=out/TradingAgents.mp4",
+    "render:tradingagents:cover": "remotion still src/index.ts TradingAgentsCover --output=out/TradingAgents-cover.png",
     "test": "vitest run",
     "test:contracts": "vitest run src/shared/**/*.test.ts src/server/**/*.test.ts",
     "typecheck": "tsc --noEmit"

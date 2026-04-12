@@ -45,6 +45,9 @@ import {
   HermesAgent,
   HermesAgentCover,
   HermesAgentSchema,
+  TradingAgents,
+  TradingAgentsCover,
+  TradingAgentsSchema,
 } from "./compositions";
 import {
   getCompositionCatalogEntry,
@@ -69,6 +72,7 @@ import codexEccSubtitles from "./data/codexecc-subtitles.json";
 import aiHedgeFundSubtitles from "./data/aihedgefund-subtitles.json";
 import agentskillsSubtitles from "./data/agentskills-subtitles.json";
 import hermesagentSubtitles from "./data/hermesagent-subtitles.json";
+import tradingagentsSubtitles from "./data/tradingagents-subtitles.json";
 
 assertRegistryCoverage(videoCompositionCatalog, videoStillCatalog);
 
@@ -280,6 +284,36 @@ const aiHedgeFundDefaultProps = AIHedgeFundSchema.parse({
   },
   sceneDurations: [366, 409, 473, 567, 533, 540, 324],
   precomputedSubtitles: aiHedgeFundSubtitles,
+});
+
+const tradingAgentsDefaultProps = TradingAgentsSchema.parse({
+  audio: {
+    backgroundMusic: "music/background.mp3",
+    backgroundMusicVolume: 0.16,
+    voiceoverEnabled: true,
+    voiceoverVolume: 1.0,
+    voiceId: "zh-CN-YunyangNeural",
+    voiceRate: 1.03,
+    voiceoverAudioFiles: [
+      "audio/tradingagents-scene1.mp3",
+      "audio/tradingagents-scene2.mp3",
+      "audio/tradingagents-scene3.mp3",
+      "audio/tradingagents-scene4.mp3",
+      "audio/tradingagents-scene5.mp3",
+      "audio/tradingagents-scene6.mp3",
+      "audio/tradingagents-scene7.mp3",
+    ],
+  },
+  subtitle: {
+    enabled: true,
+    fontSize: 44,
+    position: "bottom" as const,
+    highlightColor: "#f59e0b",
+    textColor: "#e2e8f0",
+    backgroundColor: "rgba(6, 10, 18, 0.85)",
+  },
+  sceneDurations: [545, 789, 853, 865, 988, 852, 821],
+  precomputedSubtitles: tradingagentsSubtitles as any,
 });
 
 export const RemotionRoot: React.FC = () => {
@@ -1564,6 +1598,36 @@ export const RemotionRoot: React.FC = () => {
           defaultProps={HermesAgentSchema.parse({
             subtitle: { enabled: false },
           })}
+        />
+      )}
+      {compositionIds.has("TradingAgents") && (
+        <Composition
+          id="TradingAgents"
+          component={TradingAgents}
+          durationInFrames={
+            getCompositionCatalogEntry("TradingAgents")!.durationInFrames
+          }
+          fps={30}
+          width={1080}
+          height={1920}
+          schema={TradingAgentsSchema}
+          defaultProps={tradingAgentsDefaultProps}
+        />
+      )}
+      {stillIds.has("TradingAgentsCover") && (
+        <Still
+          id="TradingAgentsCover"
+          component={TradingAgentsCover}
+          width={1080}
+          height={1440}
+          schema={TradingAgentsSchema}
+          defaultProps={{
+            ...tradingAgentsDefaultProps,
+            subtitle: {
+              ...tradingAgentsDefaultProps.subtitle,
+              enabled: false,
+            },
+          }}
         />
       )}
       {/* AutoResearch 封面图 (微信视频号 3:4) */}

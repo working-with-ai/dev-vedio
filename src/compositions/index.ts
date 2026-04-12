@@ -48,3 +48,9 @@ export { AgentSkillsSchema, type AgentSkillsProps } from "./AgentSkills/schema";
 export { HermesAgent } from "./HermesAgent";
 export { HermesAgentCover } from "./HermesAgent/Cover";
 export { HermesAgentSchema, type HermesAgentProps } from "./HermesAgent/schema";
+export { TradingAgents } from "./TradingAgents";
+export { TradingAgentsCover } from "./TradingAgents/Cover";
+export {
+  TradingAgentsSchema,
+  type TradingAgentsProps,
+} from "./TradingAgents/schema";
