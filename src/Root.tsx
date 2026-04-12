@@ -42,6 +42,9 @@ import {
   AgentSkills,
   AgentSkillsCover,
   AgentSkillsSchema,
+  HermesAgent,
+  HermesAgentCover,
+  HermesAgentSchema,
 } from "./compositions";
 import {
   getCompositionCatalogEntry,
@@ -65,6 +68,7 @@ import feishuCliSubtitles from "./data/feishucli-subtitles.json";
 import codexEccSubtitles from "./data/codexecc-subtitles.json";
 import aiHedgeFundSubtitles from "./data/aihedgefund-subtitles.json";
 import agentskillsSubtitles from "./data/agentskills-subtitles.json";
+import hermesagentSubtitles from "./data/hermesagent-subtitles.json";
 
 assertRegistryCoverage(videoCompositionCatalog, videoStillCatalog);
 
@@ -1502,6 +1506,62 @@ export const RemotionRoot: React.FC = () => {
           height={1440}
           schema={AgentSkillsSchema}
           defaultProps={AgentSkillsSchema.parse({
+            subtitle: { enabled: false },
+          })}
+        />
+      )}
+      {/* HermesAgent 竖屏短视频 */}
+      {compositionIds.has("HermesAgent") && (
+        <Composition
+          id="HermesAgent"
+          component={HermesAgent}
+          durationInFrames={
+            getCompositionCatalogEntry("HermesAgent")!.durationInFrames
+          }
+          fps={30}
+          width={1080}
+          height={1920}
+          schema={HermesAgentSchema}
+          defaultProps={HermesAgentSchema.parse({
+            audio: {
+              backgroundMusic: "music/background.mp3",
+              backgroundMusicVolume: 0.16,
+              voiceoverEnabled: true,
+              voiceoverVolume: 1.0,
+              voiceId: "zh-CN-YunyangNeural",
+              voiceRate: 1.03,
+              voiceoverAudioFiles: [
+                "audio/hermesagent-scene1.mp3",
+                "audio/hermesagent-scene2.mp3",
+                "audio/hermesagent-scene3.mp3",
+                "audio/hermesagent-scene4.mp3",
+                "audio/hermesagent-scene5.mp3",
+                "audio/hermesagent-scene6.mp3",
+                "audio/hermesagent-scene7.mp3",
+              ],
+            },
+            subtitle: {
+              enabled: true,
+              fontSize: 44,
+              position: "bottom" as const,
+              highlightColor: "#06d6a0",
+              textColor: "#ffffff",
+              backgroundColor: "rgba(8, 6, 15, 0.86)",
+            },
+            sceneDurations: [508, 731, 776, 828, 867, 711, 778],
+            precomputedSubtitles: hermesagentSubtitles,
+          })}
+        />
+      )}
+      {/* HermesAgent 封面图 (微信视频号 3:4) */}
+      {stillIds.has("HermesAgentCover") && (
+        <Still
+          id="HermesAgentCover"
+          component={HermesAgentCover}
+          width={1080}
+          height={1440}
+          schema={HermesAgentSchema}
+          defaultProps={HermesAgentSchema.parse({
             subtitle: { enabled: false },
           })}
         />

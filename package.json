@@ -75,6 +75,10 @@
     "sync:subtitle:agentskills": "npx tsx scripts/sync-subtitle-agentskills.ts",
     "render:agentskills": "remotion render src/index.ts AgentSkills --timeout=180000 --output=out/AgentSkills.mp4",
     "render:agentskills:cover": "remotion still src/index.ts AgentSkillsCover --output=out/AgentSkills-cover.png",
+    "generate:voiceover:hermesagent": "npx tsx scripts/generate-voiceover-hermesagent.ts",
+    "sync:subtitle:hermesagent": "npx tsx scripts/sync-subtitle-hermesagent.ts",
+    "render:hermesagent": "remotion render src/index.ts HermesAgent --timeout=180000 --output=out/HermesAgent.mp4",
+    "render:hermesagent:cover": "remotion still src/index.ts HermesAgentCover --output=out/HermesAgent-cover.png",
     "test": "vitest run",
     "test:contracts": "vitest run src/shared/**/*.test.ts src/server/**/*.test.ts",
     "typecheck": "tsc --noEmit"

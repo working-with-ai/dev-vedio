@@ -45,3 +45,6 @@ export { AIHedgeFundSchema, type AIHedgeFundProps } from "./AIHedgeFund/schema";
 export { AgentSkills } from "./AgentSkills";
 export { AgentSkillsCover } from "./AgentSkills/Cover";
 export { AgentSkillsSchema, type AgentSkillsProps } from "./AgentSkills/schema";
+export { HermesAgent } from "./HermesAgent";
+export { HermesAgentCover } from "./HermesAgent/Cover";
+export { HermesAgentSchema, type HermesAgentProps } from "./HermesAgent/schema";

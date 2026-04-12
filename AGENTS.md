@@ -345,11 +345,15 @@ npm run render:<name>:cover
 - **CSS-only icons replace emoji for visual impact**: clip-path polygons (stars), stacked offset rectangles (documents), side-by-side bars (context comparison) are more visually striking than emoji and render consistently across environments.
 - **Brainstorming before implementation saves iteration**: Structured Q&A (audience → format → narrative → visual style) + 2-3 approach proposals + section-by-section design approval prevents mid-implementation pivots.
 - **Actual TTS duration varies significantly from estimates**: Design spec estimated ~110-130s but actual TTS generated 165s. Always treat the sync script output as the single source of truth for timing.
+- **flex 子项不要用 `flex: "1 1 0"` 撑满剩余空间**: 在竖屏 1920px 高度下，如果内容区 flex 子项（如管线+数字区域）使用 `flex: "1 1 0"`，会导致内容上下分离、中间大片空白。只有需要等分空间的同级子项才使用 `flex: "1 1 0"`，其他场景让内容自然高度 + `justifyContent: "center"` 居中。
 - **竖屏横向溢出是最常见的视觉缺陷**: 1080px 宽度下，双栏布局、固定像素 grid、长中文文案极易撑出画布。所有 flex 子项必须 `flex: "1 1 0"` + `minWidth: 0`，grid 列用 `minmax(0, 1fr)` 或 `fr` 比例，文本加 `overflowWrap`/`wordBreak`。
 - **字幕位置是不可变的锚点**: 字幕 `bottom: 380` 由 `KaraokeSubtitle` 独立绝对定位，不受 BaseScene padding 或内容布局影响。任何布局调整都不能改变这个值。
 - **标题渐变色比纯白色更醒目**: 使用 `-webkit-background-clip: text` + `linear-gradient` 实现渐变文字填充，配合 `textShadow` 微发光，在深色背景下视觉冲击力远强于纯白。
 - **GitHub 仓库卡片可完全用 React 模拟**: 仓库名、描述、Stars/Forks/Issues 统计、语言条等都可用 inline styles 实现，不需要截图或外部图片。适合开源项目主题的 Hook 场景。
 - **Review Gate MCP 作为每次回答后的反馈通道**: 每次回答后调用 `review_gate_chat`，用户可以在弹窗中直接给出后续指令，避免会话中断。
+- **竖屏 HUD 四角框 inset 默认值太小**: HudFrame 默认 `inset: 40` 在竖屏 (1080×1920) 下框太靠外，建议设为 `80` 让四角框更紧凑。
+- **封面英文标签不能用小字号**: `coverLabel` 用 `fontSize: 22` 在 Feed 缩略图中完全看不到，至少 `fontSize: 64-72` + `fontWeight: 900` + 发光 `textShadow`。
+- **flex 子项 `flex: "1 1 0"` 会导致竖屏内容上下分离**: 竖屏安全区高 1500px，如果内容区 flex 子项用 `flex: "1 1 0"` 撑满空间，会在上下内容之间产生大片空白。只在等分同级子项时使用，其他场景让内容自然高度 + `justifyContent: "center"` 居中。
 
 ### 7. 竖屏短视频 (9:16) 设计规范
 
@@ -408,6 +412,7 @@ npm run render:<name>:cover
 #### 封面 (第一帧) 规范
 - **第一帧必须是完整封面**，不能是黑屏或淡入中间状态
 - **主题词必须是第一视觉层级**：封面和视频第一帧中，完整主题名（如“飞书 CLI”）必须是最大、最醒目的文字，不能只突出主题中的局部词或缩写
+- **英文标签 (coverLabel) 要足够大**: 封面顶部英文标签（如 "HERMES AGENT"）至少 `fontSize: 64-72`，`fontWeight: 900`，加 `textShadow` 发光。不要用小字号——在 Feed 缩略图中完全看不到
 - 核心元素（Logo、标题、关键数据）在 frame 0 时 opacity: 1, scale: 1
 - 使用 `coverPhase = frame < 3` 判断，覆盖动画初始状态
 - 数字类元素显示最终值（如 "84k+"），不要从 0 开始动画
@@ -443,7 +448,7 @@ npm run render:<name>:cover
 - **场景标签 (label)**: 可选。传空字符串 `""` 时不渲染。用于显示如 "SCENE 01 / HOOK" 的顶部标记
 - **渐变标题**: 传入 `highlightColor` 后，标题使用 `linear-gradient(135deg, accentColor, highlightColor)` 渐变填充 + 微发光 `textShadow`。不传则使用纯色 `textColor`
 - **标题与内容间距**: TitleBlock 自带 `marginBottom` 额外拉开与正文内容的距离，外层 flex 容器 `gap: 40px`
-- **HUD 装饰**: 四角边框（border + opacity 动画）增强科技感
+- **HUD 装饰**: 四角边框（border + opacity 动画）增强科技感。竖屏视频中 `inset` 建议设为 `80`（默认 40 偏外，内容区域显得空旷）
 - **背景层**: radial-gradient + 扫描线 repeating-linear-gradient
 - **进度条**: 横向放在字幕上方（`bottom: 450`，字幕在 `bottom: 380`），宽度随场景进度从左到右填充，颜色使用 `accentColor → highlightColor` 渐变
 - **GitHub 仓库卡片**: Hook 场景可使用 React + inline styles 模拟 GitHub 仓库页面（仓库名、描述、Stars/Forks/Issues/PRs 统计、语言条），替代传统双栏对比布局，适合开源项目主题视频
@@ -544,6 +549,7 @@ interface SubtitleLine { words: SubtitleWord[]; startFrame: number; endFrame: nu
 | PencilDev | 9:16 | ~113s | Pencil.dev 主力设计软件与 Agent 共创工作流 (7-scene vertical short video) |
 | CodexECC | 9:16 | ~107s | Codex 插件生态 — OpenAI 把 Codex 塞进 Claude Code (7-scene vertical short video) |
 | AIHedgeFund | 9:16 | ~107s | AI Hedge Fund 50k Stars AI投研团队 (7-scene vertical short video) |
+| HermesAgent | 9:16 | ~173s | Hermes Agent 龙虾遇对手了 35k Stars 自我进化Agent (7-scene vertical short video) |
 
 ## Notes for agents
 

@@ -1,0 +1,4 @@
+1
+00:00:00,100 --> 00:00:23,303
+两者都是自托管的开源智能体，都能接入 Telegram Discord Slack，都走 MIT 协议，但设计哲学完全不同，OpenClaw 的核心是一个 Gateway，像一个调度中心，把各种聊天应用连接到 AI agent，Hermes 的核心则是 agent 自身的执行循环，它不围绕怎么送消息，而围绕怎么让 agent 越来越强
+

@@ -432,6 +432,26 @@ export const videoTemplateRegistry = [
       videoChannel: videoChannelProfile,
     },
   }),
+  createEntry({
+    compositionId: "HermesAgent",
+    stillId: "HermesAgentCover",
+    templateType: "vertical-7-scene",
+    aspectRatio: "9:16",
+    safeAreaProfile: shortVideoSafeArea,
+    subtitleMode: "single-line-bottom",
+    supports: {
+      hookSlot: true,
+      coverSlot: true,
+      proofSlot: true,
+    },
+    output: {
+      video: "out/HermesAgent.mp4",
+      cover: "out/HermesAgent-cover.png",
+    },
+    platformProfiles: {
+      videoChannel: videoChannelProfile,
+    },
+  }),
 ] as const satisfies readonly VideoTemplateRegistryEntry[];
 
 export const listVideoTemplates = (): VideoTemplateRegistryEntry[] =>

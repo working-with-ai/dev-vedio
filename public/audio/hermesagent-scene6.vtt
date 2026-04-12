@@ -1,0 +1,4 @@
+1
+00:00:00,100 --> 00:00:22,660
+Hermes 跑在五美元一个月的 VPS 上就够用，也支持 Docker SSH 远程 Modal 等 serverless 方案，安装只需要一行 curl 命令，它还内建了一个兼容 OpenAI API 的服务端，可以直接作为后端接入 Open WebUI 等第三方界面，支持超过两百个模型，随时用 hermes model 一键切换，不需要改一行代码
+

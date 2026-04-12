@@ -1,0 +1,1874 @@
+[
+  {
+    "words": [
+      {
+        "text": "龙虾终于",
+        "startFrame": 12,
+        "endFrame": 31
+      },
+      {
+        "text": "遇到真正",
+        "startFrame": 31,
+        "endFrame": 50
+      },
+      {
+        "text": "的对手了",
+        "startFrame": 50,
+        "endFrame": 69
+      },
+      {
+        "text": "，",
+        "startFrame": 69,
+        "endFrame": 71
+      },
+      {
+        "text": "Nous",
+        "startFrame": 71,
+        "endFrame": 90
+      },
+      {
+        "text": "Rese",
+        "startFrame": 90,
+        "endFrame": 109
+      },
+      {
+        "text": "arch",
+        "startFrame": 109,
+        "endFrame": 128
+      },
+      {
+        "text": "两个月前",
+        "startFrame": 128,
+        "endFrame": 147
+      },
+      {
+        "text": "开源了一",
+        "startFrame": 147,
+        "endFrame": 166
+      },
+      {
+        "text": "个",
+        "startFrame": 166,
+        "endFrame": 171
+      },
+      {
+        "text": "AI",
+        "startFrame": 171,
+        "endFrame": 181
+      },
+      {
+        "text": "智能体框",
+        "startFrame": 181,
+        "endFrame": 200
+      },
+      {
+        "text": "架",
+        "startFrame": 200,
+        "endFrame": 205
+      },
+      {
+        "text": "，",
+        "startFrame": 205,
+        "endFrame": 207
+      },
+      {
+        "text": "叫",
+        "startFrame": 207,
+        "endFrame": 212
+      },
+      {
+        "text": "Herm",
+        "startFrame": 212,
+        "endFrame": 231
+      },
+      {
+        "text": "es",
+        "startFrame": 231,
+        "endFrame": 241
+      },
+      {
+        "text": "Agen",
+        "startFrame": 241,
+        "endFrame": 260
+      },
+      {
+        "text": "t",
+        "startFrame": 260,
+        "endFrame": 265
+      },
+      {
+        "text": "，",
+        "startFrame": 265,
+        "endFrame": 267
+      },
+      {
+        "text": "上线不到",
+        "startFrame": 267,
+        "endFrame": 286
+      },
+      {
+        "text": "两个月",
+        "startFrame": 286,
+        "endFrame": 301
+      },
+      {
+        "text": "，",
+        "startFrame": 301,
+        "endFrame": 303
+      },
+      {
+        "text": "GitH",
+        "startFrame": 303,
+        "endFrame": 322
+      },
+      {
+        "text": "ub",
+        "startFrame": 322,
+        "endFrame": 332
+      },
+      {
+        "text": "星标已经",
+        "startFrame": 332,
+        "endFrame": 351
+      },
+      {
+        "text": "逼近三万",
+        "startFrame": 351,
+        "endFrame": 370
+      },
+      {
+        "text": "五",
+        "startFrame": 370,
+        "endFrame": 375
+      },
+      {
+        "text": "，",
+        "startFrame": 375,
+        "endFrame": 377
+      },
+      {
+        "text": "社区管它",
+        "startFrame": 377,
+        "endFrame": 396
+      },
+      {
+        "text": "叫龙虾上",
+        "startFrame": 396,
+        "endFrame": 415
+      },
+      {
+        "text": "线以来",
+        "startFrame": 415,
+        "endFrame": 430
+      },
+      {
+        "text": "，",
+        "startFrame": 430,
+        "endFrame": 432
+      },
+      {
+        "text": "第一个真",
+        "startFrame": 432,
+        "endFrame": 451
+      },
+      {
+        "text": "正意义上",
+        "startFrame": 451,
+        "endFrame": 470
+      },
+      {
+        "text": "的竞争对",
+        "startFrame": 470,
+        "endFrame": 486
+      },
+      {
+        "text": "手",
+        "startFrame": 489,
+        "endFrame": 491
+      }
+    ],
+    "startFrame": 12,
+    "endFrame": 491
+  },
+  {
+    "words": [
+      {
+        "text": "两者都是",
+        "startFrame": 520,
+        "endFrame": 539
+      },
+      {
+        "text": "自托管的",
+        "startFrame": 539,
+        "endFrame": 558
+      },
+      {
+        "text": "开源智能",
+        "startFrame": 558,
+        "endFrame": 577
+      },
+      {
+        "text": "体",
+        "startFrame": 577,
+        "endFrame": 582
+      },
+      {
+        "text": "，",
+        "startFrame": 582,
+        "endFrame": 584
+      },
+      {
+        "text": "都能接入",
+        "startFrame": 584,
+        "endFrame": 603
+      },
+      {
+        "text": "Tele",
+        "startFrame": 603,
+        "endFrame": 622
+      },
+      {
+        "text": "gram",
+        "startFrame": 622,
+        "endFrame": 641
+      },
+      {
+        "text": "Disc",
+        "startFrame": 641,
+        "endFrame": 660
+      },
+      {
+        "text": "ord",
+        "startFrame": 660,
+        "endFrame": 674
+      },
+      {
+        "text": "Slac",
+        "startFrame": 674,
+        "endFrame": 693
+      },
+      {
+        "text": "k",
+        "startFrame": 693,
+        "endFrame": 698
+      },
+      {
+        "text": "，",
+        "startFrame": 698,
+        "endFrame": 700
+      },
+      {
+        "text": "都走",
+        "startFrame": 700,
+        "endFrame": 710
+      },
+      {
+        "text": "MIT",
+        "startFrame": 710,
+        "endFrame": 724
+      },
+      {
+        "text": "协议",
+        "startFrame": 724,
+        "endFrame": 734
+      },
+      {
+        "text": "，",
+        "startFrame": 734,
+        "endFrame": 736
+      },
+      {
+        "text": "但设计哲",
+        "startFrame": 736,
+        "endFrame": 755
+      },
+      {
+        "text": "学完全不",
+        "startFrame": 755,
+        "endFrame": 774
+      },
+      {
+        "text": "同",
+        "startFrame": 774,
+        "endFrame": 779
+      },
+      {
+        "text": "，",
+        "startFrame": 779,
+        "endFrame": 781
+      },
+      {
+        "text": "Open",
+        "startFrame": 781,
+        "endFrame": 800
+      },
+      {
+        "text": "Claw",
+        "startFrame": 800,
+        "endFrame": 819
+      },
+      {
+        "text": "的核心是",
+        "startFrame": 819,
+        "endFrame": 838
+      },
+      {
+        "text": "一个",
+        "startFrame": 838,
+        "endFrame": 848
+      },
+      {
+        "text": "Gate",
+        "startFrame": 848,
+        "endFrame": 867
+      },
+      {
+        "text": "way",
+        "startFrame": 867,
+        "endFrame": 881
+      },
+      {
+        "text": "，",
+        "startFrame": 881,
+        "endFrame": 883
+      },
+      {
+        "text": "像一个调",
+        "startFrame": 883,
+        "endFrame": 902
+      },
+      {
+        "text": "度中心",
+        "startFrame": 902,
+        "endFrame": 916
+      },
+      {
+        "text": "，",
+        "startFrame": 916,
+        "endFrame": 918
+      },
+      {
+        "text": "把各种聊",
+        "startFrame": 918,
+        "endFrame": 937
+      },
+      {
+        "text": "天应用连",
+        "startFrame": 937,
+        "endFrame": 956
+      },
+      {
+        "text": "接到",
+        "startFrame": 956,
+        "endFrame": 966
+      },
+      {
+        "text": "AI",
+        "startFrame": 966,
+        "endFrame": 976
+      },
+      {
+        "text": "agen",
+        "startFrame": 976,
+        "endFrame": 995
+      },
+      {
+        "text": "t",
+        "startFrame": 995,
+        "endFrame": 1000
+      },
+      {
+        "text": "，",
+        "startFrame": 1000,
+        "endFrame": 1002
+      },
+      {
+        "text": "Herm",
+        "startFrame": 1002,
+        "endFrame": 1021
+      },
+      {
+        "text": "es",
+        "startFrame": 1021,
+        "endFrame": 1031
+      },
+      {
+        "text": "的核心则",
+        "startFrame": 1031,
+        "endFrame": 1050
+      },
+      {
+        "text": "是",
+        "startFrame": 1050,
+        "endFrame": 1055
+      },
+      {
+        "text": "agen",
+        "startFrame": 1055,
+        "endFrame": 1074
+      },
+      {
+        "text": "t",
+        "startFrame": 1074,
+        "endFrame": 1079
+      },
+      {
+        "text": "自身的执",
+        "startFrame": 1079,
+        "endFrame": 1098
+      },
+      {
+        "text": "行循环",
+        "startFrame": 1098,
+        "endFrame": 1112
+      },
+      {
+        "text": "，",
+        "startFrame": 1112,
+        "endFrame": 1114
+      },
+      {
+        "text": "它不围绕",
+        "startFrame": 1114,
+        "endFrame": 1133
+      },
+      {
+        "text": "怎么送消",
+        "startFrame": 1133,
+        "endFrame": 1152
+      },
+      {
+        "text": "息",
+        "startFrame": 1152,
+        "endFrame": 1157
+      },
+      {
+        "text": "，",
+        "startFrame": 1157,
+        "endFrame": 1159
+      },
+      {
+        "text": "而围绕怎",
+        "startFrame": 1159,
+        "endFrame": 1178
+      },
+      {
+        "text": "么让",
+        "startFrame": 1178,
+        "endFrame": 1188
+      },
+      {
+        "text": "agen",
+        "startFrame": 1188,
+        "endFrame": 1207
+      },
+      {
+        "text": "t",
+        "startFrame": 1207,
+        "endFrame": 1212
+      },
+      {
+        "text": "越来越强",
+        "startFrame": 1212,
+        "endFrame": 1216
+      }
+    ],
+    "startFrame": 520,
+    "endFrame": 1216
+  },
+  {
+    "words": [
+      {
+        "text": "这是",
+        "startFrame": 1251,
+        "endFrame": 1262
+      },
+      {
+        "text": "Herm",
+        "startFrame": 1262,
+        "endFrame": 1284
+      },
+      {
+        "text": "es",
+        "startFrame": 1284,
+        "endFrame": 1295
+      },
+      {
+        "text": "最有意思",
+        "startFrame": 1295,
+        "endFrame": 1317
+      },
+      {
+        "text": "的地方",
+        "startFrame": 1317,
+        "endFrame": 1333
+      },
+      {
+        "text": "，",
+        "startFrame": 1333,
+        "endFrame": 1335
+      },
+      {
+        "text": "当它完成",
+        "startFrame": 1335,
+        "endFrame": 1357
+      },
+      {
+        "text": "一个复杂",
+        "startFrame": 1357,
+        "endFrame": 1379
+      },
+      {
+        "text": "任务后",
+        "startFrame": 1379,
+        "endFrame": 1395
+      },
+      {
+        "text": "，",
+        "startFrame": 1395,
+        "endFrame": 1397
+      },
+      {
+        "text": "会把整个",
+        "startFrame": 1397,
+        "endFrame": 1419
+      },
+      {
+        "text": "过程沉淀",
+        "startFrame": 1419,
+        "endFrame": 1441
+      },
+      {
+        "text": "成一份结",
+        "startFrame": 1441,
+        "endFrame": 1463
+      },
+      {
+        "text": "构化的技",
+        "startFrame": 1463,
+        "endFrame": 1485
+      },
+      {
+        "text": "能文档",
+        "startFrame": 1485,
+        "endFrame": 1501
+      },
+      {
+        "text": "，",
+        "startFrame": 1501,
+        "endFrame": 1503
+      },
+      {
+        "text": "存成",
+        "startFrame": 1503,
+        "endFrame": 1514
+      },
+      {
+        "text": "Mark",
+        "startFrame": 1514,
+        "endFrame": 1536
+      },
+      {
+        "text": "down",
+        "startFrame": 1536,
+        "endFrame": 1558
+      },
+      {
+        "text": "文件",
+        "startFrame": 1558,
+        "endFrame": 1569
+      },
+      {
+        "text": "，",
+        "startFrame": 1569,
+        "endFrame": 1571
+      },
+      {
+        "text": "下次遇到",
+        "startFrame": 1571,
+        "endFrame": 1593
+      },
+      {
+        "text": "类似任务",
+        "startFrame": 1593,
+        "endFrame": 1615
+      },
+      {
+        "text": "，",
+        "startFrame": 1615,
+        "endFrame": 1617
+      },
+      {
+        "text": "直接加载",
+        "startFrame": 1617,
+        "endFrame": 1639
+      },
+      {
+        "text": "这份技能",
+        "startFrame": 1639,
+        "endFrame": 1661
+      },
+      {
+        "text": "，",
+        "startFrame": 1661,
+        "endFrame": 1663
+      },
+      {
+        "text": "不用从头",
+        "startFrame": 1663,
+        "endFrame": 1685
+      },
+      {
+        "text": "解决",
+        "startFrame": 1685,
+        "endFrame": 1696
+      },
+      {
+        "text": "，",
+        "startFrame": 1696,
+        "endFrame": 1698
+      },
+      {
+        "text": "更关键的",
+        "startFrame": 1698,
+        "endFrame": 1720
+      },
+      {
+        "text": "是",
+        "startFrame": 1720,
+        "endFrame": 1725
+      },
+      {
+        "text": "，",
+        "startFrame": 1725,
+        "endFrame": 1727
+      },
+      {
+        "text": "这些技能",
+        "startFrame": 1727,
+        "endFrame": 1749
+      },
+      {
+        "text": "在使用过",
+        "startFrame": 1749,
+        "endFrame": 1771
+      },
+      {
+        "text": "程中会自",
+        "startFrame": 1771,
+        "endFrame": 1793
+      },
+      {
+        "text": "我迭代",
+        "startFrame": 1793,
+        "endFrame": 1809
+      },
+      {
+        "text": "，",
+        "startFrame": 1809,
+        "endFrame": 1811
+      },
+      {
+        "text": "有用户反",
+        "startFrame": 1811,
+        "endFrame": 1833
+      },
+      {
+        "text": "馈",
+        "startFrame": 1833,
+        "endFrame": 1838
+      },
+      {
+        "text": "，",
+        "startFrame": 1838,
+        "endFrame": 1840
+      },
+      {
+        "text": "agen",
+        "startFrame": 1840,
+        "endFrame": 1862
+      },
+      {
+        "text": "t",
+        "startFrame": 1862,
+        "endFrame": 1867
+      },
+      {
+        "text": "两小时内",
+        "startFrame": 1867,
+        "endFrame": 1889
+      },
+      {
+        "text": "自动生成",
+        "startFrame": 1889,
+        "endFrame": 1911
+      },
+      {
+        "text": "了三份技",
+        "startFrame": 1911,
+        "endFrame": 1933
+      },
+      {
+        "text": "能后",
+        "startFrame": 1933,
+        "endFrame": 1944
+      },
+      {
+        "text": "，",
+        "startFrame": 1944,
+        "endFrame": 1946
+      },
+      {
+        "text": "重复任务",
+        "startFrame": 1946,
+        "endFrame": 1968
+      },
+      {
+        "text": "速度提升",
+        "startFrame": 1968,
+        "endFrame": 1990
+      },
+      {
+        "text": "了百分之",
+        "startFrame": 1990,
+        "endFrame": 1992
+      },
+      {
+        "text": "四十",
+        "startFrame": 2012,
+        "endFrame": 2014
+      }
+    ],
+    "startFrame": 1251,
+    "endFrame": 2014
+  },
+  {
+    "words": [
+      {
+        "text": "两者都有",
+        "startFrame": 2027,
+        "endFrame": 2049
+      },
+      {
+        "text": "跨会话记",
+        "startFrame": 2049,
+        "endFrame": 2071
+      },
+      {
+        "text": "忆",
+        "startFrame": 2071,
+        "endFrame": 2077
+      },
+      {
+        "text": "，",
+        "startFrame": 2077,
+        "endFrame": 2079
+      },
+      {
+        "text": "但实现方",
+        "startFrame": 2079,
+        "endFrame": 2101
+      },
+      {
+        "text": "式不同",
+        "startFrame": 2101,
+        "endFrame": 2118
+      },
+      {
+        "text": "，",
+        "startFrame": 2118,
+        "endFrame": 2120
+      },
+      {
+        "text": "Herm",
+        "startFrame": 2120,
+        "endFrame": 2142
+      },
+      {
+        "text": "es",
+        "startFrame": 2142,
+        "endFrame": 2153
+      },
+      {
+        "text": "用",
+        "startFrame": 2153,
+        "endFrame": 2159
+      },
+      {
+        "text": "SQLi",
+        "startFrame": 2159,
+        "endFrame": 2181
+      },
+      {
+        "text": "te",
+        "startFrame": 2181,
+        "endFrame": 2192
+      },
+      {
+        "text": "配合全文",
+        "startFrame": 2192,
+        "endFrame": 2214
+      },
+      {
+        "text": "检索",
+        "startFrame": 2214,
+        "endFrame": 2225
+      },
+      {
+        "text": "，",
+        "startFrame": 2225,
+        "endFrame": 2227
+      },
+      {
+        "text": "把所有历",
+        "startFrame": 2227,
+        "endFrame": 2249
+      },
+      {
+        "text": "史对话存",
+        "startFrame": 2249,
+        "endFrame": 2271
+      },
+      {
+        "text": "下来",
+        "startFrame": 2271,
+        "endFrame": 2282
+      },
+      {
+        "text": "，",
+        "startFrame": 2282,
+        "endFrame": 2284
+      },
+      {
+        "text": "记忆分两",
+        "startFrame": 2284,
+        "endFrame": 2306
+      },
+      {
+        "text": "层",
+        "startFrame": 2306,
+        "endFrame": 2312
+      },
+      {
+        "text": "，",
+        "startFrame": 2312,
+        "endFrame": 2314
+      },
+      {
+        "text": "一层是常",
+        "startFrame": 2314,
+        "endFrame": 2336
+      },
+      {
+        "text": "驻关键信",
+        "startFrame": 2336,
+        "endFrame": 2358
+      },
+      {
+        "text": "息",
+        "startFrame": 2358,
+        "endFrame": 2364
+      },
+      {
+        "text": "，",
+        "startFrame": 2364,
+        "endFrame": 2366
+      },
+      {
+        "text": "写在",
+        "startFrame": 2366,
+        "endFrame": 2377
+      },
+      {
+        "text": "MEMO",
+        "startFrame": 2377,
+        "endFrame": 2399
+      },
+      {
+        "text": "RY",
+        "startFrame": 2399,
+        "endFrame": 2410
+      },
+      {
+        "text": ".",
+        "startFrame": 2410,
+        "endFrame": 2412
+      },
+      {
+        "text": "md",
+        "startFrame": 2412,
+        "endFrame": 2423
+      },
+      {
+        "text": "里",
+        "startFrame": 2423,
+        "endFrame": 2429
+      },
+      {
+        "text": "，",
+        "startFrame": 2429,
+        "endFrame": 2431
+      },
+      {
+        "text": "每次对话",
+        "startFrame": 2431,
+        "endFrame": 2453
+      },
+      {
+        "text": "都带上",
+        "startFrame": 2453,
+        "endFrame": 2470
+      },
+      {
+        "text": "，",
+        "startFrame": 2470,
+        "endFrame": 2472
+      },
+      {
+        "text": "另一层是",
+        "startFrame": 2472,
+        "endFrame": 2494
+      },
+      {
+        "text": "全量历史",
+        "startFrame": 2494,
+        "endFrame": 2516
+      },
+      {
+        "text": "检索",
+        "startFrame": 2516,
+        "endFrame": 2527
+      },
+      {
+        "text": "，",
+        "startFrame": 2527,
+        "endFrame": 2529
+      },
+      {
+        "text": "容量无限",
+        "startFrame": 2529,
+        "endFrame": 2551
+      },
+      {
+        "text": "，",
+        "startFrame": 2551,
+        "endFrame": 2553
+      },
+      {
+        "text": "按需调用",
+        "startFrame": 2553,
+        "endFrame": 2575
+      },
+      {
+        "text": "，",
+        "startFrame": 2575,
+        "endFrame": 2577
+      },
+      {
+        "text": "Open",
+        "startFrame": 2577,
+        "endFrame": 2599
+      },
+      {
+        "text": "Claw",
+        "startFrame": 2599,
+        "endFrame": 2621
+      },
+      {
+        "text": "走的是文",
+        "startFrame": 2621,
+        "endFrame": 2643
+      },
+      {
+        "text": "件即记忆",
+        "startFrame": 2643,
+        "endFrame": 2665
+      },
+      {
+        "text": "的路线",
+        "startFrame": 2665,
+        "endFrame": 2682
+      },
+      {
+        "text": "，",
+        "startFrame": 2682,
+        "endFrame": 2684
+      },
+      {
+        "text": "简单说",
+        "startFrame": 2684,
+        "endFrame": 2701
+      },
+      {
+        "text": "，",
+        "startFrame": 2701,
+        "endFrame": 2703
+      },
+      {
+        "text": "Herm",
+        "startFrame": 2703,
+        "endFrame": 2725
+      },
+      {
+        "text": "es",
+        "startFrame": 2725,
+        "endFrame": 2736
+      },
+      {
+        "text": "是搜索引",
+        "startFrame": 2736,
+        "endFrame": 2758
+      },
+      {
+        "text": "擎式的大",
+        "startFrame": 2758,
+        "endFrame": 2780
+      },
+      {
+        "text": "脑",
+        "startFrame": 2780,
+        "endFrame": 2786
+      },
+      {
+        "text": "，",
+        "startFrame": 2786,
+        "endFrame": 2788
+      },
+      {
+        "text": "Open",
+        "startFrame": 2788,
+        "endFrame": 2810
+      },
+      {
+        "text": "Claw",
+        "startFrame": 2810,
+        "endFrame": 2820
+      },
+      {
+        "text": "是笔记本",
+        "startFrame": 2832,
+        "endFrame": 2834
+      }
+    ],
+    "startFrame": 2027,
+    "endFrame": 2834
+  },
+  {
+    "words": [
+      {
+        "text": "安全思路",
+        "startFrame": 2855,
+        "endFrame": 2879
+      },
+      {
+        "text": "也完全不",
+        "startFrame": 2879,
+        "endFrame": 2903
+      },
+      {
+        "text": "一样",
+        "startFrame": 2903,
+        "endFrame": 2915
+      },
+      {
+        "text": "，",
+        "startFrame": 2915,
+        "endFrame": 2917
+      },
+      {
+        "text": "Herm",
+        "startFrame": 2917,
+        "endFrame": 2941
+      },
+      {
+        "text": "es",
+        "startFrame": 2941,
+        "endFrame": 2953
+      },
+      {
+        "text": "搞了一套",
+        "startFrame": 2953,
+        "endFrame": 2977
+      },
+      {
+        "text": "五层纵深",
+        "startFrame": 2977,
+        "endFrame": 3001
+      },
+      {
+        "text": "防御",
+        "startFrame": 3001,
+        "endFrame": 3013
+      },
+      {
+        "text": "，",
+        "startFrame": 3013,
+        "endFrame": 3015
+      },
+      {
+        "text": "用户授权",
+        "startFrame": 3015,
+        "endFrame": 3039
+      },
+      {
+        "text": "，",
+        "startFrame": 3039,
+        "endFrame": 3041
+      },
+      {
+        "text": "危险命令",
+        "startFrame": 3041,
+        "endFrame": 3065
+      },
+      {
+        "text": "审批",
+        "startFrame": 3065,
+        "endFrame": 3077
+      },
+      {
+        "text": "，",
+        "startFrame": 3077,
+        "endFrame": 3079
+      },
+      {
+        "text": "容器隔离",
+        "startFrame": 3079,
+        "endFrame": 3103
+      },
+      {
+        "text": "，",
+        "startFrame": 3103,
+        "endFrame": 3105
+      },
+      {
+        "text": "凭据过滤",
+        "startFrame": 3105,
+        "endFrame": 3129
+      },
+      {
+        "text": "，",
+        "startFrame": 3129,
+        "endFrame": 3131
+      },
+      {
+        "text": "上下文注",
+        "startFrame": 3131,
+        "endFrame": 3155
+      },
+      {
+        "text": "入扫描",
+        "startFrame": 3155,
+        "endFrame": 3173
+      },
+      {
+        "text": "，",
+        "startFrame": 3173,
+        "endFrame": 3175
+      },
+      {
+        "text": "默认对高",
+        "startFrame": 3175,
+        "endFrame": 3199
+      },
+      {
+        "text": "风险操作",
+        "startFrame": 3199,
+        "endFrame": 3223
+      },
+      {
+        "text": "要人工审",
+        "startFrame": 3223,
+        "endFrame": 3247
+      },
+      {
+        "text": "批",
+        "startFrame": 3247,
+        "endFrame": 3253
+      },
+      {
+        "text": "，",
+        "startFrame": 3253,
+        "endFrame": 3255
+      },
+      {
+        "text": "超时未批",
+        "startFrame": 3255,
+        "endFrame": 3279
+      },
+      {
+        "text": "准就自动",
+        "startFrame": 3279,
+        "endFrame": 3303
+      },
+      {
+        "text": "拒绝",
+        "startFrame": 3303,
+        "endFrame": 3315
+      },
+      {
+        "text": "，",
+        "startFrame": 3315,
+        "endFrame": 3317
+      },
+      {
+        "text": "Open",
+        "startFrame": 3317,
+        "endFrame": 3341
+      },
+      {
+        "text": "Claw",
+        "startFrame": 3341,
+        "endFrame": 3365
+      },
+      {
+        "text": "更强调信",
+        "startFrame": 3365,
+        "endFrame": 3389
+      },
+      {
+        "text": "任模型和",
+        "startFrame": 3389,
+        "endFrame": 3413
+      },
+      {
+        "text": "配置审计",
+        "startFrame": 3413,
+        "endFrame": 3437
+      },
+      {
+        "text": "，",
+        "startFrame": 3437,
+        "endFrame": 3439
+      },
+      {
+        "text": "但今年二",
+        "startFrame": 3439,
+        "endFrame": 3463
+      },
+      {
+        "text": "月被曝出",
+        "startFrame": 3463,
+        "endFrame": 3487
+      },
+      {
+        "text": "多个高危",
+        "startFrame": 3487,
+        "endFrame": 3511
+      },
+      {
+        "text": "漏洞",
+        "startFrame": 3511,
+        "endFrame": 3523
+      },
+      {
+        "text": "，",
+        "startFrame": 3523,
+        "endFrame": 3525
+      },
+      {
+        "text": "十三万五",
+        "startFrame": 3525,
+        "endFrame": 3549
+      },
+      {
+        "text": "千个实例",
+        "startFrame": 3549,
+        "endFrame": 3573
+      },
+      {
+        "text": "暴露在公",
+        "startFrame": 3573,
+        "endFrame": 3597
+      },
+      {
+        "text": "网上",
+        "startFrame": 3597,
+        "endFrame": 3609
+      },
+      {
+        "text": "，",
+        "startFrame": 3609,
+        "endFrame": 3611
+      },
+      {
+        "text": "技能市场",
+        "startFrame": 3611,
+        "endFrame": 3635
+      },
+      {
+        "text": "也发现了",
+        "startFrame": 3635,
+        "endFrame": 3659
+      },
+      {
+        "text": "三百多个",
+        "startFrame": 3659,
+        "endFrame": 3683
+      },
+      {
+        "text": "恶意技能",
+        "startFrame": 3683,
+        "endFrame": 3688
+      }
+    ],
+    "startFrame": 2855,
+    "endFrame": 3688
+  },
+  {
+    "words": [
+      {
+        "text": "Herm",
+        "startFrame": 3722,
+        "endFrame": 3740
+      },
+      {
+        "text": "es",
+        "startFrame": 3740,
+        "endFrame": 3749
+      },
+      {
+        "text": "跑在五美",
+        "startFrame": 3749,
+        "endFrame": 3767
+      },
+      {
+        "text": "元一个月",
+        "startFrame": 3767,
+        "endFrame": 3785
+      },
+      {
+        "text": "的",
+        "startFrame": 3785,
+        "endFrame": 3790
+      },
+      {
+        "text": "VPS",
+        "startFrame": 3790,
+        "endFrame": 3804
+      },
+      {
+        "text": "上就够用",
+        "startFrame": 3804,
+        "endFrame": 3822
+      },
+      {
+        "text": "，",
+        "startFrame": 3822,
+        "endFrame": 3824
+      },
+      {
+        "text": "也支持",
+        "startFrame": 3824,
+        "endFrame": 3838
+      },
+      {
+        "text": "Dock",
+        "startFrame": 3838,
+        "endFrame": 3856
+      },
+      {
+        "text": "er",
+        "startFrame": 3856,
+        "endFrame": 3865
+      },
+      {
+        "text": "SSH",
+        "startFrame": 3865,
+        "endFrame": 3879
+      },
+      {
+        "text": "远程",
+        "startFrame": 3879,
+        "endFrame": 3888
+      },
+      {
+        "text": "Moda",
+        "startFrame": 3888,
+        "endFrame": 3906
+      },
+      {
+        "text": "l",
+        "startFrame": 3906,
+        "endFrame": 3911
+      },
+      {
+        "text": "等",
+        "startFrame": 3911,
+        "endFrame": 3916
+      },
+      {
+        "text": "serv",
+        "startFrame": 3916,
+        "endFrame": 3934
+      },
+      {
+        "text": "erle",
+        "startFrame": 3934,
+        "endFrame": 3952
+      },
+      {
+        "text": "ss",
+        "startFrame": 3952,
+        "endFrame": 3961
+      },
+      {
+        "text": "方案",
+        "startFrame": 3961,
+        "endFrame": 3970
+      },
+      {
+        "text": "，",
+        "startFrame": 3970,
+        "endFrame": 3972
+      },
+      {
+        "text": "安装只需",
+        "startFrame": 3972,
+        "endFrame": 3990
+      },
+      {
+        "text": "要一行",
+        "startFrame": 3990,
+        "endFrame": 4004
+      },
+      {
+        "text": "curl",
+        "startFrame": 4004,
+        "endFrame": 4022
+      },
+      {
+        "text": "命令",
+        "startFrame": 4022,
+        "endFrame": 4031
+      },
+      {
+        "text": "，",
+        "startFrame": 4031,
+        "endFrame": 4033
+      },
+      {
+        "text": "它还内建",
+        "startFrame": 4033,
+        "endFrame": 4051
+      },
+      {
+        "text": "了一个兼",
+        "startFrame": 4051,
+        "endFrame": 4069
+      },
+      {
+        "text": "容",
+        "startFrame": 4069,
+        "endFrame": 4074
+      },
+      {
+        "text": "Open",
+        "startFrame": 4074,
+        "endFrame": 4092
+      },
+      {
+        "text": "AI",
+        "startFrame": 4092,
+        "endFrame": 4101
+      },
+      {
+        "text": "API",
+        "startFrame": 4101,
+        "endFrame": 4115
+      },
+      {
+        "text": "的服务端",
+        "startFrame": 4115,
+        "endFrame": 4133
+      },
+      {
+        "text": "，",
+        "startFrame": 4133,
+        "endFrame": 4135
+      },
+      {
+        "text": "可以直接",
+        "startFrame": 4135,
+        "endFrame": 4153
+      },
+      {
+        "text": "作为后端",
+        "startFrame": 4153,
+        "endFrame": 4171
+      },
+      {
+        "text": "接入",
+        "startFrame": 4171,
+        "endFrame": 4180
+      },
+      {
+        "text": "Open",
+        "startFrame": 4180,
+        "endFrame": 4198
+      },
+      {
+        "text": "WebU",
+        "startFrame": 4198,
+        "endFrame": 4216
+      },
+      {
+        "text": "I",
+        "startFrame": 4216,
+        "endFrame": 4221
+      },
+      {
+        "text": "等第三方",
+        "startFrame": 4221,
+        "endFrame": 4239
+      },
+      {
+        "text": "界面",
+        "startFrame": 4239,
+        "endFrame": 4248
+      },
+      {
+        "text": "，",
+        "startFrame": 4248,
+        "endFrame": 4250
+      },
+      {
+        "text": "支持超过",
+        "startFrame": 4250,
+        "endFrame": 4268
+      },
+      {
+        "text": "两百个模",
+        "startFrame": 4268,
+        "endFrame": 4286
+      },
+      {
+        "text": "型",
+        "startFrame": 4286,
+        "endFrame": 4291
+      },
+      {
+        "text": "，",
+        "startFrame": 4291,
+        "endFrame": 4293
+      },
+      {
+        "text": "随时用",
+        "startFrame": 4293,
+        "endFrame": 4307
+      },
+      {
+        "text": "herm",
+        "startFrame": 4307,
+        "endFrame": 4325
+      },
+      {
+        "text": "es",
+        "startFrame": 4325,
+        "endFrame": 4334
+      },
+      {
+        "text": "mode",
+        "startFrame": 4334,
+        "endFrame": 4352
+      },
+      {
+        "text": "l",
+        "startFrame": 4352,
+        "endFrame": 4357
+      },
+      {
+        "text": "一键切换",
+        "startFrame": 4357,
+        "endFrame": 4375
+      },
+      {
+        "text": "，",
+        "startFrame": 4375,
+        "endFrame": 4377
+      },
+      {
+        "text": "不需要改",
+        "startFrame": 4377,
+        "endFrame": 4395
+      },
+      {
+        "text": "一行代码",
+        "startFrame": 4395,
+        "endFrame": 4399
+      }
+    ],
+    "startFrame": 3722,
+    "endFrame": 4399
+  },
+  {
+    "words": [
+      {
+        "text": "如果你想",
+        "startFrame": 4433,
+        "endFrame": 4455
+      },
+      {
+        "text": "要一个多",
+        "startFrame": 4455,
+        "endFrame": 4477
+      },
+      {
+        "text": "渠道助理",
+        "startFrame": 4477,
+        "endFrame": 4499
+      },
+      {
+        "text": "平台",
+        "startFrame": 4499,
+        "endFrame": 4510
+      },
+      {
+        "text": "，",
+        "startFrame": 4510,
+        "endFrame": 4512
+      },
+      {
+        "text": "接入各种",
+        "startFrame": 4512,
+        "endFrame": 4534
+      },
+      {
+        "text": "聊天工具",
+        "startFrame": 4534,
+        "endFrame": 4556
+      },
+      {
+        "text": "，",
+        "startFrame": 4556,
+        "endFrame": 4558
+      },
+      {
+        "text": "用社区现",
+        "startFrame": 4558,
+        "endFrame": 4580
+      },
+      {
+        "text": "成的技能",
+        "startFrame": 4580,
+        "endFrame": 4602
+      },
+      {
+        "text": "市场",
+        "startFrame": 4602,
+        "endFrame": 4613
+      },
+      {
+        "text": "，",
+        "startFrame": 4613,
+        "endFrame": 4615
+      },
+      {
+        "text": "Open",
+        "startFrame": 4615,
+        "endFrame": 4637
+      },
+      {
+        "text": "Claw",
+        "startFrame": 4637,
+        "endFrame": 4659
+      },
+      {
+        "text": "的生态更",
+        "startFrame": 4659,
+        "endFrame": 4681
+      },
+      {
+        "text": "成熟",
+        "startFrame": 4681,
+        "endFrame": 4692
+      },
+      {
+        "text": "，",
+        "startFrame": 4692,
+        "endFrame": 4694
+      },
+      {
+        "text": "三十四万",
+        "startFrame": 4694,
+        "endFrame": 4716
+      },
+      {
+        "text": "星标不是",
+        "startFrame": 4716,
+        "endFrame": 4738
+      },
+      {
+        "text": "白来的",
+        "startFrame": 4738,
+        "endFrame": 4754
+      },
+      {
+        "text": "，",
+        "startFrame": 4754,
+        "endFrame": 4756
+      },
+      {
+        "text": "但如果你",
+        "startFrame": 4756,
+        "endFrame": 4778
+      },
+      {
+        "text": "更关心",
+        "startFrame": 4778,
+        "endFrame": 4794
+      },
+      {
+        "text": "agen",
+        "startFrame": 4794,
+        "endFrame": 4816
+      },
+      {
+        "text": "t",
+        "startFrame": 4816,
+        "endFrame": 4821
+      },
+      {
+        "text": "的长期进",
+        "startFrame": 4821,
+        "endFrame": 4843
+      },
+      {
+        "text": "化能力",
+        "startFrame": 4843,
+        "endFrame": 4859
+      },
+      {
+        "text": "，",
+        "startFrame": 4859,
+        "endFrame": 4861
+      },
+      {
+        "text": "想让它用",
+        "startFrame": 4861,
+        "endFrame": 4883
+      },
+      {
+        "text": "得越久越",
+        "startFrame": 4883,
+        "endFrame": 4905
+      },
+      {
+        "text": "聪明",
+        "startFrame": 4905,
+        "endFrame": 4916
+      },
+      {
+        "text": "，",
+        "startFrame": 4916,
+        "endFrame": 4918
+      },
+      {
+        "text": "或者你在",
+        "startFrame": 4918,
+        "endFrame": 4940
+      },
+      {
+        "text": "做",
+        "startFrame": 4940,
+        "endFrame": 4945
+      },
+      {
+        "text": "AI",
+        "startFrame": 4945,
+        "endFrame": 4956
+      },
+      {
+        "text": "研究",
+        "startFrame": 4956,
+        "endFrame": 4967
+      },
+      {
+        "text": "，",
+        "startFrame": 4967,
+        "endFrame": 4969
+      },
+      {
+        "text": "需要生成",
+        "startFrame": 4969,
+        "endFrame": 4991
+      },
+      {
+        "text": "训练轨迹",
+        "startFrame": 4991,
+        "endFrame": 5013
+      },
+      {
+        "text": "跑强化学",
+        "startFrame": 5013,
+        "endFrame": 5035
+      },
+      {
+        "text": "习",
+        "startFrame": 5035,
+        "endFrame": 5040
+      },
+      {
+        "text": "，",
+        "startFrame": 5040,
+        "endFrame": 5042
+      },
+      {
+        "text": "Herm",
+        "startFrame": 5042,
+        "endFrame": 5064
+      },
+      {
+        "text": "es",
+        "startFrame": 5064,
+        "endFrame": 5075
+      },
+      {
+        "text": "的架构更",
+        "startFrame": 5075,
+        "endFrame": 5097
+      },
+      {
+        "text": "对口",
+        "startFrame": 5097,
+        "endFrame": 5108
+      },
+      {
+        "text": "，",
+        "startFrame": 5108,
+        "endFrame": 5110
+      },
+      {
+        "text": "链接放在",
+        "startFrame": 5110,
+        "endFrame": 5132
+      },
+      {
+        "text": "评论区",
+        "startFrame": 5132,
+        "endFrame": 5148
+      },
+      {
+        "text": "，",
+        "startFrame": 5148,
+        "endFrame": 5150
+      },
+      {
+        "text": "感兴趣的",
+        "startFrame": 5150,
+        "endFrame": 5172
+      },
+      {
+        "text": "可以去试",
+        "startFrame": 5172,
+        "endFrame": 5176
+      },
+      {
+        "text": "试",
+        "startFrame": 5194,
+        "endFrame": 5196
+      }
+    ],
+    "startFrame": 4433,
+    "endFrame": 5196
+  }
+]
