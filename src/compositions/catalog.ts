@@ -90,6 +90,8 @@ export const videoCompositionCatalog = [
   createCompositionCatalogEntry("AgentSkills", 1080, 1920, 30, 3796),
   createCompositionCatalogEntry("HermesAgent", 1080, 1920, 30, 5199),
   createCompositionCatalogEntry("TradingAgents", 1080, 1920, 30, 5713),
+  createCompositionCatalogEntry("SPXOpenAPI", 1080, 1920, 30, 4500),
+  createCompositionCatalogEntry("SPXOpenAPILandscape", 1920, 1080, 30, 5267),
 ] as const;
 
 export const videoStillCatalog = [
@@ -109,6 +111,13 @@ export const videoStillCatalog = [
   createStillCatalogEntry("AgentSkillsCover", "AgentSkills", 1080, 1440),
   createStillCatalogEntry("HermesAgentCover", "HermesAgent", 1080, 1440),
   createStillCatalogEntry("TradingAgentsCover", "TradingAgents", 1080, 1440),
+  createStillCatalogEntry("SPXOpenAPICover", "SPXOpenAPI", 1080, 1440),
+  createStillCatalogEntry(
+    "SPXOpenAPILandscapeCover",
+    "SPXOpenAPILandscape",
+    1920,
+    1080,
+  ),
 ] as const;
 
 export const getCompositionCatalogEntry = (

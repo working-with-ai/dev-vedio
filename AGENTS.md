@@ -25,6 +25,7 @@ Keep changes small, follow existing patterns, and prefer explicit scripts.
 - `src/shared/animations-vertical.ts`: Vertical video animation extensions (re-exports base + adds vertical-specific).
 - `public/music/`, `public/audio/`: Assets and generated audio.
 - `out/`: Rendered videos (generated).
+- `docs/solutions/`: Documented solutions to past problems (UI bugs, layout issues, workflow patterns), organized by category with YAML frontmatter (`module`, `tags`, `problem_type`). Relevant when debugging layout issues or implementing new compositions.
 
 ## Commands (build, lint, test)
 
@@ -450,7 +451,7 @@ npm run render:<name>:cover
 - **标题与内容间距**: TitleBlock 自带 `marginBottom` 额外拉开与正文内容的距离，外层 flex 容器 `gap: 40px`
 - **HUD 装饰**: 四角边框（border + opacity 动画）增强科技感。竖屏视频中 `inset` 建议设为 `80`（默认 40 偏外，内容区域显得空旷）
 - **背景层**: radial-gradient + 扫描线 repeating-linear-gradient
-- **进度条**: 横向放在字幕上方（`bottom: 450`，字幕在 `bottom: 380`），宽度随场景进度从左到右填充，颜色使用 `accentColor → highlightColor` 渐变
+- **进度条**: 横向放在字幕上方（`bottom: 490`，字幕在 `bottom: 380`，需保留 ≥110px 净空以容纳字幕文字高度 + 背景遮罩 padding），宽度随场景进度从左到右填充，颜色使用 `accentColor → highlightColor` 渐变
 - **GitHub 仓库卡片**: Hook 场景可使用 React + inline styles 模拟 GitHub 仓库页面（仓库名、描述、Stars/Forks/Issues/PRs 统计、语言条），替代传统双栏对比布局，适合开源项目主题视频
 
 #### 动画规范
@@ -558,25 +559,3 @@ interface SubtitleLine { words: SubtitleWord[]; startFrame: number; endFrame: nu
 - Update this file when new scripts or lint/test tooling are added.
 - When creating a new video, follow the "Video generation workflow" section above.
 - Always run `npm run typecheck` after changes to catch type errors early.
-
-### Review Gate 规则
-
-**主 agent每次回答完用户问题后，必须调用 `user-review-gate-v2` MCP 的 `review_gate_chat` 工具**，让用户在弹窗中提供反馈或后续指令，subagent不需要调用，。
-
-调用示例：
-```
-server: user-review-gate-v2
-toolName: review_gate_chat
-arguments: {
-  title: "Review Gate",
-  message: "已完成 XX 操作的简要描述。是否需要调整？",
-  context: "操作背景和上下文",
-  urgent: false
-}
-```
-
-规则：
-- 每次回答结束都要调用，无论是回答问题还是完成代码修改
-- `message` 用中文，简要概括刚完成的操作和结果
-- `context` 提供操作的技术背景，便于用户判断
-- 用户通过弹窗返回的文字作为下一步指令

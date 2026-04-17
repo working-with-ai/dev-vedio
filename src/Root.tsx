@@ -48,6 +48,19 @@ import {
   TradingAgents,
   TradingAgentsCover,
   TradingAgentsSchema,
+  SPXOpenAPI,
+  SPXOpenAPICover,
+  SPXOpenAPISchema,
+  SPXOpenAPILandscape,
+  SPXOpenAPILandscapeCover,
+  SPXOpenAPILandscapeSchema,
+  SPXOpenAPILandscapeSlide1,
+  SPXOpenAPILandscapeSlide2,
+  SPXOpenAPILandscapeSlide3,
+  SPXOpenAPILandscapeSlide4,
+  SPXOpenAPILandscapeSlide5,
+  SPXOpenAPILandscapeSlide6,
+  SPXOpenAPILandscapeSlide7,
 } from "./compositions";
 import {
   getCompositionCatalogEntry,
@@ -73,6 +86,8 @@ import aiHedgeFundSubtitles from "./data/aihedgefund-subtitles.json";
 import agentskillsSubtitles from "./data/agentskills-subtitles.json";
 import hermesagentSubtitles from "./data/hermesagent-subtitles.json";
 import tradingagentsSubtitles from "./data/tradingagents-subtitles.json";
+import spxopenapiSubtitles from "./data/spxopenapi-subtitles.json";
+import spxopenapiLandscapeSubtitles from "./data/spxopenapi-landscape-subtitles.json";
 
 assertRegistryCoverage(videoCompositionCatalog, videoStillCatalog);
 
@@ -1693,6 +1708,144 @@ export const RemotionRoot: React.FC = () => {
           }}
         />
       )}
+      {/* SPXOpenAPI 竖屏短视频 */}
+      {compositionIds.has("SPXOpenAPI") && (
+        <Composition
+          id="SPXOpenAPI"
+          component={SPXOpenAPI}
+          durationInFrames={
+            getCompositionCatalogEntry("SPXOpenAPI")!.durationInFrames
+          }
+          fps={30}
+          width={1080}
+          height={1920}
+          schema={SPXOpenAPISchema}
+          defaultProps={SPXOpenAPISchema.parse({
+            audio: {
+              backgroundMusic: "music/background.mp3",
+              backgroundMusicVolume: 0.16,
+              voiceoverEnabled: true,
+              voiceoverVolume: 1.0,
+              voiceId: "zh-CN-YunyangNeural",
+              voiceRate: 1.03,
+              voiceoverAudioFiles: [
+                "audio/spxopenapi-scene1.mp3",
+                "audio/spxopenapi-scene2.mp3",
+                "audio/spxopenapi-scene3.mp3",
+                "audio/spxopenapi-scene4.mp3",
+                "audio/spxopenapi-scene5.mp3",
+                "audio/spxopenapi-scene6.mp3",
+                "audio/spxopenapi-scene7.mp3",
+              ],
+            },
+            subtitle: {
+              enabled: true,
+              fontSize: 44,
+              position: "bottom" as const,
+              highlightColor: "#06b6d4",
+              textColor: "#ffffff",
+              backgroundColor: "rgba(7, 10, 16, 0.86)",
+            },
+            sceneDurations: [540, 660, 720, 660, 720, 660, 540],
+            precomputedSubtitles: spxopenapiSubtitles,
+          })}
+        />
+      )}
+      {/* SPXOpenAPI 封面图 (微信视频号 3:4) */}
+      {stillIds.has("SPXOpenAPICover") && (
+        <Still
+          id="SPXOpenAPICover"
+          component={SPXOpenAPICover}
+          width={1080}
+          height={1440}
+          schema={SPXOpenAPISchema}
+          defaultProps={SPXOpenAPISchema.parse({
+            subtitle: { enabled: false },
+          })}
+        />
+      )}
+      {/* SPXOpenAPI 横屏（电脑端播放） */}
+      {compositionIds.has("SPXOpenAPILandscape") && (
+        <Composition
+          id="SPXOpenAPILandscape"
+          component={SPXOpenAPILandscape}
+          durationInFrames={
+            getCompositionCatalogEntry("SPXOpenAPILandscape")!.durationInFrames
+          }
+          fps={30}
+          width={1920}
+          height={1080}
+          schema={SPXOpenAPILandscapeSchema}
+          defaultProps={SPXOpenAPILandscapeSchema.parse({
+            audio: {
+              backgroundMusic: "music/background.mp3",
+              backgroundMusicVolume: 0.14,
+              voiceoverEnabled: true,
+              voiceoverVolume: 1.0,
+              voiceId: "zh-CN-YunyangNeural",
+              voiceRate: 1.03,
+              voiceoverAudioFiles: [
+                "audio/spxopenapi-landscape-scene1.mp3",
+                "audio/spxopenapi-landscape-scene2.mp3",
+                "audio/spxopenapi-landscape-scene3.mp3",
+                "audio/spxopenapi-landscape-scene4.mp3",
+                "audio/spxopenapi-landscape-scene5.mp3",
+                "audio/spxopenapi-landscape-scene6.mp3",
+                "audio/spxopenapi-landscape-scene7.mp3",
+              ],
+            },
+            subtitle: {
+              enabled: true,
+              fontSize: 36,
+              position: "bottom" as const,
+              highlightColor: "#06b6d4",
+              textColor: "#ffffff",
+              backgroundColor: "rgba(7, 10, 16, 0.86)",
+            },
+            sceneDurations: [439, 1033, 797, 843, 890, 653, 612],
+            precomputedSubtitles: spxopenapiLandscapeSubtitles,
+          })}
+        />
+      )}
+      {/* SPXOpenAPI 横屏封面图 (16:9 电脑端缩略图) */}
+      {stillIds.has("SPXOpenAPILandscapeCover") && (
+        <Still
+          id="SPXOpenAPILandscapeCover"
+          component={SPXOpenAPILandscapeCover}
+          width={1920}
+          height={1080}
+          schema={SPXOpenAPILandscapeSchema}
+          defaultProps={SPXOpenAPILandscapeSchema.parse({
+            subtitle: { enabled: false },
+          })}
+        />
+      )}
+      {/*
+        SPXOpenAPI 横屏 7 个场景的 PPT 静态帧（1920×1080 纯净图，无字幕/无进度条）
+        - 不挂到 catalog / registry：这些是"辅助 Still"，只为 PPT 导出服务
+        - Scene 组件内部 coverPhase=true 会跳过入场动画，直接呈现完整终态
+      */}
+      {[
+        { id: "SPXOpenAPILandscapeSlide1", component: SPXOpenAPILandscapeSlide1 },
+        { id: "SPXOpenAPILandscapeSlide2", component: SPXOpenAPILandscapeSlide2 },
+        { id: "SPXOpenAPILandscapeSlide3", component: SPXOpenAPILandscapeSlide3 },
+        { id: "SPXOpenAPILandscapeSlide4", component: SPXOpenAPILandscapeSlide4 },
+        { id: "SPXOpenAPILandscapeSlide5", component: SPXOpenAPILandscapeSlide5 },
+        { id: "SPXOpenAPILandscapeSlide6", component: SPXOpenAPILandscapeSlide6 },
+        { id: "SPXOpenAPILandscapeSlide7", component: SPXOpenAPILandscapeSlide7 },
+      ].map(({ id, component }) => (
+        <Still
+          key={id}
+          id={id}
+          component={component}
+          width={1920}
+          height={1080}
+          schema={SPXOpenAPILandscapeSchema}
+          defaultProps={SPXOpenAPILandscapeSchema.parse({
+            subtitle: { enabled: false },
+          })}
+        />
+      ))}
     </>
   );
 };

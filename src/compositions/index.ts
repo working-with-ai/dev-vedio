@@ -54,3 +54,21 @@ export {
   TradingAgentsSchema,
   type TradingAgentsProps,
 } from "./TradingAgents/schema";
+export { SPXOpenAPI } from "./SPXOpenAPI";
+export { SPXOpenAPICover } from "./SPXOpenAPI/Cover";
+export { SPXOpenAPISchema, type SPXOpenAPIProps } from "./SPXOpenAPI/schema";
+export { SPXOpenAPILandscape } from "./SPXOpenAPILandscape";
+export { SPXOpenAPILandscapeCover } from "./SPXOpenAPILandscape/Cover";
+export {
+  SPXOpenAPILandscapeSchema,
+  type SPXOpenAPILandscapeProps,
+} from "./SPXOpenAPILandscape/schema";
+export {
+  SPXOpenAPILandscapeSlide1,
+  SPXOpenAPILandscapeSlide2,
+  SPXOpenAPILandscapeSlide3,
+  SPXOpenAPILandscapeSlide4,
+  SPXOpenAPILandscapeSlide5,
+  SPXOpenAPILandscapeSlide6,
+  SPXOpenAPILandscapeSlide7,
+} from "./SPXOpenAPILandscape/Slides";

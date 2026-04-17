@@ -1,0 +1,1994 @@
+[
+  {
+    "words": [
+      {
+        "text": "要接一个",
+        "startFrame": 12,
+        "endFrame": 38
+      },
+      {
+        "text": "支持七个",
+        "startFrame": 38,
+        "endFrame": 64
+      },
+      {
+        "text": "市场的物",
+        "startFrame": 64,
+        "endFrame": 90
+      },
+      {
+        "text": "流",
+        "startFrame": 90,
+        "endFrame": 96
+      },
+      {
+        "text": "API",
+        "startFrame": 96,
+        "endFrame": 115
+      },
+      {
+        "text": "，",
+        "startFrame": 115,
+        "endFrame": 117
+      },
+      {
+        "text": "你真的知",
+        "startFrame": 117,
+        "endFrame": 143
+      },
+      {
+        "text": "道自己会",
+        "startFrame": 143,
+        "endFrame": 169
+      },
+      {
+        "text": "踩几种坑",
+        "startFrame": 169,
+        "endFrame": 195
+      },
+      {
+        "text": "吗",
+        "startFrame": 195,
+        "endFrame": 201
+      },
+      {
+        "text": "，",
+        "startFrame": 201,
+        "endFrame": 203
+      },
+      {
+        "text": "这一次",
+        "startFrame": 203,
+        "endFrame": 222
+      },
+      {
+        "text": "，",
+        "startFrame": 222,
+        "endFrame": 224
+      },
+      {
+        "text": "AI",
+        "startFrame": 224,
+        "endFrame": 237
+      },
+      {
+        "text": "真的能帮",
+        "startFrame": 237,
+        "endFrame": 263
+      },
+      {
+        "text": "你",
+        "startFrame": 263,
+        "endFrame": 269
+      },
+      {
+        "text": "，",
+        "startFrame": 269,
+        "endFrame": 271
+      },
+      {
+        "text": "从选型",
+        "startFrame": 271,
+        "endFrame": 290
+      },
+      {
+        "text": "、",
+        "startFrame": 290,
+        "endFrame": 292
+      },
+      {
+        "text": "到代码",
+        "startFrame": 292,
+        "endFrame": 311
+      },
+      {
+        "text": "、",
+        "startFrame": 311,
+        "endFrame": 313
+      },
+      {
+        "text": "到",
+        "startFrame": 313,
+        "endFrame": 319
+      },
+      {
+        "text": "Webh",
+        "startFrame": 319,
+        "endFrame": 345
+      },
+      {
+        "text": "ook",
+        "startFrame": 345,
+        "endFrame": 364
+      },
+      {
+        "text": "、",
+        "startFrame": 364,
+        "endFrame": 366
+      },
+      {
+        "text": "到面单",
+        "startFrame": 366,
+        "endFrame": 385
+      },
+      {
+        "text": "、",
+        "startFrame": 385,
+        "endFrame": 387
+      },
+      {
+        "text": "到排障",
+        "startFrame": 387,
+        "endFrame": 406
+      },
+      {
+        "text": "，",
+        "startFrame": 406,
+        "endFrame": 408
+      },
+      {
+        "text": "一步不差",
+        "startFrame": 408,
+        "endFrame": 418
+      },
+      {
+        "text": "。",
+        "startFrame": 434,
+        "endFrame": 436
+      }
+    ],
+    "startFrame": 12,
+    "endFrame": 436
+  },
+  {
+    "words": [
+      {
+        "text": "同一个下",
+        "startFrame": 451,
+        "endFrame": 472
+      },
+      {
+        "text": "单接口",
+        "startFrame": 472,
+        "endFrame": 488
+      },
+      {
+        "text": "，",
+        "startFrame": 488,
+        "endFrame": 490
+      },
+      {
+        "text": "七个东南",
+        "startFrame": 490,
+        "endFrame": 511
+      },
+      {
+        "text": "亚市场字",
+        "startFrame": 511,
+        "endFrame": 532
+      },
+      {
+        "text": "段规则完",
+        "startFrame": 532,
+        "endFrame": 553
+      },
+      {
+        "text": "全不一样",
+        "startFrame": 553,
+        "endFrame": 574
+      },
+      {
+        "text": "，",
+        "startFrame": 574,
+        "endFrame": 576
+      },
+      {
+        "text": "HMAC",
+        "startFrame": 576,
+        "endFrame": 597
+      },
+      {
+        "text": "-SHA",
+        "startFrame": 597,
+        "endFrame": 618
+      },
+      {
+        "text": "256",
+        "startFrame": 618,
+        "endFrame": 634
+      },
+      {
+        "text": "签名四个",
+        "startFrame": 634,
+        "endFrame": 655
+      },
+      {
+        "text": "字段拼错",
+        "startFrame": 655,
+        "endFrame": 676
+      },
+      {
+        "text": "一次",
+        "startFrame": 676,
+        "endFrame": 687
+      },
+      {
+        "text": "，",
+        "startFrame": 687,
+        "endFrame": 689
+      },
+      {
+        "text": "就是",
+        "startFrame": 689,
+        "endFrame": 700
+      },
+      {
+        "text": "1000",
+        "startFrame": 700,
+        "endFrame": 721
+      },
+      {
+        "text": "2",
+        "startFrame": 721,
+        "endFrame": 726
+      },
+      {
+        "text": "签名失败",
+        "startFrame": 726,
+        "endFrame": 747
+      },
+      {
+        "text": "，",
+        "startFrame": 747,
+        "endFrame": 749
+      },
+      {
+        "text": "还要区分",
+        "startFrame": 749,
+        "endFrame": 770
+      },
+      {
+        "text": "secr",
+        "startFrame": 770,
+        "endFrame": 791
+      },
+      {
+        "text": "et_k",
+        "startFrame": 791,
+        "endFrame": 812
+      },
+      {
+        "text": "ey",
+        "startFrame": 812,
+        "endFrame": 823
+      },
+      {
+        "text": "和",
+        "startFrame": 823,
+        "endFrame": 828
+      },
+      {
+        "text": "user",
+        "startFrame": 828,
+        "endFrame": 849
+      },
+      {
+        "text": "_sec",
+        "startFrame": 849,
+        "endFrame": 870
+      },
+      {
+        "text": "ret",
+        "startFrame": 870,
+        "endFrame": 886
+      },
+      {
+        "text": "，",
+        "startFrame": 886,
+        "endFrame": 888
+      },
+      {
+        "text": "Webh",
+        "startFrame": 888,
+        "endFrame": 909
+      },
+      {
+        "text": "ook",
+        "startFrame": 909,
+        "endFrame": 925
+      },
+      {
+        "text": "回调更刁",
+        "startFrame": 925,
+        "endFrame": 946
+      },
+      {
+        "text": "钻",
+        "startFrame": 946,
+        "endFrame": 951
+      },
+      {
+        "text": "，",
+        "startFrame": 951,
+        "endFrame": 953
+      },
+      {
+        "text": "Orde",
+        "startFrame": 953,
+        "endFrame": 974
+      },
+      {
+        "text": "rCre",
+        "startFrame": 974,
+        "endFrame": 995
+      },
+      {
+        "text": "ate",
+        "startFrame": 995,
+        "endFrame": 1011
+      },
+      {
+        "text": "和",
+        "startFrame": 1011,
+        "endFrame": 1016
+      },
+      {
+        "text": "Weig",
+        "startFrame": 1016,
+        "endFrame": 1037
+      },
+      {
+        "text": "htFe",
+        "startFrame": 1037,
+        "endFrame": 1058
+      },
+      {
+        "text": "e",
+        "startFrame": 1058,
+        "endFrame": 1063
+      },
+      {
+        "text": "失败后会",
+        "startFrame": 1063,
+        "endFrame": 1084
+      },
+      {
+        "text": "按",
+        "startFrame": 1084,
+        "endFrame": 1089
+      },
+      {
+        "text": "1",
+        "startFrame": 1089,
+        "endFrame": 1094
+      },
+      {
+        "text": "、",
+        "startFrame": 1094,
+        "endFrame": 1096
+      },
+      {
+        "text": "5",
+        "startFrame": 1096,
+        "endFrame": 1101
+      },
+      {
+        "text": "、",
+        "startFrame": 1101,
+        "endFrame": 1103
+      },
+      {
+        "text": "15",
+        "startFrame": 1103,
+        "endFrame": 1114
+      },
+      {
+        "text": "、",
+        "startFrame": 1114,
+        "endFrame": 1116
+      },
+      {
+        "text": "60",
+        "startFrame": 1116,
+        "endFrame": 1127
+      },
+      {
+        "text": "、",
+        "startFrame": 1127,
+        "endFrame": 1129
+      },
+      {
+        "text": "180",
+        "startFrame": 1129,
+        "endFrame": 1145
+      },
+      {
+        "text": "分钟重试",
+        "startFrame": 1145,
+        "endFrame": 1166
+      },
+      {
+        "text": "，",
+        "startFrame": 1166,
+        "endFrame": 1168
+      },
+      {
+        "text": "但",
+        "startFrame": 1168,
+        "endFrame": 1173
+      },
+      {
+        "text": "Trac",
+        "startFrame": 1173,
+        "endFrame": 1194
+      },
+      {
+        "text": "king",
+        "startFrame": 1194,
+        "endFrame": 1215
+      },
+      {
+        "text": "不会重试",
+        "startFrame": 1215,
+        "endFrame": 1236
+      },
+      {
+        "text": "，",
+        "startFrame": 1236,
+        "endFrame": 1238
+      },
+      {
+        "text": "面单到底",
+        "startFrame": 1238,
+        "endFrame": 1259
+      },
+      {
+        "text": "该调",
+        "startFrame": 1259,
+        "endFrame": 1270
+      },
+      {
+        "text": "V1",
+        "startFrame": 1270,
+        "endFrame": 1281
+      },
+      {
+        "text": "按运单号",
+        "startFrame": 1281,
+        "endFrame": 1302
+      },
+      {
+        "text": "拉",
+        "startFrame": 1302,
+        "endFrame": 1307
+      },
+      {
+        "text": "，",
+        "startFrame": 1307,
+        "endFrame": 1309
+      },
+      {
+        "text": "还是",
+        "startFrame": 1309,
+        "endFrame": 1320
+      },
+      {
+        "text": "V2",
+        "startFrame": 1320,
+        "endFrame": 1331
+      },
+      {
+        "text": "按批次号",
+        "startFrame": 1331,
+        "endFrame": 1352
+      },
+      {
+        "text": "聚合拉",
+        "startFrame": 1352,
+        "endFrame": 1368
+      },
+      {
+        "text": "，",
+        "startFrame": 1368,
+        "endFrame": 1370
+      },
+      {
+        "text": "这些问题",
+        "startFrame": 1370,
+        "endFrame": 1391
+      },
+      {
+        "text": "，",
+        "startFrame": 1391,
+        "endFrame": 1393
+      },
+      {
+        "text": "没有一个",
+        "startFrame": 1393,
+        "endFrame": 1414
+      },
+      {
+        "text": "是",
+        "startFrame": 1414,
+        "endFrame": 1419
+      },
+      {
+        "text": "API",
+        "startFrame": 1419,
+        "endFrame": 1435
+      },
+      {
+        "text": "文档第一",
+        "startFrame": 1435,
+        "endFrame": 1449
+      },
+      {
+        "text": "页告诉你",
+        "startFrame": 1456,
+        "endFrame": 1458
+      },
+      {
+        "text": "的",
+        "startFrame": 1477,
+        "endFrame": 1479
+      },
+      {
+        "text": "。",
+        "startFrame": 1482,
+        "endFrame": 1484
+      }
+    ],
+    "startFrame": 451,
+    "endFrame": 1484
+  },
+  {
+    "words": [
+      {
+        "text": "我们把它",
+        "startFrame": 1484,
+        "endFrame": 1504
+      },
+      {
+        "text": "做成了一",
+        "startFrame": 1504,
+        "endFrame": 1524
+      },
+      {
+        "text": "个",
+        "startFrame": 1524,
+        "endFrame": 1529
+      },
+      {
+        "text": "AI",
+        "startFrame": 1529,
+        "endFrame": 1539
+      },
+      {
+        "text": "Agen",
+        "startFrame": 1539,
+        "endFrame": 1559
+      },
+      {
+        "text": "t",
+        "startFrame": 1559,
+        "endFrame": 1564
+      },
+      {
+        "text": "Skil",
+        "startFrame": 1564,
+        "endFrame": 1584
+      },
+      {
+        "text": "l",
+        "startFrame": 1584,
+        "endFrame": 1589
+      },
+      {
+        "text": "插件",
+        "startFrame": 1589,
+        "endFrame": 1599
+      },
+      {
+        "text": "，",
+        "startFrame": 1599,
+        "endFrame": 1601
+      },
+      {
+        "text": "装进",
+        "startFrame": 1601,
+        "endFrame": 1611
+      },
+      {
+        "text": "Curs",
+        "startFrame": 1611,
+        "endFrame": 1631
+      },
+      {
+        "text": "or",
+        "startFrame": 1631,
+        "endFrame": 1641
+      },
+      {
+        "text": "、",
+        "startFrame": 1641,
+        "endFrame": 1643
+      },
+      {
+        "text": "Clau",
+        "startFrame": 1643,
+        "endFrame": 1663
+      },
+      {
+        "text": "de",
+        "startFrame": 1663,
+        "endFrame": 1673
+      },
+      {
+        "text": "Code",
+        "startFrame": 1673,
+        "endFrame": 1693
+      },
+      {
+        "text": "、",
+        "startFrame": 1693,
+        "endFrame": 1695
+      },
+      {
+        "text": "Code",
+        "startFrame": 1695,
+        "endFrame": 1715
+      },
+      {
+        "text": "x",
+        "startFrame": 1715,
+        "endFrame": 1720
+      },
+      {
+        "text": "、",
+        "startFrame": 1720,
+        "endFrame": 1722
+      },
+      {
+        "text": "Gemi",
+        "startFrame": 1722,
+        "endFrame": 1742
+      },
+      {
+        "text": "ni",
+        "startFrame": 1742,
+        "endFrame": 1752
+      },
+      {
+        "text": "CLI",
+        "startFrame": 1752,
+        "endFrame": 1767
+      },
+      {
+        "text": "，",
+        "startFrame": 1767,
+        "endFrame": 1769
+      },
+      {
+        "text": "所有能力",
+        "startFrame": 1769,
+        "endFrame": 1789
+      },
+      {
+        "text": "都在侧边",
+        "startFrame": 1789,
+        "endFrame": 1809
+      },
+      {
+        "text": "栏里",
+        "startFrame": 1809,
+        "endFrame": 1819
+      },
+      {
+        "text": "，",
+        "startFrame": 1819,
+        "endFrame": 1821
+      },
+      {
+        "text": "产品选型",
+        "startFrame": 1821,
+        "endFrame": 1841
+      },
+      {
+        "text": "、",
+        "startFrame": 1841,
+        "endFrame": 1843
+      },
+      {
+        "text": "示例代码",
+        "startFrame": 1843,
+        "endFrame": 1863
+      },
+      {
+        "text": "、",
+        "startFrame": 1863,
+        "endFrame": 1865
+      },
+      {
+        "text": "业务知识",
+        "startFrame": 1865,
+        "endFrame": 1885
+      },
+      {
+        "text": "、",
+        "startFrame": 1885,
+        "endFrame": 1887
+      },
+      {
+        "text": "质量评估",
+        "startFrame": 1887,
+        "endFrame": 1907
+      },
+      {
+        "text": "、",
+        "startFrame": 1907,
+        "endFrame": 1909
+      },
+      {
+        "text": "排障决策",
+        "startFrame": 1909,
+        "endFrame": 1929
+      },
+      {
+        "text": "树",
+        "startFrame": 1929,
+        "endFrame": 1934
+      },
+      {
+        "text": "、",
+        "startFrame": 1934,
+        "endFrame": 1936
+      },
+      {
+        "text": "Onbo",
+        "startFrame": 1936,
+        "endFrame": 1956
+      },
+      {
+        "text": "ardi",
+        "startFrame": 1956,
+        "endFrame": 1976
+      },
+      {
+        "text": "ng",
+        "startFrame": 1976,
+        "endFrame": 1986
+      },
+      {
+        "text": "上线",
+        "startFrame": 1986,
+        "endFrame": 1996
+      },
+      {
+        "text": "，",
+        "startFrame": 1996,
+        "endFrame": 1998
+      },
+      {
+        "text": "再加上",
+        "startFrame": 1998,
+        "endFrame": 2013
+      },
+      {
+        "text": "Webh",
+        "startFrame": 2013,
+        "endFrame": 2033
+      },
+      {
+        "text": "ook",
+        "startFrame": 2033,
+        "endFrame": 2048
+      },
+      {
+        "text": "回调验签",
+        "startFrame": 2048,
+        "endFrame": 2068
+      },
+      {
+        "text": "和面单",
+        "startFrame": 2068,
+        "endFrame": 2083
+      },
+      {
+        "text": "AWB",
+        "startFrame": 2083,
+        "endFrame": 2098
+      },
+      {
+        "text": "拉取",
+        "startFrame": 2098,
+        "endFrame": 2108
+      },
+      {
+        "text": "，",
+        "startFrame": 2108,
+        "endFrame": 2110
+      },
+      {
+        "text": "全链路都",
+        "startFrame": 2110,
+        "endFrame": 2130
+      },
+      {
+        "text": "有专家级",
+        "startFrame": 2130,
+        "endFrame": 2150
+      },
+      {
+        "text": "回答",
+        "startFrame": 2150,
+        "endFrame": 2160
+      },
+      {
+        "text": "，",
+        "startFrame": 2160,
+        "endFrame": 2162
+      },
+      {
+        "text": "而且所有",
+        "startFrame": 2162,
+        "endFrame": 2182
+      },
+      {
+        "text": "代码只是",
+        "startFrame": 2182,
+        "endFrame": 2202
+      },
+      {
+        "text": "参考范本",
+        "startFrame": 2202,
+        "endFrame": 2222
+      },
+      {
+        "text": "，",
+        "startFrame": 2222,
+        "endFrame": 2224
+      },
+      {
+        "text": "不会直接",
+        "startFrame": 2224,
+        "endFrame": 2244
+      },
+      {
+        "text": "写进你的",
+        "startFrame": 2244,
+        "endFrame": 2246
+      },
+      {
+        "text": "项目",
+        "startFrame": 2264,
+        "endFrame": 2266
+      },
+      {
+        "text": "。",
+        "startFrame": 2274,
+        "endFrame": 2276
+      }
+    ],
+    "startFrame": 1484,
+    "endFrame": 2276
+  },
+  {
+    "words": [
+      {
+        "text": "把一段真",
+        "startFrame": 2281,
+        "endFrame": 2304
+      },
+      {
+        "text": "实的",
+        "startFrame": 2304,
+        "endFrame": 2315
+      },
+      {
+        "text": "PHP",
+        "startFrame": 2315,
+        "endFrame": 2332
+      },
+      {
+        "text": "接入代码",
+        "startFrame": 2332,
+        "endFrame": 2355
+      },
+      {
+        "text": "丢进去",
+        "startFrame": 2355,
+        "endFrame": 2372
+      },
+      {
+        "text": "，",
+        "startFrame": 2372,
+        "endFrame": 2374
+      },
+      {
+        "text": "AI",
+        "startFrame": 2374,
+        "endFrame": 2385
+      },
+      {
+        "text": "扫出十五",
+        "startFrame": 2385,
+        "endFrame": 2408
+      },
+      {
+        "text": "项具体问",
+        "startFrame": 2408,
+        "endFrame": 2431
+      },
+      {
+        "text": "题",
+        "startFrame": 2431,
+        "endFrame": 2437
+      },
+      {
+        "text": "，",
+        "startFrame": 2437,
+        "endFrame": 2439
+      },
+      {
+        "text": "硬编码密",
+        "startFrame": 2439,
+        "endFrame": 2462
+      },
+      {
+        "text": "钥",
+        "startFrame": 2462,
+        "endFrame": 2468
+      },
+      {
+        "text": "、",
+        "startFrame": 2468,
+        "endFrame": 2470
+      },
+      {
+        "text": "下单缺少",
+        "startFrame": 2470,
+        "endFrame": 2493
+      },
+      {
+        "text": "异常处理",
+        "startFrame": 2493,
+        "endFrame": 2516
+      },
+      {
+        "text": "、",
+        "startFrame": 2516,
+        "endFrame": 2518
+      },
+      {
+        "text": "Webh",
+        "startFrame": 2518,
+        "endFrame": 2541
+      },
+      {
+        "text": "ook",
+        "startFrame": 2541,
+        "endFrame": 2558
+      },
+      {
+        "text": "回调没做",
+        "startFrame": 2558,
+        "endFrame": 2581
+      },
+      {
+        "text": "签名校验",
+        "startFrame": 2581,
+        "endFrame": 2604
+      },
+      {
+        "text": "，",
+        "startFrame": 2604,
+        "endFrame": 2606
+      },
+      {
+        "text": "每一条都",
+        "startFrame": 2606,
+        "endFrame": 2629
+      },
+      {
+        "text": "给出修复",
+        "startFrame": 2629,
+        "endFrame": 2652
+      },
+      {
+        "text": "建议和对",
+        "startFrame": 2652,
+        "endFrame": 2675
+      },
+      {
+        "text": "应",
+        "startFrame": 2675,
+        "endFrame": 2681
+      },
+      {
+        "text": "Play",
+        "startFrame": 2681,
+        "endFrame": 2704
+      },
+      {
+        "text": "book",
+        "startFrame": 2704,
+        "endFrame": 2727
+      },
+      {
+        "text": "，",
+        "startFrame": 2727,
+        "endFrame": 2729
+      },
+      {
+        "text": "五维度加",
+        "startFrame": 2729,
+        "endFrame": 2752
+      },
+      {
+        "text": "权评分七",
+        "startFrame": 2752,
+        "endFrame": 2775
+      },
+      {
+        "text": "十八分",
+        "startFrame": 2775,
+        "endFrame": 2792
+      },
+      {
+        "text": "，",
+        "startFrame": 2792,
+        "endFrame": 2794
+      },
+      {
+        "text": "刚好卡在",
+        "startFrame": 2794,
+        "endFrame": 2817
+      },
+      {
+        "text": "B",
+        "startFrame": 2817,
+        "endFrame": 2823
+      },
+      {
+        "text": "级建议修",
+        "startFrame": 2823,
+        "endFrame": 2846
+      },
+      {
+        "text": "复",
+        "startFrame": 2846,
+        "endFrame": 2852
+      },
+      {
+        "text": "，",
+        "startFrame": 2852,
+        "endFrame": 2854
+      },
+      {
+        "text": "签名认证",
+        "startFrame": 2854,
+        "endFrame": 2877
+      },
+      {
+        "text": "、",
+        "startFrame": 2877,
+        "endFrame": 2879
+      },
+      {
+        "text": "订单流程",
+        "startFrame": 2879,
+        "endFrame": 2902
+      },
+      {
+        "text": "、",
+        "startFrame": 2902,
+        "endFrame": 2904
+      },
+      {
+        "text": "Webh",
+        "startFrame": 2904,
+        "endFrame": 2927
+      },
+      {
+        "text": "ook",
+        "startFrame": 2927,
+        "endFrame": 2944
+      },
+      {
+        "text": "处理",
+        "startFrame": 2944,
+        "endFrame": 2955
+      },
+      {
+        "text": "、",
+        "startFrame": 2955,
+        "endFrame": 2957
+      },
+      {
+        "text": "错误处理",
+        "startFrame": 2957,
+        "endFrame": 2980
+      },
+      {
+        "text": "、",
+        "startFrame": 2980,
+        "endFrame": 2982
+      },
+      {
+        "text": "市场适配",
+        "startFrame": 2982,
+        "endFrame": 3005
+      },
+      {
+        "text": "，",
+        "startFrame": 3005,
+        "endFrame": 3007
+      },
+      {
+        "text": "五个维度",
+        "startFrame": 3007,
+        "endFrame": 3030
+      },
+      {
+        "text": "各自打分",
+        "startFrame": 3030,
+        "endFrame": 3053
+      },
+      {
+        "text": "，",
+        "startFrame": 3053,
+        "endFrame": 3055
+      },
+      {
+        "text": "你一眼就",
+        "startFrame": 3055,
+        "endFrame": 3078
+      },
+      {
+        "text": "能看到",
+        "startFrame": 3078,
+        "endFrame": 3089
+      },
+      {
+        "text": "，",
+        "startFrame": 3095,
+        "endFrame": 3097
+      },
+      {
+        "text": "哪里该先",
+        "startFrame": 3097,
+        "endFrame": 3099
+      },
+      {
+        "text": "补",
+        "startFrame": 3120,
+        "endFrame": 3122
+      },
+      {
+        "text": "。",
+        "startFrame": 3126,
+        "endFrame": 3128
+      }
+    ],
+    "startFrame": 2281,
+    "endFrame": 3128
+  },
+  {
+    "words": [
+      {
+        "text": "需要越南",
+        "startFrame": 3124,
+        "endFrame": 3146
+      },
+      {
+        "text": "市场的示",
+        "startFrame": 3146,
+        "endFrame": 3168
+      },
+      {
+        "text": "例代码吗",
+        "startFrame": 3168,
+        "endFrame": 3190
+      },
+      {
+        "text": "，",
+        "startFrame": 3190,
+        "endFrame": 3192
+      },
+      {
+        "text": "它给你完",
+        "startFrame": 3192,
+        "endFrame": 3214
+      },
+      {
+        "text": "整可跑的",
+        "startFrame": 3214,
+        "endFrame": 3236
+      },
+      {
+        "text": "模板",
+        "startFrame": 3236,
+        "endFrame": 3247
+      },
+      {
+        "text": "，",
+        "startFrame": 3247,
+        "endFrame": 3249
+      },
+      {
+        "text": "Pyth",
+        "startFrame": 3249,
+        "endFrame": 3271
+      },
+      {
+        "text": "on",
+        "startFrame": 3271,
+        "endFrame": 3282
+      },
+      {
+        "text": "Java",
+        "startFrame": 3282,
+        "endFrame": 3304
+      },
+      {
+        "text": "Go",
+        "startFrame": 3304,
+        "endFrame": 3315
+      },
+      {
+        "text": "Node",
+        "startFrame": 3315,
+        "endFrame": 3337
+      },
+      {
+        "text": "PHP",
+        "startFrame": 3337,
+        "endFrame": 3353
+      },
+      {
+        "text": "cURL",
+        "startFrame": 3353,
+        "endFrame": 3375
+      },
+      {
+        "text": "六种语言",
+        "startFrame": 3375,
+        "endFrame": 3397
+      },
+      {
+        "text": "全覆盖",
+        "startFrame": 3397,
+        "endFrame": 3413
+      },
+      {
+        "text": "，",
+        "startFrame": 3413,
+        "endFrame": 3415
+      },
+      {
+        "text": "关键是",
+        "startFrame": 3415,
+        "endFrame": 3431
+      },
+      {
+        "text": "，",
+        "startFrame": 3431,
+        "endFrame": 3433
+      },
+      {
+        "text": "Requ",
+        "startFrame": 3433,
+        "endFrame": 3455
+      },
+      {
+        "text": "est",
+        "startFrame": 3455,
+        "endFrame": 3471
+      },
+      {
+        "text": "请求签名",
+        "startFrame": 3471,
+        "endFrame": 3493
+      },
+      {
+        "text": "、",
+        "startFrame": 3493,
+        "endFrame": 3495
+      },
+      {
+        "text": "Webh",
+        "startFrame": 3495,
+        "endFrame": 3517
+      },
+      {
+        "text": "ook",
+        "startFrame": 3517,
+        "endFrame": 3533
+      },
+      {
+        "text": "回调验签",
+        "startFrame": 3533,
+        "endFrame": 3555
+      },
+      {
+        "text": "、",
+        "startFrame": 3555,
+        "endFrame": 3557
+      },
+      {
+        "text": "AWB",
+        "startFrame": 3557,
+        "endFrame": 3573
+      },
+      {
+        "text": "面单签名",
+        "startFrame": 3573,
+        "endFrame": 3595
+      },
+      {
+        "text": "，",
+        "startFrame": 3595,
+        "endFrame": 3597
+      },
+      {
+        "text": "全部复用",
+        "startFrame": 3597,
+        "endFrame": 3619
+      },
+      {
+        "text": "同一套",
+        "startFrame": 3619,
+        "endFrame": 3635
+      },
+      {
+        "text": "HMAC",
+        "startFrame": 3635,
+        "endFrame": 3657
+      },
+      {
+        "text": "-SHA",
+        "startFrame": 3657,
+        "endFrame": 3679
+      },
+      {
+        "text": "256",
+        "startFrame": 3679,
+        "endFrame": 3695
+      },
+      {
+        "text": "逻辑",
+        "startFrame": 3695,
+        "endFrame": 3706
+      },
+      {
+        "text": "，",
+        "startFrame": 3706,
+        "endFrame": 3708
+      },
+      {
+        "text": "再把真实",
+        "startFrame": 3708,
+        "endFrame": 3730
+      },
+      {
+        "text": "JSON",
+        "startFrame": 3730,
+        "endFrame": 3752
+      },
+      {
+        "text": "参数贴进",
+        "startFrame": 3752,
+        "endFrame": 3774
+      },
+      {
+        "text": "来做预检",
+        "startFrame": 3774,
+        "endFrame": 3796
+      },
+      {
+        "text": "，",
+        "startFrame": 3796,
+        "endFrame": 3798
+      },
+      {
+        "text": "自动识别",
+        "startFrame": 3798,
+        "endFrame": 3820
+      },
+      {
+        "text": "必填项缺",
+        "startFrame": 3820,
+        "endFrame": 3842
+      },
+      {
+        "text": "失",
+        "startFrame": 3842,
+        "endFrame": 3847
+      },
+      {
+        "text": "、",
+        "startFrame": 3847,
+        "endFrame": 3849
+      },
+      {
+        "text": "字段格式",
+        "startFrame": 3849,
+        "endFrame": 3871
+      },
+      {
+        "text": "错误",
+        "startFrame": 3871,
+        "endFrame": 3882
+      },
+      {
+        "text": "、",
+        "startFrame": 3882,
+        "endFrame": 3884
+      },
+      {
+        "text": "市场差异",
+        "startFrame": 3884,
+        "endFrame": 3906
+      },
+      {
+        "text": "规则",
+        "startFrame": 3906,
+        "endFrame": 3917
+      },
+      {
+        "text": "，",
+        "startFrame": 3917,
+        "endFrame": 3919
+      },
+      {
+        "text": "一次性列",
+        "startFrame": 3919,
+        "endFrame": 3941
+      },
+      {
+        "text": "清所有问",
+        "startFrame": 3941,
+        "endFrame": 3963
+      },
+      {
+        "text": "题",
+        "startFrame": 3963,
+        "endFrame": 3968
+      },
+      {
+        "text": "，",
+        "startFrame": 3968,
+        "endFrame": 3970
+      },
+      {
+        "text": "不用上线",
+        "startFrame": 3970,
+        "endFrame": 3979
+      },
+      {
+        "text": "再踩雷",
+        "startFrame": 3992,
+        "endFrame": 3994
+      },
+      {
+        "text": "。",
+        "startFrame": 4008,
+        "endFrame": 4010
+      }
+    ],
+    "startFrame": 3124,
+    "endFrame": 4010
+  },
+  {
+    "words": [
+      {
+        "text": "线上报错",
+        "startFrame": 4014,
+        "endFrame": 4037
+      },
+      {
+        "text": "INVA",
+        "startFrame": 4037,
+        "endFrame": 4060
+      },
+      {
+        "text": "LID_",
+        "startFrame": 4060,
+        "endFrame": 4083
+      },
+      {
+        "text": "PARA",
+        "startFrame": 4083,
+        "endFrame": 4106
+      },
+      {
+        "text": "M",
+        "startFrame": 4106,
+        "endFrame": 4112
+      },
+      {
+        "text": "怎么办",
+        "startFrame": 4112,
+        "endFrame": 4129
+      },
+      {
+        "text": "，",
+        "startFrame": 4129,
+        "endFrame": 4131
+      },
+      {
+        "text": "AI",
+        "startFrame": 4131,
+        "endFrame": 4142
+      },
+      {
+        "text": "直接追到",
+        "startFrame": 4142,
+        "endFrame": 4165
+      },
+      {
+        "text": "具体字段",
+        "startFrame": 4165,
+        "endFrame": 4188
+      },
+      {
+        "text": "，",
+        "startFrame": 4188,
+        "endFrame": 4190
+      },
+      {
+        "text": "给出根因",
+        "startFrame": 4190,
+        "endFrame": 4213
+      },
+      {
+        "text": "分析",
+        "startFrame": 4213,
+        "endFrame": 4224
+      },
+      {
+        "text": "，",
+        "startFrame": 4224,
+        "endFrame": 4226
+      },
+      {
+        "text": "联动对应",
+        "startFrame": 4226,
+        "endFrame": 4249
+      },
+      {
+        "text": "Play",
+        "startFrame": 4249,
+        "endFrame": 4272
+      },
+      {
+        "text": "book",
+        "startFrame": 4272,
+        "endFrame": 4295
+      },
+      {
+        "text": "一对一兜",
+        "startFrame": 4295,
+        "endFrame": 4318
+      },
+      {
+        "text": "底",
+        "startFrame": 4318,
+        "endFrame": 4324
+      },
+      {
+        "text": "，",
+        "startFrame": 4324,
+        "endFrame": 4326
+      },
+      {
+        "text": "签名",
+        "startFrame": 4326,
+        "endFrame": 4337
+      },
+      {
+        "text": "、",
+        "startFrame": 4337,
+        "endFrame": 4339
+      },
+      {
+        "text": "订单",
+        "startFrame": 4339,
+        "endFrame": 4350
+      },
+      {
+        "text": "、",
+        "startFrame": 4350,
+        "endFrame": 4352
+      },
+      {
+        "text": "Webh",
+        "startFrame": 4352,
+        "endFrame": 4375
+      },
+      {
+        "text": "ook",
+        "startFrame": 4375,
+        "endFrame": 4392
+      },
+      {
+        "text": "、",
+        "startFrame": 4392,
+        "endFrame": 4394
+      },
+      {
+        "text": "面单",
+        "startFrame": 4394,
+        "endFrame": 4405
+      },
+      {
+        "text": "、",
+        "startFrame": 4405,
+        "endFrame": 4407
+      },
+      {
+        "text": "运费",
+        "startFrame": 4407,
+        "endFrame": 4418
+      },
+      {
+        "text": "、",
+        "startFrame": 4418,
+        "endFrame": 4420
+      },
+      {
+        "text": "市场适配",
+        "startFrame": 4420,
+        "endFrame": 4443
+      },
+      {
+        "text": "，",
+        "startFrame": 4443,
+        "endFrame": 4445
+      },
+      {
+        "text": "六本专题",
+        "startFrame": 4445,
+        "endFrame": 4468
+      },
+      {
+        "text": "手册覆盖",
+        "startFrame": 4468,
+        "endFrame": 4491
+      },
+      {
+        "text": "东南亚七",
+        "startFrame": 4491,
+        "endFrame": 4514
+      },
+      {
+        "text": "个市场的",
+        "startFrame": 4514,
+        "endFrame": 4537
+      },
+      {
+        "text": "全部高频",
+        "startFrame": 4537,
+        "endFrame": 4560
+      },
+      {
+        "text": "场景",
+        "startFrame": 4560,
+        "endFrame": 4571
+      },
+      {
+        "text": "，",
+        "startFrame": 4571,
+        "endFrame": 4573
+      },
+      {
+        "text": "再也不用",
+        "startFrame": 4573,
+        "endFrame": 4596
+      },
+      {
+        "text": "在群里反",
+        "startFrame": 4596,
+        "endFrame": 4619
+      },
+      {
+        "text": "复问同一",
+        "startFrame": 4619,
+        "endFrame": 4633
+      },
+      {
+        "text": "个问题",
+        "startFrame": 4642,
+        "endFrame": 4644
+      },
+      {
+        "text": "。",
+        "startFrame": 4659,
+        "endFrame": 4661
+      }
+    ],
+    "startFrame": 4014,
+    "endFrame": 4661
+  },
+  {
+    "words": [
+      {
+        "text": "以前对接",
+        "startFrame": 4667,
+        "endFrame": 4688
+      },
+      {
+        "text": "SPX",
+        "startFrame": 4688,
+        "endFrame": 4704
+      },
+      {
+        "text": "靠经验",
+        "startFrame": 4704,
+        "endFrame": 4720
+      },
+      {
+        "text": "，",
+        "startFrame": 4720,
+        "endFrame": 4722
+      },
+      {
+        "text": "现在可以",
+        "startFrame": 4722,
+        "endFrame": 4743
+      },
+      {
+        "text": "靠评分",
+        "startFrame": 4743,
+        "endFrame": 4759
+      },
+      {
+        "text": "，",
+        "startFrame": 4759,
+        "endFrame": 4761
+      },
+      {
+        "text": "七个市场",
+        "startFrame": 4761,
+        "endFrame": 4782
+      },
+      {
+        "text": "、",
+        "startFrame": 4782,
+        "endFrame": 4784
+      },
+      {
+        "text": "四十项检",
+        "startFrame": 4784,
+        "endFrame": 4805
+      },
+      {
+        "text": "查",
+        "startFrame": 4805,
+        "endFrame": 4810
+      },
+      {
+        "text": "、",
+        "startFrame": 4810,
+        "endFrame": 4812
+      },
+      {
+        "text": "六本",
+        "startFrame": 4812,
+        "endFrame": 4823
+      },
+      {
+        "text": "Play",
+        "startFrame": 4823,
+        "endFrame": 4844
+      },
+      {
+        "text": "book",
+        "startFrame": 4844,
+        "endFrame": 4865
+      },
+      {
+        "text": "，",
+        "startFrame": 4865,
+        "endFrame": 4867
+      },
+      {
+        "text": "Webh",
+        "startFrame": 4867,
+        "endFrame": 4888
+      },
+      {
+        "text": "ook",
+        "startFrame": 4888,
+        "endFrame": 4904
+      },
+      {
+        "text": "加",
+        "startFrame": 4904,
+        "endFrame": 4909
+      },
+      {
+        "text": "AWB",
+        "startFrame": 4909,
+        "endFrame": 4925
+      },
+      {
+        "text": "全链路覆",
+        "startFrame": 4925,
+        "endFrame": 4946
+      },
+      {
+        "text": "盖",
+        "startFrame": 4946,
+        "endFrame": 4951
+      },
+      {
+        "text": "，",
+        "startFrame": 4951,
+        "endFrame": 4953
+      },
+      {
+        "text": "在",
+        "startFrame": 4953,
+        "endFrame": 4958
+      },
+      {
+        "text": "Curs",
+        "startFrame": 4958,
+        "endFrame": 4979
+      },
+      {
+        "text": "or",
+        "startFrame": 4979,
+        "endFrame": 4990
+      },
+      {
+        "text": "、",
+        "startFrame": 4990,
+        "endFrame": 4992
+      },
+      {
+        "text": "Clau",
+        "startFrame": 4992,
+        "endFrame": 5013
+      },
+      {
+        "text": "de",
+        "startFrame": 5013,
+        "endFrame": 5024
+      },
+      {
+        "text": "Code",
+        "startFrame": 5024,
+        "endFrame": 5045
+      },
+      {
+        "text": "、",
+        "startFrame": 5045,
+        "endFrame": 5047
+      },
+      {
+        "text": "Code",
+        "startFrame": 5047,
+        "endFrame": 5068
+      },
+      {
+        "text": "x",
+        "startFrame": 5068,
+        "endFrame": 5073
+      },
+      {
+        "text": "、",
+        "startFrame": 5073,
+        "endFrame": 5075
+      },
+      {
+        "text": "Gemi",
+        "startFrame": 5075,
+        "endFrame": 5096
+      },
+      {
+        "text": "ni",
+        "startFrame": 5096,
+        "endFrame": 5107
+      },
+      {
+        "text": "CLI",
+        "startFrame": 5107,
+        "endFrame": 5123
+      },
+      {
+        "text": "里一键安",
+        "startFrame": 5123,
+        "endFrame": 5144
+      },
+      {
+        "text": "装",
+        "startFrame": 5144,
+        "endFrame": 5149
+      },
+      {
+        "text": "，",
+        "startFrame": 5149,
+        "endFrame": 5151
+      },
+      {
+        "text": "你只告诉",
+        "startFrame": 5151,
+        "endFrame": 5172
+      },
+      {
+        "text": "它你是谁",
+        "startFrame": 5172,
+        "endFrame": 5193
+      },
+      {
+        "text": "、",
+        "startFrame": 5193,
+        "endFrame": 5195
+      },
+      {
+        "text": "去哪个市",
+        "startFrame": 5195,
+        "endFrame": 5216
+      },
+      {
+        "text": "场",
+        "startFrame": 5216,
+        "endFrame": 5221
+      },
+      {
+        "text": "，",
+        "startFrame": 5221,
+        "endFrame": 5223
+      },
+      {
+        "text": "剩下的",
+        "startFrame": 5223,
+        "endFrame": 5239
+      },
+      {
+        "text": "，",
+        "startFrame": 5239,
+        "endFrame": 5241
+      },
+      {
+        "text": "它替你走",
+        "startFrame": 5241,
+        "endFrame": 5245
+      },
+      {
+        "text": "完",
+        "startFrame": 5262,
+        "endFrame": 5264
+      },
+      {
+        "text": "。",
+        "startFrame": 5267,
+        "endFrame": 5269
+      }
+    ],
+    "startFrame": 4667,
+    "endFrame": 5269
+  }
+]

@@ -109,7 +109,7 @@ export const TradingAgents: React.FC<TradingAgentsProps> = (props) => {
       <div
         style={{
           position: "absolute",
-          bottom: 450,
+          bottom: 490,
           left: 80,
           right: 80,
           height: 3,

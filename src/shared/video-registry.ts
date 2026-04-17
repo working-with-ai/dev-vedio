@@ -472,6 +472,46 @@ export const videoTemplateRegistry = [
       videoChannel: videoChannelProfile,
     },
   }),
+  createEntry({
+    compositionId: "SPXOpenAPI",
+    stillId: "SPXOpenAPICover",
+    templateType: "vertical-7-scene",
+    aspectRatio: "9:16",
+    safeAreaProfile: shortVideoSafeArea,
+    subtitleMode: "single-line-bottom",
+    supports: {
+      hookSlot: true,
+      coverSlot: true,
+      proofSlot: true,
+    },
+    output: {
+      video: "out/SPXOpenAPI.mp4",
+      cover: "out/SPXOpenAPI-cover.png",
+    },
+    platformProfiles: {
+      videoChannel: videoChannelProfile,
+    },
+  }),
+  createEntry({
+    compositionId: "SPXOpenAPILandscape",
+    stillId: "SPXOpenAPILandscapeCover",
+    templateType: "landscape-7-scene",
+    aspectRatio: "16:9",
+    safeAreaProfile: landscapeSafeArea,
+    subtitleMode: "landscape-bottom",
+    supports: {
+      hookSlot: true,
+      coverSlot: true,
+      proofSlot: true,
+    },
+    output: {
+      video: "out/SPXOpenAPILandscape.mp4",
+      cover: "out/SPXOpenAPILandscape-cover.png",
+    },
+    platformProfiles: {
+      videoChannel: videoChannelProfile,
+    },
+  }),
 ] as const satisfies readonly VideoTemplateRegistryEntry[];
 
 export const listVideoTemplates = (): VideoTemplateRegistryEntry[] =>
